@@ -3,7 +3,7 @@
 # 
 
 def cube(x):
-    return x ** 3
+    return x ** 4
 
 number = int(input("Please enter a number: "))
 result = cube(number)

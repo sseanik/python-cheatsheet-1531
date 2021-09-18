@@ -22,5 +22,15 @@ for i, item in enumerate(shopping):
 i = 0
 while i < len(shopping):
     print(shopping[i])
+```
 
+
+### If Statements
+```python
+if "bread" in shopping:
+    print("We need bread")
+elif shopping[1] == "milk":
+    print("We need milk")
+else:
+    print("We need bread and milk")
 ```

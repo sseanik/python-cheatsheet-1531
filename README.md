@@ -18,4 +18,9 @@ for i in range(len(shopping)):
 for i, item in enumerate(shopping):
     print(f"Item: {item}, Index: {i}")
 
+# While loops
+i = 0
+while i < len(shopping):
+    print(shopping[i])
+
 ```

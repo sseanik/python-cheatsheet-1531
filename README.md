@@ -38,11 +38,11 @@ else:
 
 ### List Slicing
 ```python
-output = [1, 2, 3, 4, 5, 6]
+output = [0, 1, 2, 3, 4, 5]
 
-output[::-1] # Will reverse the list -> [6, 5, 4, 3, 2, 1]
-output[2:5]  # Inclusive of 2nd index, but not 5th -> [3, 4, 5]]
-output[2:]   # Will include index values from 2 until the end -> [3, 4, 5, 6]
-output[:4]   # Will include first 4 elements -> [1, 2, 3, 4]
-output[-3:]  # Will include last 3 elements -> [4, 5, 6]
+output[::-1] # Will reverse the list -> [5, 4, 3, 2, 1, 0]
+output[2:5]  # Inclusive of 2nd index, but not 5th -> [2, 3, 4]
+output[2:]   # Will include index values from 2 until the end -> [2, 3, 4, 5]
+output[:4]   # Will include first 4 elements -> [0, 1, 2, 3]
+output[-3:]  # Will include last 3 elements -> [3, 4, 5]
 ```

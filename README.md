@@ -6,15 +6,17 @@
 ```python
 shopping = ["bread", "milk", "apple", "banana", "weetbix"]
 
-# For range loop
+# For range loop 
+# (You can't do item = "something" in the loop)
 for item in shopping:
     print(item)
 
-# Traditional loop with index variable
+# Traditional loop with index variable 
+# (You're allowed to do shopping[i] = "something" in the loop)
 for i in range(len(shopping)):
     print(shopping[i])
 
-# Loop with both the index and item available
+# Loop with both the index and element available
 for i, item in enumerate(shopping):
     print(f"Item: {item}, Index: {i}")
 
@@ -22,18 +24,19 @@ for i, item in enumerate(shopping):
 i = 0
 while i < len(shopping):
     print(shopping[i])
+    i += 1 # There's no i++ in Python
 ```
 
 
 ### If Statements
 ```python
 # Remember code blocks are denoted by the ':' colon symbol and indentation
-if "bread" in shopping:
-    print("We need bread")
-elif shopping[1] == "milk":
-    print("We need milk")
+if "bread" in shopping and "milk" in shopping:
+    print("We need fruit")
+elif "apple" in shopping and "banana" not in shopping:
+    print("We got apples, but need bananas")
 else:
-    print("We need bread and milk")
+    print("We basically need everything")
 ```
 
 ### List Slicing

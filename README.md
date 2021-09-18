@@ -27,6 +27,7 @@ while i < len(shopping):
 
 ### If Statements
 ```python
+# Remember code blocks are denoted by the ':' colon symbol and indentation
 if "bread" in shopping:
     print("We need bread")
 elif shopping[1] == "milk":

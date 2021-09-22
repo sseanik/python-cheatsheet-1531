@@ -51,6 +51,11 @@ output[-3:]  # Will include last 3 elements -> [3, 4, 5]
 output[:99]  # Python figures out you don't have 99 elements -> [0, 1, 2, 3, 4, 5]
 ```
 
+### Dictionaries
+```python
+# TODO
+```
+
 ### Pythonic One Liners
 ```python
 # Ternary
@@ -58,4 +63,9 @@ output[:99]  # Python figures out you don't have 99 elements -> [0, 1, 2, 3, 4, 
 # Dictionary Comprehension
 # Python functions e.g. join
 
+```
+
+### Pytest
+```python
+# TODO
 ```

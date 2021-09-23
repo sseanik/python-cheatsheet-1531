@@ -82,7 +82,7 @@ for key in comp1531_f11a_drawings.keys(): # Removing .keys() is equivalent
     for drawing in comp1531_f11a_drawings[key]:
         print(drawing)
 
-# Looping over each value -> ["Cat", "Monkey", "Shapes", "Pickaxe", "Line"], ["Elephant", "Sun", "Dagger", "Sword", "Triangles"], ...
+# Looping over each value -> ["Cat", "Monkey"...], ["Elephant", "Sun"...], ...
 for value in comp1531_f11a_drawings.values():
     print(value)
     # Since each value of the dictionary is a list, you can loop over the individual list elements too
@@ -123,12 +123,13 @@ elif weather == "Rainy":
 else:
     print("I need to go check the weather")
 
-# Long If Statements (Recommended) - Inside (brackets) with nice alignment
+# Long If Statements with brackets (Recommended)
 if (weather == "Sunny" or weather == "Windy" or weather == "Cloudy" or # You can even put a comment here
     weather == "Rainy"):
     print("Weather is very weathery today")
 
-# Long If Statements (Not recommended) - bad alignment and no trailing space or comment after '\' allowed
+# Long If Statements with backslash (Not recommended)
+# Why? Potentially bad alignment and no trailing space or comment after '\' allowed
 if weather == "Sunny" or weather == "Windy" or weather == "Cloudy" or \
     weather == "Rainy":
     print("Weather is very weathery today")

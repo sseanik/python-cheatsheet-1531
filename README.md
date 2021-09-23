@@ -21,7 +21,7 @@
 
 ## Data Structures
 
-### Looping with Lists
+### Lists - Looping
 ```python
 shopping = ["bread", "milk", "apple", "banana", "weetbix"]
 
@@ -84,7 +84,7 @@ comp1531_teaching = {
 }
 ```
 
-### Looping with Dictionaries
+### Dictionary - Looping
 ```python
 comp1531_f11a_drawings = {
     "ALPACA": ["Cat", "Monkey", "Shapes", "Pickaxe", "Line"],
@@ -123,7 +123,7 @@ for key, value in comp1531_f11a_drawings.items():
 # TODO
 ```
 
-## Pythonic Code/Style
+## Pythonic Code
 
 ## Operators
 ```python
@@ -161,7 +161,7 @@ if weather == "Sunny" or weather == "Windy" or weather == "Cloudy" or \
 # Dictionary Comprehension
 ```
 
-### One liner functions
+### Useful One liner functions
 ```python
 # Python functions e.g. join
 # any

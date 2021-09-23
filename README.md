@@ -1,6 +1,6 @@
 # Python Cheatsheet for COMP1531 21T3 F11A
 
-[Brought to you by Sean Smith, Miguel Guthridge and the F11A COMP1531 Class of 21T3](drawing.png)
+[Brought to you by COMP1531 tutors Sean Smith and Miguel Guthridge, and the F11A COMP1531 Class of 21T3](drawing.png)
 
 ## Table of Contents
 
@@ -63,7 +63,7 @@ while i < len(shopping):
 ```
 
 ### List Slicing
-A powerful extension on 'indexing' an array/list
+A powerful extension on 'indexing' a list
 ```python
 output = [0, 1, 2, 3, 4, 5]
 

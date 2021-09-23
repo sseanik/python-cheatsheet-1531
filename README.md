@@ -222,4 +222,5 @@ if weather == "Sunny" or weather == "Windy" or weather == "Cloudy" or \
 ```
 
 Brought to you by F11A COMP1531 Class of 21T3:
+
 ![Class drawing](drawing.png)

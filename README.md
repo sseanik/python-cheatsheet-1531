@@ -135,10 +135,10 @@ for key, value in comp1531_f11a_drawings.items():
 ```
 
 ### If Statements
+Remember code blocks in python denoted by the ':' colon symbol and using indentation
 ```python
 weather = "Sunny"
 
-# Remember code blocks are denoted by the ':' colon symbol and indentation
 if weather == "Sunny":
     print("Wow it is a lovely day")
 elif weather == "Rainy":

@@ -112,6 +112,7 @@ for key, value in comp1531_f11a_drawings.items():
 ### If Statements
 ```python
 day = "Sunny"
+```
 
 # Remember code blocks are denoted by the ':' colon symbol and indentation
 if day == "Sunny":
@@ -132,6 +133,8 @@ else:
 ### One liner functions
 ```python
 # Python functions e.g. join
+# any
+# types
 ```
 
 ## Testing
@@ -149,10 +152,15 @@ else:
 # TODO
 ```
 
-To Add Maybe?:
-* Types
-* functions
-* Git? 
-* Importing + if __name__
-* Packages + virtualenv
+## Importing & Packages
 
+### Importing
+```python
+# TODO
+# if __name__ == "__main__"
+```
+
+### Packages & virtualenv
+```python
+# TODO
+```

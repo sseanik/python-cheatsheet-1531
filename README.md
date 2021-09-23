@@ -1,4 +1,4 @@
-# Python Cheatsheet for COMP1531 21T3 F11A
+# Python Cheatsheet
 
 Brought to you by COMP1531 tutors Sean Smith and Miguel Guthridge, and the [F11A COMP1531 Class of 21T3](drawing.png).
 

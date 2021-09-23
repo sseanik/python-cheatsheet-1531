@@ -2,7 +2,7 @@
 
 ## Python Cheatsheet
 
-### Looping
+### Looping with Lists
 ```python
 shopping = ["bread", "milk", "apple", "banana", "weetbix"]
 
@@ -78,6 +78,30 @@ comp1531_teaching = {
     "lab_assistants": lab_assitants, # A dictionary within a dictionary
     2021: "Term 3" # An integer key, with a string value
 }
+```
+
+### Looping with Lists
+```python
+comp1531_f11a_drawings = {
+    "ALPACA": ["Cat", "Monkey", "Shapes", "Pickaxe", "Line"],
+    "BEAGLE": ["Elephant", "Sun", "Dagger", "Sword", "Triangles"],
+    "CAMEL": ["Cat", "Python", "Sheep", "Sunflower", "Cloud"],
+    "DODO": ["Pencil", "Happy", "Face", "Pikachu", "Hello"],
+    "EAGLE": ["Prism", "Person", "Abstract", "Wizard", "Fish"]
+}
+
+# Looping over each key -> ALPACA, BEAGLE, CAMEL, DODO, EAGLE
+for key in comp1531_f11a_drawings: # comp1531_f11a_drawings.keys() is equivalent
+    print(key)
+
+# Looping over each value -> ["Cat", "Monkey", "Shapes", "Pickaxe", "Line"], ...
+for value in comp1531_f11a_drawings.values():
+    print(value) # Will print a list
+
+# Looping over key and values
+for key, value in comp1531_f11a_drawings.items():
+    print(f"Key: {key}, Value: {value}")
+
 ```
 
 ### Pythonic One Liners

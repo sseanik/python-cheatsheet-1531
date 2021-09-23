@@ -221,5 +221,5 @@ if weather == "Sunny" or weather == "Windy" or weather == "Cloudy" or \
 # TODO
 ```
 
-Brought to you by:
-[F11A COMP1531 Class of 21T3](drawing.png)
+Brought to you by F11A COMP1531 Class of 21T3:
+![Class drawing](drawing.png)

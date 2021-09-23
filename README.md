@@ -32,6 +32,9 @@ Similar to arrays in C, except their size is dynamic and can have potentially di
 ```python
 wacky_types = ["goose", "duck", True, 5, None, 4.2]
 # TODO
+# len
+# append
+# pop
 ```
 
 ### List Looping
@@ -98,6 +101,11 @@ comp1531_teaching = {
 }
 ```
 
+### Dictionary functions
+```python
+# TODO
+```
+
 ### Dictionary Looping
 Looping through dictionaries we need to be aware of both the key and/or value.
 ```python
@@ -143,6 +151,7 @@ for key, value in comp1531_f11a_drawings.items():
 ## Operators
 ```python
 # TODO
+# 3 * 'goose'
 ```
 
 ### If Statements
@@ -171,7 +180,7 @@ if weather == "Sunny" or weather == "Windy" or weather == "Cloudy" or \
 
 ### List/Dictionary Comprehension
 ```python
-# Ternary
+# Ternary if else
 # List Comprehension
 # Dictionary Comprehension
 ```
@@ -186,6 +195,9 @@ if weather == "Sunny" or weather == "Windy" or weather == "Cloudy" or \
 ### Sorting & Lambda functions
 ```python
 # TODO
+# sorting
+# reverse sorting
+# sorting dictionaries based on key/value
 ```
 
 ## Testing
@@ -193,6 +205,7 @@ if weather == "Sunny" or weather == "Windy" or weather == "Cloudy" or \
 ### Pytest
 ```python
 # TODO
+# simple reusable
 # Markers
 # Scope
 # Params
@@ -201,6 +214,7 @@ if weather == "Sunny" or weather == "Windy" or weather == "Cloudy" or \
 ### Exceptions
 ```python
 # TODO
+# types of exceptions
 ```
 
 ## Importing & Packages
@@ -208,19 +222,16 @@ if weather == "Sunny" or weather == "Windy" or weather == "Cloudy" or \
 ### Importing
 ```python
 # TODO
+# types of imports
 # if __name__ == "__main__"
 ```
 
-### Packages
+### Packages & Virtual Environment
 ```python
 # TODO
+# requirements.txt
 ```
 
-### Virtual Environment
-```bash
-# TODO
-```
-
-Brought to you by F11A COMP1531 Class of 21T3:
+Brought to you by F11A COMP1531 Class of 21T3
 
 ![Class drawing](drawing.png)

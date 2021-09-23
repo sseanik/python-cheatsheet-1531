@@ -7,12 +7,12 @@
 shopping = ["bread", "milk", "apple", "banana", "weetbix"]
 
 # For range loop 
-# (You can't do item = "something" in the loop)
+# (You can't do item = "something" in the loop to edit the shopping list)
 for item in shopping:
     print(item)
 
 # Traditional loop with index variable 
-# (You're allowed to do shopping[i] = "something" in the loop)
+# (You're allowed to do shopping[i] = "something" in the loop to edit the shopping list)
 for i in range(len(shopping)):
     print(shopping[i])
 
@@ -30,13 +30,14 @@ while i < len(shopping):
 
 ### If Statements
 ```python
+day = "Sunny"
 # Remember code blocks are denoted by the ':' colon symbol and indentation
-if "bread" in shopping and "milk" in shopping:
-    print("We need fruit")
-elif "apple" in shopping and "banana" not in shopping:
-    print("We got apples, but need bananas")
+if day == "Sunny":
+    print("Wow it is a lovely day")
+elif day == "Rainy":
+    print("Better bring my umbrella today")
 else:
-    print("We basically need everything")
+    print("I need to go check the weather")
 ```
 
 ### List Slicing

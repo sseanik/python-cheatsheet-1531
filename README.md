@@ -2,6 +2,19 @@
 
 ## Python Cheatsheet
 
+### If Statements
+```python
+day = "Sunny"
+
+# Remember code blocks are denoted by the ':' colon symbol and indentation
+if day == "Sunny":
+    print("Wow it is a lovely day")
+    elif day == "Rainy":
+        print("Better bring my umbrella today")
+        else:
+            print("I need to go check the weather")
+            ```
+
 ### Looping with Lists
 ```python
 shopping = ["bread", "milk", "apple", "banana", "weetbix"]
@@ -25,20 +38,6 @@ i = 0
 while i < len(shopping):
     print(shopping[i])
     i += 1 # There's no i++ in Python
-```
-
-
-### If Statements
-```python
-day = "Sunny"
-
-# Remember code blocks are denoted by the ':' colon symbol and indentation
-if day == "Sunny":
-    print("Wow it is a lovely day")
-elif day == "Rainy":
-    print("Better bring my umbrella today")
-else:
-    print("I need to go check the weather")
 ```
 
 ### List Slicing

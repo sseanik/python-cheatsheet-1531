@@ -22,6 +22,7 @@
 ## Data Structures
 
 ### Lists - Looping
+Similar to arrays in C, except their size is dynamic and can have potentially different types e.g. ["goose", "duck", True, 5, None, 4.2]
 ```python
 shopping = ["bread", "milk", "apple", "banana", "weetbix"]
 

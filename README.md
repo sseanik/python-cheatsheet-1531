@@ -26,7 +26,7 @@
 
 ## Data Structures
 
-### Lists - Looping
+### List Looping
 Similar to arrays in C, except their size is dynamic and can have potentially different types e.g. ["goose", "duck", True, 5, None, 4.2]
 ```python
 shopping = ["bread", "milk", "apple", "banana", "weetbix"]
@@ -97,7 +97,7 @@ comp1531_teaching = {
 }
 ```
 
-### Dictionary - Looping
+### Dictionary Looping
 Looping through dictionaries we need to be aware of both the key and/or value.
 ```python
 comp1531_f11a_drawings = {

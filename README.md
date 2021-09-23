@@ -40,6 +40,7 @@ output[:99]  # Python figures out you don't have 99 elements -> [0, 1, 2, 3, 4, 
 ### Dictionaries
 ```python
 # Similar to structs from C, there are key value 'pairs' of (potentially) different data types
+
 # Initialising a dictionary
 tutors = dict()
 tutors_alternative = {} 
@@ -48,6 +49,7 @@ tutors_alternative = {}
 tutors["Hayden"] = "Pretty cool" # Using a string as a key (Key is "Hayden", value is "Pretty cool")
 favourite_tutor = "Sean"
 tutors[favourite_tutor] = "Variable speaks for itself" # Using a variable of a string as a key
+
 # Defining an entire dictionary
 lab_assitants = {
     "Miguel": "Python genius", # Notice the commas
@@ -80,7 +82,7 @@ for key in comp1531_f11a_drawings.keys(): # Removing .keys() is equivalent
     for drawing in comp1531_f11a_drawings[key]:
         print(drawing)
 
-# Looping over each value -> ["Cat", "Monkey"...], ["Elephant", "Sun"...], ...
+# Looping over each value -> ["Cat", "Monkey", "Shapes", "Pickaxe", "Line"], ["Elephant", "Sun", "Dagger", "Sword", "Triangles"], ...
 for value in comp1531_f11a_drawings.values():
     print(value)
     # Since each value of the dictionary is a list, you can loop over the individual list elements too
@@ -102,7 +104,7 @@ for key, value in comp1531_f11a_drawings.items():
 # TODO
 ```
 
-## Pythonic Code
+## Pythonic Code/Style
 
 ## Operators
 ```python
@@ -112,7 +114,6 @@ for key, value in comp1531_f11a_drawings.items():
 ### If Statements
 ```python
 day = "Sunny"
-```
 
 # Remember code blocks are denoted by the ':' colon symbol and indentation
 if day == "Sunny":
@@ -121,7 +122,7 @@ elif day == "Rainy":
     print("Better bring my umbrella today")
 else:
     print("I need to go check the weather")
-                                                ```
+```
 
 ### List/Dictionary Comprehension
 ```python

@@ -55,8 +55,7 @@ output[:99]  # Python figures out you don't have 99 elements -> [0, 1, 2, 3, 4, 
 
 ### Dictionaries
 ```python
-# Think of dictionaries as arrays, but the 'key' can be a string/int/float
-
+# Think of dictionaries as structs (from C), where there are key value pairs of potentially different data types
 # Initialising dictionaries
 tutors = dict()
 tutors_alternative = {} 
@@ -71,7 +70,6 @@ lab_assitants = {
     "Jake": "Brilliant at AI",
     "Sean": "He's a lab assistant as well?"
 }
-
 # You can also mix up data types in a dictionary
 comp1531_teaching = {
     "tutors": ["Sean", "Yasmin", "Nick"], # A list
@@ -97,7 +95,7 @@ for key in comp1531_f11a_drawings: # comp1531_f11a_drawings.keys() is equivalent
     for drawing in comp1531_f11a_drawings[key]:
         print(drawing)
 
-# Looping over each value -> ["Cat", "Monkey", "Shapes", "Pickaxe", "Line"], ...
+# Looping over each value -> ["Cat", "Monkey"...], ["Elephant", "Sun"...], ...
 for value in comp1531_f11a_drawings.values():
     print(value) # Will print a list
     # Will loop over the list

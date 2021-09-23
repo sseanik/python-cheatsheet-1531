@@ -43,6 +43,11 @@ output[-3:]  # Will include last 3 elements -> [3, 4, 5]
 output[:99]  # Python figures out you don't have 99 elements -> [0, 1, 2, 3, 4, 5]
 ```
 
+### List functions
+```python
+# TODO
+```
+
 ### Dictionaries
 Similar to structs from C, there are key value 'pairs' of (potentially) different data types
 ```python
@@ -156,6 +161,11 @@ if weather == "Sunny" or weather == "Windy" or weather == "Cloudy" or \
 # types
 ```
 
+### Sorting & Lambda functions
+```python
+
+```
+
 ## Testing
 
 ### Pytest
@@ -179,7 +189,12 @@ if weather == "Sunny" or weather == "Windy" or weather == "Cloudy" or \
 # if __name__ == "__main__"
 ```
 
-### Packages & virtualenv
+### Packages
 ```python
+# TODO
+```
+
+### Virtual Environment
+```bash
 # TODO
 ```

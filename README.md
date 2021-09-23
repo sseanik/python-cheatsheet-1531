@@ -46,9 +46,11 @@ while i < len(shopping):
 ```
 
 ### List Slicing
+A powerful extension on 'indexing' an array/list
 ```python
 output = [0, 1, 2, 3, 4, 5]
 
+output[-1]   # Will retrive the last element -> 5
 output[::-1] # Will reverse the list -> [5, 4, 3, 2, 1, 0]
 output[2:5]  # Inclusive of 2nd index, but exclusive of the 5th index -> [2, 3, 4]
 output[2:]   # Will include index values from 2 until the end -> [2, 3, 4, 5]
@@ -86,6 +88,7 @@ comp1531_teaching = {
 ```
 
 ### Dictionary - Looping
+Looping through dictionaries we need to be aware of both the key and/or value.
 ```python
 comp1531_f11a_drawings = {
     "ALPACA": ["Cat", "Monkey", "Shapes", "Pickaxe", "Line"],

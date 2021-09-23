@@ -68,4 +68,21 @@ output[:99]  # Python figures out you don't have 99 elements -> [0, 1, 2, 3, 4, 
 ### Pytest
 ```python
 # TODO
+# Markers
+# Scope
+# Params
 ```
+
+
+To Add Maybe?:
+* Operators, e.g. 3 * "hello"
+* Printing
+* Types
+* Tuples
+* functions
+* Git? 
+* Sets
+* Importing + if __name__
+* Packages + virtualenv
+* Exceptions
+

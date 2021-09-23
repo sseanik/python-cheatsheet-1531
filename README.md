@@ -220,3 +220,6 @@ if weather == "Sunny" or weather == "Windy" or weather == "Cloudy" or \
 ```bash
 # TODO
 ```
+
+Brought to you by:
+[F11A COMP1531 Class of 21T3](drawing.png)

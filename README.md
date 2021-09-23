@@ -113,15 +113,25 @@ for key, value in comp1531_f11a_drawings.items():
 
 ### If Statements
 ```python
-day = "Sunny"
+weather = "Sunny"
 
 # Remember code blocks are denoted by the ':' colon symbol and indentation
-if day == "Sunny":
+if weather == "Sunny":
     print("Wow it is a lovely day")
-elif day == "Rainy":
+elif weather == "Rainy":
     print("Better bring my umbrella today")
 else:
     print("I need to go check the weather")
+
+# Long If Statements (Recommended) - Inside (brackets) with nice alignment
+if (weather == "Sunny" or weather == "Windy" or weather == "Cloudy" or # You can even put a comment here
+    weather == "Rainy"):
+    print("Weather is very weathery today")
+
+# Long If Statements (Not recommended) - bad alignment and no trailing space or comment after '\' allowed
+if weather == "Sunny" or weather == "Windy" or weather == "Cloudy" or \
+    weather == "Rainy":
+    print("Weather is very weathery today")
 ```
 
 ### List/Dictionary Comprehension

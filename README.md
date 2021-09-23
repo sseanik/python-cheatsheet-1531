@@ -89,7 +89,7 @@ comp1531_f11a_drawings = {
 }
 
 # Looping over each key -> ALPACA, BEAGLE, CAMEL, DODO, EAGLE
-for key in comp1531_f11a_drawings: # comp1531_f11a_drawings.keys() is equivalent
+for key in comp1531_f11a_drawings.keys(): # Removing .keys() is equivalent
     print(key)
     # To loop over the value given the key -> "Cat", "Monkey", "Shapes", "Pickaxe", "Line"
     for drawing in comp1531_f11a_drawings[key]:

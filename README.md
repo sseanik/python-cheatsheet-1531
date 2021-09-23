@@ -38,8 +38,8 @@ output[:99]  # Python figures out you don't have 99 elements -> [0, 1, 2, 3, 4, 
 ```
 
 ### Dictionaries
+Similar to structs from C, there are key value 'pairs' of (potentially) different data types
 ```python
-# Similar to structs from C, there are key value 'pairs' of (potentially) different data types
 
 # Initialising a dictionary
 tutors = dict()

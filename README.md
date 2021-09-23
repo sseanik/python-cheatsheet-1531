@@ -3,11 +3,11 @@
 ## Table of Contents
 
 * [Data Structures](#data-structures)
-    + [Lists - Looping](#lists---looping)
+    + [List Looping](#list-looping)
     + [List Slicing](#list-slicing)
     + [List functions](#list-functions)
     + [Dictionaries](#dictionaries)
-    + [Dictionary - Looping](#dictionary---looping)
+    + [Dictionary Looping](#dictionary-looping)
     + [Sets](#sets)
     + [Tuples](#tuples)
 * [Pythonic Code](#pythonic-code)
@@ -23,6 +23,7 @@
     + [Importing](#importing)
     + [Packages](#packages)
     + [Virtual Environment](#virtual-environment)
+
 
 ## Data Structures
 

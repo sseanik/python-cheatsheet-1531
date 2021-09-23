@@ -1,19 +1,6 @@
-# COMP1531 21T3 F11A
+# Python Cheatsheet for COMP1531 21T3 F11A
 
-## Python Cheatsheet
-
-### If Statements
-```python
-day = "Sunny"
-
-# Remember code blocks are denoted by the ':' colon symbol and indentation
-if day == "Sunny":
-    print("Wow it is a lovely day")
-    elif day == "Rainy":
-        print("Better bring my umbrella today")
-        else:
-            print("I need to go check the weather")
-            ```
+## Data Structures
 
 ### Looping with Lists
 ```python
@@ -104,8 +91,37 @@ for value in comp1531_f11a_drawings.values():
 # Looping over key and values
 for key, value in comp1531_f11a_drawings.items():
     print(f"Key: {key}, Value: {value}")
-
 ```
+
+### Sets
+```python
+# TODO
+```
+
+### Tuples
+```python
+# TODO
+```
+
+## Pythonic Code
+
+## Operators
+```python
+# TODO
+```
+
+### If Statements
+```python
+day = "Sunny"
+
+# Remember code blocks are denoted by the ':' colon symbol and indentation
+if day == "Sunny":
+    print("Wow it is a lovely day")
+elif day == "Rainy":
+    print("Better bring my umbrella today")
+else:
+    print("I need to go check the weather")
+                                                ```
 
 ### Pythonic One Liners
 ```python
@@ -116,6 +132,8 @@ for key, value in comp1531_f11a_drawings.items():
 
 ```
 
+## Testing
+
 ### Pytest
 ```python
 # TODO
@@ -124,16 +142,17 @@ for key, value in comp1531_f11a_drawings.items():
 # Params
 ```
 
+### Exceptions
+```python
+# TODO
+```
 
 To Add Maybe?:
 * Operators, e.g. 3 * "hello"
 * Printing
 * Types
-* Tuples
 * functions
 * Git? 
-* Sets
 * Importing + if __name__
 * Packages + virtualenv
-* Exceptions
 

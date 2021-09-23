@@ -31,6 +31,7 @@ while i < len(shopping):
 ### If Statements
 ```python
 day = "Sunny"
+
 # Remember code blocks are denoted by the ':' colon symbol and indentation
 if day == "Sunny":
     print("Wow it is a lovely day")
@@ -54,7 +55,29 @@ output[:99]  # Python figures out you don't have 99 elements -> [0, 1, 2, 3, 4, 
 
 ### Dictionaries
 ```python
-# TODO
+# Think of dictionaries as arrays, but the 'key' can be a string/int/float
+
+# Initialising dictionaries
+tutors = dict()
+tutors_alternative = {} 
+
+# Populating a dictionary
+tutors["Hayden"] = "Pretty cool" # Using a string as a key
+favourite_tutor = "Sean"
+tutors[favourite_tutor] = "Variable speaks for itself" # Using a variable of a string as a key
+# Defining an entire dictionary
+lab_assitants = {
+    "Miguel": "Python genius",
+    "Jake": "Brilliant at AI",
+    "Sean": "He's a lab assistant as well?"
+}
+
+# You can also mix up data types in a dictionary
+comp1531_teaching = {
+    "tutors": ["Sean", "Yasmin", "Nick"], # A list
+    "lab_assistants": lab_assitants, # A dictionary within a dictionary
+    2021: "Term 3" # An integer key, with a string value
+}
 ```
 
 ### Pythonic One Liners

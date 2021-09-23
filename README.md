@@ -1,5 +1,7 @@
 # Python Cheatsheet for COMP1531 21T3 F11A
 
+[Brought to you by F11A COMP1531 Class of 21T3](drawing.png)
+
 ## Table of Contents
 
 * [Data Structures](#data-structures)
@@ -231,7 +233,3 @@ if weather == "Sunny" or weather == "Windy" or weather == "Cloudy" or \
 # TODO
 # requirements.txt
 ```
-
-Brought to you by F11A COMP1531 Class of 21T3
-
-![Class drawing](drawing.png)

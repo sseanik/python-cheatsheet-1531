@@ -13,7 +13,7 @@
 * [Pythonic Code](#pythonic-code)
     * [Operators](#operators)
     + [If Statements](#if-statements)
-    + [List/Dictionary Comprehension](#list-dictionary-comprehension)
+    + [List/Dictionary Comprehension](#listdictionary-comprehension)
     + [Useful One liner functions](#useful-one-liner-functions)
     + [Sorting & Lambda functions](#sorting---lambda-functions)
 * [Testing](#testing)

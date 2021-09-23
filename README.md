@@ -80,7 +80,7 @@ comp1531_teaching = {
 }
 ```
 
-### Looping with Lists
+### Looping with Dictionaries
 ```python
 comp1531_f11a_drawings = {
     "ALPACA": ["Cat", "Monkey", "Shapes", "Pickaxe", "Line"],
@@ -93,10 +93,16 @@ comp1531_f11a_drawings = {
 # Looping over each key -> ALPACA, BEAGLE, CAMEL, DODO, EAGLE
 for key in comp1531_f11a_drawings: # comp1531_f11a_drawings.keys() is equivalent
     print(key)
+    # To loop over the value given the key -> "Cat", "Monkey", "Shapes", "Pickaxe", "Line"
+    for drawing in comp1531_f11a_drawings[key]:
+        print(drawing)
 
 # Looping over each value -> ["Cat", "Monkey", "Shapes", "Pickaxe", "Line"], ...
 for value in comp1531_f11a_drawings.values():
     print(value) # Will print a list
+    # Will loop over the list
+    for drawing in value:
+        print(drawing)
 
 # Looping over key and values
 for key, value in comp1531_f11a_drawings.items():

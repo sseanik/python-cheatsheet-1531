@@ -6,13 +6,11 @@
 ```python
 shopping = ["bread", "milk", "apple", "banana", "weetbix"]
 
-# For range loop 
-# (You can't do item = "something" in the loop to edit the shopping list)
+# For range loop (You CANNOT edit the shopping list directly with item = "Goose" in the loop)
 for item in shopping:
     print(item)
 
-# Traditional loop with index variable 
-# (You're allowed to do shopping[i] = "something" in the loop to edit the shopping list)
+# Traditional loop with index variable (You CAN edit the shopping list directly with shopping[i] = "Goose")
 for i in range(len(shopping)):
     print(shopping[i])
 
@@ -32,7 +30,7 @@ while i < len(shopping):
 output = [0, 1, 2, 3, 4, 5]
 
 output[::-1] # Will reverse the list -> [5, 4, 3, 2, 1, 0]
-output[2:5]  # Inclusive of 2nd index, but not 5th -> [2, 3, 4]
+output[2:5]  # Inclusive of 2nd index, but exclusive of the 5th index -> [2, 3, 4]
 output[2:]   # Will include index values from 2 until the end -> [2, 3, 4, 5]
 output[:4]   # Will include first 4 elements -> [0, 1, 2, 3]
 output[-3:]  # Will include last 3 elements -> [3, 4, 5]
@@ -41,26 +39,27 @@ output[:99]  # Python figures out you don't have 99 elements -> [0, 1, 2, 3, 4, 
 
 ### Dictionaries
 ```python
-# Think of dictionaries as structs (from C), where there are key value pairs of potentially different data types
-# Initialising dictionaries
+# Similar to structs from C, there are key value 'pairs' of (potentially) different data types
+# Initialising a dictionary
 tutors = dict()
 tutors_alternative = {} 
 
 # Populating a dictionary
-tutors["Hayden"] = "Pretty cool" # Using a string as a key
+tutors["Hayden"] = "Pretty cool" # Using a string as a key (Key is "Hayden", value is "Pretty cool")
 favourite_tutor = "Sean"
 tutors[favourite_tutor] = "Variable speaks for itself" # Using a variable of a string as a key
 # Defining an entire dictionary
 lab_assitants = {
-    "Miguel": "Python genius",
+    "Miguel": "Python genius", # Notice the commas
     "Jake": "Brilliant at AI",
     "Sean": "He's a lab assistant as well?"
 }
 # You can also mix up data types in a dictionary
 comp1531_teaching = {
-    "tutors": ["Sean", "Yasmin", "Nick"], # A list
-    "lab_assistants": lab_assitants, # A dictionary within a dictionary
-    2021: "Term 3" # An integer key, with a string value
+    "tutors": ["Sean", "Yasmin", "Nick"], # A string key and list value 
+    "lab_assistants": lab_assitants, # A string key and a value of a dictionary
+    2021: True, # An integer key, with a boolean value
+    1.5: None # A float key, with a None value
 }
 ```
 
@@ -77,18 +76,18 @@ comp1531_f11a_drawings = {
 # Looping over each key -> ALPACA, BEAGLE, CAMEL, DODO, EAGLE
 for key in comp1531_f11a_drawings.keys(): # Removing .keys() is equivalent
     print(key)
-    # To loop over the value given the key -> "Cat", "Monkey", "Shapes", "Pickaxe", "Line"
+    # You can access the values with the key
     for drawing in comp1531_f11a_drawings[key]:
         print(drawing)
 
 # Looping over each value -> ["Cat", "Monkey"...], ["Elephant", "Sun"...], ...
 for value in comp1531_f11a_drawings.values():
-    print(value) # Will print a list
-    # Will loop over the list
+    print(value)
+    # Since each value of the dictionary is a list, you can loop over the individual list elements too
     for drawing in value:
         print(drawing)
 
-# Looping over key and values
+# Looping over both key and values
 for key, value in comp1531_f11a_drawings.items():
     print(f"Key: {key}, Value: {value}")
 ```
@@ -123,13 +122,16 @@ else:
     print("I need to go check the weather")
                                                 ```
 
-### Pythonic One Liners
+### List/Dictionary Comprehension
 ```python
 # Ternary
 # List Comprehension
 # Dictionary Comprehension
-# Python functions e.g. join
+```
 
+### One liner functions
+```python
+# Python functions e.g. join
 ```
 
 ## Testing
@@ -148,8 +150,6 @@ else:
 ```
 
 To Add Maybe?:
-* Operators, e.g. 3 * "hello"
-* Printing
 * Types
 * functions
 * Git? 

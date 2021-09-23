@@ -2,6 +2,27 @@
 
 ## Table of Contents
 
+* [Data Structures](#data-structures)
+    + [Lists - Looping](#lists---looping)
+    + [List Slicing](#list-slicing)
+    + [List functions](#list-functions)
+    + [Dictionaries](#dictionaries)
+    + [Dictionary - Looping](#dictionary---looping)
+    + [Sets](#sets)
+    + [Tuples](#tuples)
+* [Pythonic Code](#pythonic-code)
+    * [Operators](#operators)
+    + [If Statements](#if-statements)
+    + [List/Dictionary Comprehension](#list-dictionary-comprehension)
+    + [Useful One liner functions](#useful-one-liner-functions)
+    + [Sorting & Lambda functions](#sorting---lambda-functions)
+* [Testing](#testing)
+    + [Pytest](#pytest)
+    + [Exceptions](#exceptions)
+* [Importing & Packages](#importing---packages)
+    + [Importing](#importing)
+    + [Packages](#packages)
+    + [Virtual Environment](#virtual-environment)
 
 ## Data Structures
 

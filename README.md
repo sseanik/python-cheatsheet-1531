@@ -28,12 +28,13 @@
 ## Data Structures
 
 ### Lists
+Similar to arrays in C, except their size is dynamic and can have potentially different types
 ```python
+wacky_types = ["goose", "duck", True, 5, None, 4.2]
 # TODO
 ```
 
 ### List Looping
-Similar to arrays in C, except their size is dynamic and can have potentially different types e.g. ["goose", "duck", True, 5, None, 4.2]
 ```python
 shopping = ["bread", "milk", "apple", "banana", "weetbix"]
 
@@ -73,7 +74,6 @@ output[:99]  # Python figures out you don't have 99 elements -> [0, 1, 2, 3, 4, 
 ### Dictionaries
 Similar to structs from C, there are key value 'pairs' of (potentially) different data types
 ```python
-
 # Initialising a dictionary
 tutors = dict()
 tutors_alternative = {} 

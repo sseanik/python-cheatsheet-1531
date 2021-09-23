@@ -3,9 +3,9 @@
 ## Table of Contents
 
 * [Data Structures](#data-structures)
+    + [Lists](#lists)
     + [List Looping](#list-looping)
     + [List Slicing](#list-slicing)
-    + [List functions](#list-functions)
     + [Dictionaries](#dictionaries)
     + [Dictionary Looping](#dictionary-looping)
     + [Sets](#sets)

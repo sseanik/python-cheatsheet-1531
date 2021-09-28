@@ -202,25 +202,26 @@ if weather == "Sunny" or weather == "Windy" or weather == "Cloudy" or \
 ```
 
 ### Ternary Operators
+Ternary Operators allow us to combine a singular if and else statement into one line.
 ```python
-# Tenary If/Else in a return statement
 lost_headphones = True
-# Method 1 (Non-ternary)
+# Method 1 (Non-ternary) - Returning
 if lost_headphones:
     return "Where are they?"
 else:
     return "In your pocket"
-# Method 2 (Ternary)
+
+# Method 2 (Ternary) - Returning
 return "Where are they?" if lost_headphones else "In your pocket"
 
-# Tenary If/Else assigning a variable
 hand = [1, 7, "Jack", "King"]
-# Method 1 (Non-ternary)
+# Method 1 (Non-ternary) - Assigning
 if "Queen" in hand:
     win = True
 else:
     win = False
-# Method 2 (Ternary)
+    
+# Method 2 (Ternary) - Assigning
 win = True if "Queen" in hand else False
 ```
 

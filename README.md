@@ -33,6 +33,8 @@ Brought to you by COMP1531 tutors Sean Smith and Miguel Guthridge, and the [F11A
 Similar to arrays in C, except their size is dynamic and can have potentially different types
 ```python
 wacky_types = ["goose", "duck", True, 5, None, 4.2]
+# Indexing and assigning
+wacky_types[2] = False
 # Extracting the element length of a list
 length = len(wacky_types) # 6
 # Adding to the end of a list
@@ -114,7 +116,17 @@ comp1531_teaching = {
 
 ### Dictionary functions
 ```python
-# TODO
+# clear()
+# copy()
+# fromkeys()
+# get()
+# items()
+# keys()
+# pop()
+# popitem()
+# setdefault()
+# update()
+# values()
 ```
 
 ### Dictionary Looping
@@ -189,11 +201,37 @@ if weather == "Sunny" or weather == "Windy" or weather == "Cloudy" or \
     print("Weather is very weathery today")
 ```
 
-### List/Dictionary Comprehension
+### Ternary Operators
 ```python
-# Ternary if else
-# List Comprehension
-# Dictionary Comprehension
+# Tenary If/Else in a return statement
+lost_headphones = True
+# Method 1 (Non-ternary)
+if lost_headphones:
+    return "Where are they?"
+else:
+    return "In your pocket"
+# Method 2 (Ternary)
+return "Where are they?" if lost_headphones else "In your pocket"
+
+# Tenary If/Else assigning a variable
+hand = [1, 7, "Jack", "King"]
+# Method 1 (Non-ternary)
+if "Queen" in hand:
+    win = True
+else:
+    win = False
+# Method 2 (Ternary)
+win = True if "Queen" in hand else False
+```
+
+### List Comprehension
+```python
+# TODO
+```
+
+### Dictionary Comprehension
+```python
+# TODO
 ```
 
 ### Useful One liner functions

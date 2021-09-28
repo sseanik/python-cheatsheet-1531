@@ -33,10 +33,19 @@ Brought to you by COMP1531 tutors Sean Smith and Miguel Guthridge, and the [F11A
 Similar to arrays in C, except their size is dynamic and can have potentially different types
 ```python
 wacky_types = ["goose", "duck", True, 5, None, 4.2]
-# TODO
-# len
-# append
+# Extracting the element length of a list
+length = len(wacky_types) # 6
+# Adding to the end of a list
+wacky_types.append(42)
+# clear
+# copy
+# count
+# extend
+# index
+# insert
 # pop
+# remove
+# reverse
 ```
 
 ### List Looping

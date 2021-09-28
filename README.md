@@ -205,23 +205,25 @@ if weather == "Sunny" or weather == "Windy" or weather == "Cloudy" or \
 Ternary Operators allow us to combine a singular if and else statement into one line.
 ```python
 lost_headphones = True
-# Method 1 (Non-ternary) - Returning
+
+# Returning Method 1 (Non-ternary)
 if lost_headphones:
     return "Where are they?"
 else:
     return "In your pocket"
 
-# Method 2 (Ternary) - Returning
+# Returning Method 2 (Ternary)
 return "Where are they?" if lost_headphones else "In your pocket"
 
 hand = [1, 7, "Jack", "King"]
-# Method 1 (Non-ternary) - Assigning
+
+# Assigning Method 1 (Non-ternary)
 if "Queen" in hand:
     win = True
 else:
     win = False
     
-# Method 2 (Ternary) - Assigning
+# Assigning Method 2 (Ternary)
 win = True if "Queen" in hand else False
 ```
 

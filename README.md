@@ -230,7 +230,9 @@ win = True if "Queen" in hand else False
 ### List Comprehension
 The structure of list comprehension will usually be [EXPRESSION - FOR RANGE LOOP - CONDITIONAL]
 ```python
-# Copying a list
+'''
+Copying a list
+'''
 pokedex = ["Bulbasaur", "Charmander", "Squirtle", "Pikachu"]
 # Method 1 - For range loop and append
 pokedex_copy = []

@@ -242,7 +242,9 @@ for pokemon in pokedex:
 # Method 2 - Basic List Comprehension
 pokedex_copy = [pokemon for pokemon in pokedex]
 
-# Filtering a list into a new list
+'''
+Filtering a list into a new list
+'''
 cards = [1, 2, 3, 4, 5, 6, 7, 8 , 9, 10, "Jack", "Queen", "King"]
 # Method 1 - For range loop with an if statement
 royal_cards = []
@@ -253,7 +255,9 @@ for card in cards:
 # Method 2 - Conditional List Comprehension
 royal_cards = [card for card in cards if isinstance(card, str)]
 
-# Manipulating list elements into a new list
+'''
+Manipulating list elements into a new list
+'''
 numbers = [1, 2, 3, 4, 5]
 # Method 1 - For range loop with an expression
 squares = []
@@ -263,7 +267,9 @@ for num in numbers:
 # Method 2 - Expression inside List Comprehension
 squares = [(num * num) for num in numbers]
 
-# Combining Expression and Conditionals
+'''
+Combining Expression and Conditionals
+'''
 numbers = [1, 2, 3, 4, 5]
 # Method 1 - For range loop with an expression
 even_squares = []

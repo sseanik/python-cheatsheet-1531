@@ -228,8 +228,49 @@ win = True if "Queen" in hand else False
 ```
 
 ### List Comprehension
+The structure of list comprehension will usually be [EXPRESSION - FOR RANGE LOOP - CONDITIONAL]
 ```python
-# TODO
+# Copying a list
+pokedex = ["Bulbasaur", "Charmander", "Squirtle", "Pikachu"]
+# Method 1 - For range loop and append
+pokedex_copy = []
+for pokemon in pokedex:
+    pokedex_copy.append(pokemon)
+
+# Method 2 - Basic List Comprehension
+pokedex_copy = [pokemon for pokemon in pokedex]
+
+# Filtering a list into a new list
+cards = [1, 2, 3, 4, 5, 6, 7, 8 , 9, 10, "Jack", "Queen", "King"]
+# Method 1 - For range loop with an if statement
+royal_cards = []
+for card in cards:
+    if isinstance(card, str):
+        royal_cards.append(card)
+
+# Method 2 - Conditional List Comprehension
+royal_cards = [card for card in cards if isinstance(card, str)]
+
+# Manipulating list elements into a new list
+numbers = [1, 2, 3, 4, 5]
+# Method 1 - For range loop with an expression
+squares = []
+for num in numbers:
+    squares.append(num * num)
+
+# Method 2 - Expression inside List Comprehension
+squares = [(num * num) for num in numbers]
+
+# Combining Expression and Conditionals
+numbers = [1, 2, 3, 4, 5]
+# Method 1 - For range loop with an expression
+even_squares = []
+for num in numbers:
+    if num % 2 == 0:
+        squares.append(num * num)
+
+# Method 2 - Expression inside List Comprehension
+even_squares = [(num * num) for num in numbers if num % 2 == 0]
 ```
 
 ### Dictionary Comprehension

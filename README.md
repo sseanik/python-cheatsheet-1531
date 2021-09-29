@@ -105,6 +105,7 @@ lab_assitants = {
     "Jake": "Brilliant at AI",
     "Sean": "He's a lab assistant as well?"
 }
+
 # You can also mix up data types in a dictionary
 comp1531_teaching = {
     "tutors": ["Sean", "Yasmin", "Nick"], # A string key and list value 
@@ -205,24 +206,20 @@ if weather == "Sunny" or weather == "Windy" or weather == "Cloudy" or \
 Ternary Operators allow us to combine a singular if and else statement into one line.
 ```python
 lost_headphones = True
-
 # Returning Method 1 (Non-ternary)
 if lost_headphones:
     return "Where are they?"
 else:
     return "In your pocket"
-
 # Returning Method 2 (Ternary)
 return "Where are they?" if lost_headphones else "In your pocket"
 
 hand = [1, 7, "Jack", "King"]
-
 # Assigning Method 1 (Non-ternary)
 if "Queen" in hand:
     win = True
 else:
     win = False
-    
 # Assigning Method 2 (Ternary)
 win = True if "Queen" in hand else False
 ```
@@ -238,7 +235,6 @@ pokedex = ["Bulbasaur", "Charmander", "Squirtle", "Pikachu"]
 pokedex_copy = []
 for pokemon in pokedex:
     pokedex_copy.append(pokemon)
-
 # Method 2 - Basic List Comprehension
 pokedex_copy = [pokemon for pokemon in pokedex]
 
@@ -251,7 +247,6 @@ royal_cards = []
 for card in cards:
     if isinstance(card, str):
         royal_cards.append(card)
-
 # Method 2 - Conditional List Comprehension
 royal_cards = [card for card in cards if isinstance(card, str)]
 
@@ -263,7 +258,6 @@ numbers = [1, 2, 3, 4, 5]
 squares = []
 for num in numbers:
     squares.append(num * num)
-
 # Method 2 - Expression inside List Comprehension
 squares = [(num * num) for num in numbers]
 
@@ -276,7 +270,6 @@ even_squares = []
 for num in numbers:
     if num % 2 == 0:
         squares.append(num * num)
-
 # Method 2 - Expression inside List Comprehension
 even_squares = [(num * num) for num in numbers if num % 2 == 0]
 ```

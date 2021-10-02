@@ -30,50 +30,47 @@ Brought to you by COMP1531 tutors Sean Smith and Miguel Guthridge, and the [F11A
 ## Data Structures
 
 ### Lists
-Similar to arrays in C, except their size is dynamic and you can have potentially different types. In these examples, if I do not assign an example to a variable, it is because function returns None (e.g. wacky_types.reverse() returns a None as it reverses the list in place, so no need to assign it to a variable).
+Similar to arrays in C, except their size is dynamic and you can have potentially different types. A thing to note, most of these list functions return None and manipulate the list in place (e.g. wacky_list.reverse() returns None and it reverses the wacky_list directly).
 ```python
-wacky_types = ["goose", "duck", True, 5, None, 4.2]
+wacky_list = ["goose", "duck", True, 5, None, 4.2]
 
 # Indexing and assigning
-wacky_types[2] = False # ["goose", "duck", False, 5, None, 4.2]
+wacky_list[2] = False # ["goose", "duck", False, 5, None, 4.2]
 
 # Extracting the element length of a list
-length = len(wacky_types) # length = 6
+length = len(wacky_list) # length = 6
 
 # Adding to the end of a list
-wacky_types.append("duck") # ["goose", "duck", False, 5, None, 4.2, "Duck"]
+wacky_list.append("duck") # ["goose", "duck", False, 5, None, 4.2, "Duck"]
 
-# Count the occurances in a list
-duck_count = wacky_types.count("duck") # duck_count = 2
+# Count the occurances of an element in a list
+duck_count = wacky_list.count("duck") # duck_count = 2
 
 # Retrieve the index of the first occurance of a value
-duck_index = wacky_types.index("duck") # duck_index = 1
+duck_index = wacky_list.index("duck") # duck_index = 1
 # You can also add an optional start and end index range
-duck_index = wacky_types.index("duck", 2) # duck_index = 6
-duck_index = wacky_types.index("duck", 3, 6) # duck_index = 6
+duck_index = wacky_list.index("duck", 2) # duck_index = 6
+duck_index = wacky_list.index("duck", 3, 6) # duck_index = 6
 # Note: A ValueError is raised if the value is not present in the list (or in the given range)
 
-# You can insert a value at a given index, which shifts values to the right
-wacky_types.insert(2, "swan") # ["goose", "duck", "swan", False, 5, None, 4.2, "Duck"]
+# You can insert an element at a given index, which shifts existing values to the right
+wacky_list.insert(2, "swan") # ["goose", "duck", "swan", False, 5, None, 4.2, "Duck"]
 
 # Pop will remove and return a value at a given index
-last_element = wacky_types.pop() # No arguments, will take the last element -> "Duck"
-print(wack_types) # ["goose", "duck", "swan", False, 5, None, 4.2]
-index_element = wacky_types.pop(2) # Removes and returns wacky_types[2] -> "swan"
-print(wack_types) # ["goose", "duck", False, 5, None, 4.2]
+last_element = wacky_list.pop() # pop() will retrieve and remove the last element -> "Duck"
+index_element = wacky_list.pop(2) # retrieves and removes wacky_list[2] -> "swan"
+# ["goose", "duck", False, 5, None, 4.2]]
 # Note: An IndexError is raised if the list is empty, or index is out of bounds
 
 # Reverse will mirror the list in place (it returns None)
-wacky_types.reverse() # [4.2, None, 5, False, "duck", "goose"]
+wacky_list.reverse() # [4.2, None, 5, False, "duck", "goose"]
 
 # Remove the first matching element from a list
-wacky_types.remove(5) # # [4.2, None, False, "duck", "goose"]
+wacky_list.remove(5) # # [4.2, None, False, "duck", "goose"]
 # Note: A ValueError is raised if the element is not present in the list
 
-# extend
-
-# Empties the list
-wacky_types.clear() # wacky_types is now == []
+# Clears the list
+wacky_list.clear() # wacky_list is now == []
 ```
 
 ### List Looping
@@ -316,6 +313,11 @@ even_squares = [(num * num) for num in numbers if num % 2 == 0]
 ```python
 # Performs a shallow copy (i.e. if you change wacky_types, it)
 wacky_copy = wacky_types.copy()
+```
+
+### Extending
+```python
+# extend
 ```
 
 ### Sorting & Lambda functions

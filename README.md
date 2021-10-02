@@ -29,6 +29,14 @@ Table of Contents
 - [Importing & Packages](#importing--packages)
   - [Importing](#importing)
   - [Packages & Virtual Environment](#packages--virtual-environment)
+  - [Pylint](#pylint)
+  - [Coverage](#coverage)
+- [Classes](#classes)
+- [Files](#files)
+- [Flask](#flask)
+- [Pickle](#pickle)
+- [Reduce, map, filter](#reduce-map-filter)
+- [Decorators](#decorators)
 
 ## Lists
 
@@ -176,43 +184,40 @@ colours = ['red', 'green', 'blue']
 colours_copy = colours.copy()
 
 # Perform a shallow copy (it will copy each sub list as a reference/pointer)
-shallow_a = [['r', 'g', 'b'], ['c', 'm', 'y', 'k'], ['h', 's', 'b']]
+shallow_a = [['r', 'g', 'b'], ['c', 'm', 'y', 'k']]
 shallow_b = shallow_a.copy()
 shallow_a[0][0] = 'Red' # Will update both shallow_a and shallow_b
-# shallow_a == [['Red', 'g', 'b'], ['c', 'm', 'y', 'k'], ['h', 's', 'b']]
-# shallow_b == [['Red', 'g', 'b'], ['c', 'm', 'y', 'k'], ['h', 's', 'b']]
+# shallow_a == [['Red', 'g', 'b'], ['c', 'm', 'y', 'k']]
+# shallow_b == [['Red', 'g', 'b'], ['c', 'm', 'y', 'k']]
 shallow_b[0][1] = "Green" # Will update both shallow_b and shallow_a
-# shallow_a == [['Red', 'Green, 'b'], ['c', 'm', 'y', 'k'], ['h', 's', 'b']]
-# shallow_b == [['Red', 'Green, 'b'], ['c', 'm', 'y', 'k'], ['h', 's', 'b']]
+# shallow_a == [['Red', 'Green, 'b'], ['c', 'm', 'y', 'k']]
+# shallow_b == [['Red', 'Green, 'b'], ['c', 'm', 'y', 'k']]
 
 # Perform a deep copy
 import copy
-deep_a = [['r', 'g', 'b'], ['c', 'm', 'y', 'k'], ['h', 's', 'b']]
+deep_a = [['r', 'g', 'b'], ['c', 'm', 'y', 'k']]
 # Perform a deep copy (it will copy each sub list as unique elements not references)
 deep_b =  copy.deepcopy(deep_a)
 deep_a[0][0] = 'Red' # Will update only deep_a
-# deep_a == [['Red', 'g', 'b'], ['c', 'm', 'y', 'k'], ['h', 's', 'b']]
-# deep_b == [['r', 'g', 'b'], ['c', 'm', 'y', 'k'], ['h', 's', 'b']]
+# deep_a == [['Red', 'g', 'b'], ['c', 'm', 'y', 'k']]
+# deep_b == [['r', 'g', 'b'], ['c', 'm', 'y', 'k']]
 deep_b[0][1] = "Green" # Will update only deep_b
-# deep_a == [['Red', 'g, 'b'], ['c', 'm', 'y', 'k'], ['h', 's', 'b']]
-# deep_b == [['r', 'Green, 'b'], ['c', 'm', 'y', 'k'], ['h', 's', 'b']]
+# deep_a == [['Red', 'g, 'b'], ['c', 'm', 'y', 'k']]
+# deep_b == [['r', 'Green, 'b'], ['c', 'm', 'y', 'k']]
 ```
 
 ### Extending Lists
 ```python
 numbers = [1, 2]
-string_nums = ["3", "4"]
-tup_nums = (5.0, 6.0)
-set_nums = {7, 8, 9}
-
 # Extend will add the string_num list to the end of the numbers list
+string_nums = ["3", "4"]
 numbers.extend(string_nums) # numbers == [1, 2, '3', '4']
 # The += operator can be used also
+tup_nums = (5.0, 6.0)
 numbers += tup_nums # numbers == [1, 2, '3', '4', 5.0, 6.0]
 # List slicing the end of the list can be used as well
+set_nums = {7, 8, 9}
 numbers[len(numbers):] = set_nums # numbers == [1, 2, '3', '4', 5.0, 6.0, 8, 9, 7]
-
-
 ```
 
 ## Dictionaries
@@ -223,7 +228,7 @@ tutors = dict()
 tutors_alternative = {} 
 
 # Populating a dictionary
-tutors["Yasmin"] = "W17A" # Using a string as a key (Key is "Hayden", value is "H13B")
+tutors["Yasmin"] = "W17A" # Using a string as a key (Key is "Yasmin", value is "W17A")
 fav_tutor = "Sean"
 tutors[fav_tutor] = "F11A" # Using a variable of a string as a key
 
@@ -333,6 +338,7 @@ if lost_headphones:
     return "Where are they?"
 else:
     return "In your pocket"
+
 # Returning Method 2 (Ternary)
 return "Where are they?" if lost_headphones else "In your pocket"
 
@@ -342,6 +348,7 @@ if "Queen" in hand:
     win = True
 else:
     win = False
+
 # Assigning Method 2 (Ternary)
 win = True if "Queen" in hand else False
 ```
@@ -352,6 +359,7 @@ win = True if "Queen" in hand else False
 ```python
 # TODO
 # 3 * 'goose'
+# Printing decimal places
 ```
 
 ### Useful One liner functions
@@ -379,12 +387,14 @@ win = True if "Queen" in hand else False
 # Markers
 # Scope
 # Params
+# Mark
 ```
 
 ### Exceptions
 ```python
 # TODO
 # types of exceptions
+# try/except
 ```
 
 ## Importing & Packages
@@ -399,5 +409,25 @@ win = True if "Queen" in hand else False
 ### Packages & Virtual Environment
 ```python
 # TODO
+# pip3
 # requirements.txt
 ```
+
+### Pylint
+
+### Coverage
+
+## Classes
+```python
+# TODO
+```
+
+## Files
+
+## Flask
+
+## Pickle
+
+## Reduce, map, filter
+
+## Decorators

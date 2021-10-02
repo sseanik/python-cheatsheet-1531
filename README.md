@@ -5,20 +5,20 @@ Brought to you by COMP1531 tutors Sean Smith and Miguel Guthridge, and the [F11A
 Table of Contents
 
 - [Lists](#lists)
-  - [List Functions](#list-functions)
   - [List Looping](#list-looping)
   - [List Slicing](#list-slicing)
   - [List Comprehension](#list-comprehension)
+  - [List Functions](#list-functions)
   - [Copying Lists](#copying-lists)
   - [Extending Lists](#extending-lists)
 - [Dictionaries](#dictionaries)
-  - [Dictionary functions](#dictionary-functions)
   - [Dictionary Looping](#dictionary-looping)
   - [Dictionary Comprehension](#dictionary-comprehension)
+  - [Dictionary functions](#dictionary-functions)
 - [Sets](#sets)
 - [Tuples](#tuples)
 - [If Statements](#if-statements)
-  - [Ternary Operators](#ternary-operators)
+  - [Conditional Expressions/Ternary Operators](#conditional-expressionsternary-operators)
 - [Pythonic Code](#pythonic-code)
   - [Operators](#operators)
   - [Useful One liner functions](#useful-one-liner-functions)
@@ -39,50 +39,6 @@ Table of Contents
 - [Decorators](#decorators)
 
 ## Lists
-
-### List Functions
-Similar to arrays in C, except their size is dynamic and you can have potentially different types. 
-NOTE: Most of these list functions return *None* and modify the list in place (e.g. wacky_list.reverse() returns None and reverses the list directly).
-```python
-wacky_list = ["goose", "duck", True, 5, None, 4.2]
-# Indexing and assigning
-wacky_list[2] = False # ["goose", "duck", False, 5, None, 4.2]
-# len - Extracting the element length of a list
-length = len(wacky_list) # length = 6
-
-# append - Adding a new element to the end of a list
-wacky_list.append("duck") # ["goose", "duck", False, 5, None, 4.2, "Duck"]
-
-# count -Count the occurrences of an element in a list
-duck_count = wacky_list.count("duck") # duck_count = 2
-
-# index - Retrieve the index of the first occurrences of a value
-duck_index = wacky_list.index("duck") # duck_index = 1
-# You can also add an optional start and end index range
-duck_index = wacky_list.index("duck", 2) # duck_index = 6
-duck_index = wacky_list.index("duck", 3, 6) # duck_index = 6
-# NOTE: A ValueError is raised if the value is not present in the list (or in the given range)
-
-# insert - You can insert an element at a given index, which shifts existing elements to the right
-wacky_list.insert(2, "swan") # ["goose", "duck", "swan", False, 5, None, 4.2, "Duck"]
-
-# pop - Pop will retrieve and remove a value at a given index
-last_element = wacky_list.pop() # No argument will grab the last element -> "Duck"
-# ["goose", "swan", "duck", False, 5, None, 4.2]
-index_element = wacky_list.pop(2) # Retrieves and removes wacky_list[2] -> "swan"
-# ["goose", "duck", False, 5, None, 4.2]
-# NOTE: An IndexError is raised if the list is empty, or index is out of bounds
-
-# reverse - Reverse will mirror the list in place
-wacky_list.reverse() # [4.2, None, 5, False, "duck", "goose"]
-
-# remove - Remove the first matching element from a list
-wacky_list.remove(5) # [4.2, None, False, "duck", "goose"]
-# NOTE: A ValueError is raised if the element is not present in the list
-
-# clear - Clears the list
-wacky_list.clear() # wacky_list is now == []
-```
 
 ### List Looping
 ```python
@@ -175,6 +131,50 @@ for num in numbers:
 even_squares = [(num * num) for num in numbers if num % 2 == 0]
 ```
 
+### List Functions
+Similar to arrays in C, except their size is dynamic and you can have potentially different types. 
+NOTE: Most of these list functions return *None* and modify the list in place (e.g. wacky_list.reverse() returns None and reverses the list directly).
+```python
+wacky_list = ["goose", "duck", True, 5, None, 4.2]
+# Indexing and assigning
+wacky_list[2] = False # ["goose", "duck", False, 5, None, 4.2]
+# len - Extracting the element length of a list
+length = len(wacky_list) # length = 6
+
+# append - Adding a new element to the end of a list
+wacky_list.append("duck") # ["goose", "duck", False, 5, None, 4.2, "Duck"]
+
+# count -Count the occurrences of an element in a list
+duck_count = wacky_list.count("duck") # duck_count = 2
+
+# index - Retrieve the index of the first occurrences of a value
+duck_index = wacky_list.index("duck") # duck_index = 1
+# You can also add an optional start and end index range
+duck_index = wacky_list.index("duck", 2) # duck_index = 6
+duck_index = wacky_list.index("duck", 3, 6) # duck_index = 6
+# NOTE: A ValueError is raised if the value is not present in the list (or in the given range)
+
+# insert - You can insert an element at a given index, which shifts existing elements to the right
+wacky_list.insert(2, "swan") # ["goose", "duck", "swan", False, 5, None, 4.2, "Duck"]
+
+# pop - Pop will retrieve and remove a value at a given index
+last_element = wacky_list.pop() # No argument will grab the last element -> "Duck"
+# ["goose", "swan", "duck", False, 5, None, 4.2]
+index_element = wacky_list.pop(2) # Retrieves and removes wacky_list[2] -> "swan"
+# ["goose", "duck", False, 5, None, 4.2]
+# NOTE: An IndexError is raised if the list is empty, or index is out of bounds
+
+# reverse - Reverse will mirror the list in place
+wacky_list.reverse() # [4.2, None, 5, False, "duck", "goose"]
+
+# remove - Remove the first matching element from a list
+wacky_list.remove(5) # [4.2, None, False, "duck", "goose"]
+# NOTE: A ValueError is raised if the element is not present in the list
+
+# clear - Clears the list
+wacky_list.clear() # wacky_list is now == []
+```
+
 ### Copying Lists
 ```python
 # If you have a single layer a list of non-container values, you don't need to worry about references)
@@ -227,10 +227,7 @@ fav_tutor = "Sean"
 tutors[fav_tutor] = "F11A" # Using a variable of a string as a key
 
 # Defining an entire dictionary
-lab_assistants = {
-    "Miguel": "F11A", # Notice the commas
-    "Sean": "W17A"
-}
+lab_assistants = {"Miguel": "F11A", "Sean": "W17A"}
 
 # You can also mix up data types in a dictionary
 comp1531_teaching = {
@@ -239,21 +236,6 @@ comp1531_teaching = {
     2021: True, # An integer key, with a boolean value
     1.5: None # A float key, with a None value
 }
-```
-
-### Dictionary functions
-```python
-# clear()
-# copy()
-# fromkeys()
-# get()
-# items()
-# keys()
-# pop()
-# popitem()
-# setdefault()
-# update()
-# values()
 ```
 
 ### Dictionary Looping
@@ -289,6 +271,21 @@ for key, value in comp1531_f11a_class.items():
 # TODO
 ```
 
+### Dictionary functions
+```python
+# clear()
+# copy()
+# fromkeys()
+# get()
+# items()
+# keys()
+# pop()
+# popitem()
+# setdefault()
+# update()
+# values()
+```
+
 ## Sets
 ```python
 # TODO
@@ -316,14 +313,14 @@ if (weather == "Sunny" or weather == "Windy" or weather == "Cloudy" or # You can
     weather == "Rainy"):
     print("Weather is very weathery today")
 
-# Long If Statements with backslash (Not recommended)
-# Why? Potentially bad alignment and no trailing space or comment after '\' allowed
+# Long If Statements with backslash
+# Note: Can potentially result in bad alignment and no trailing space or comment after '\' allowed
 if weather == "Sunny" or weather == "Windy" or weather == "Cloudy" or \
     weather == "Rainy":
     print("Weather is very weathery today")
 ```
 
-### Ternary Operators
+### Conditional Expressions/Ternary Operators
 Ternary Operators allow us to combine a singular if and else statement into one line.
 ```python
 lost_headphones = True

@@ -30,7 +30,7 @@ Brought to you by COMP1531 tutors Sean Smith and Miguel Guthridge, and the [F11A
 ## Data Structures
 
 ### Lists
-Similar to arrays in C, except their size is dynamic and you can have potentially different types
+Similar to arrays in C, except their size is dynamic and you can have potentially different types. In these examples, if I do not assign anything to a variable, then the function returns None (e.g. wacky_types.reverse() returns a None, so I don't need to assign it to a variable)
 ```python
 wacky_types = ["goose", "duck", True, 5, None, 4.2]
 # Indexing and assigning

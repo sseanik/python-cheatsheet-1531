@@ -33,7 +33,8 @@ Table of Contents
 ## Lists
 
 ### List Functions
-Similar to arrays in C, except their size is dynamic and you can have potentially different types. A thing to note, most of these list functions return None and manipulate the list in place (e.g. wacky_list.reverse() returns None and it reverses the wacky_list directly).
+Similar to arrays in C, except their size is dynamic and you can have potentially different types. 
+NOTE: Most of these list functions return *None* and modify the list in place (e.g. wacky_list.reverse() returns None and reverses the list directly).
 ```python
 wacky_list = ["goose", "duck", True, 5, None, 4.2]
 
@@ -43,34 +44,35 @@ wacky_list[2] = False # ["goose", "duck", False, 5, None, 4.2]
 # Extracting the element length of a list
 length = len(wacky_list) # length = 6
 
-# Adding to the end of a list
+# Adding a new element to the end of a list
 wacky_list.append("duck") # ["goose", "duck", False, 5, None, 4.2, "Duck"]
 
-# Count the occurances of an element in a list
+# Count the occurrences of an element in a list
 duck_count = wacky_list.count("duck") # duck_count = 2
 
-# Retrieve the index of the first occurance of a value
+# Retrieve the index of the first occurrences of a value
 duck_index = wacky_list.index("duck") # duck_index = 1
 # You can also add an optional start and end index range
 duck_index = wacky_list.index("duck", 2) # duck_index = 6
 duck_index = wacky_list.index("duck", 3, 6) # duck_index = 6
-# Note: A ValueError is raised if the value is not present in the list (or in the given range)
+# NOTE: A ValueError is raised if the value is not present in the list (or in the given range)
 
-# You can insert an element at a given index, which shifts existing values to the right
+# You can insert an element at a given index, which shifts existing elements to the right
 wacky_list.insert(2, "swan") # ["goose", "duck", "swan", False, 5, None, 4.2, "Duck"]
 
-# Pop will remove and return a value at a given index
-last_element = wacky_list.pop() # pop() will retrieve and remove the last element -> "Duck"
-index_element = wacky_list.pop(2) # retrieves and removes wacky_list[2] -> "swan"
-# ["goose", "duck", False, 5, None, 4.2]]
-# Note: An IndexError is raised if the list is empty, or index is out of bounds
+# Pop will retrieve and remove a value at a given index
+last_element = wacky_list.pop() # No argument will grab the last element -> "Duck"
+# ["goose", "swan", "duck", False, 5, None, 4.2]
+index_element = wacky_list.pop(2) # Retrieves and removes wacky_list[2] -> "swan"
+# ["goose", "duck", False, 5, None, 4.2]
+# NOTE: An IndexError is raised if the list is empty, or index is out of bounds
 
 # Reverse will mirror the list in place
 wacky_list.reverse() # [4.2, None, 5, False, "duck", "goose"]
 
 # Remove the first matching element from a list
-wacky_list.remove(5) # # [4.2, None, False, "duck", "goose"]
-# Note: A ValueError is raised if the element is not present in the list
+wacky_list.remove(5) # [4.2, None, False, "duck", "goose"]
+# NOTE: A ValueError is raised if the element is not present in the list
 
 # Clears the list
 wacky_list.clear() # wacky_list is now == []
@@ -124,6 +126,7 @@ pokedex = ["Bulbasaur", "Charmander", "Squirtle", "Pikachu"]
 pokedex_copy = []
 for pokemon in pokedex:
     pokedex_copy.append(pokemon)
+
 # Method 2 - Basic List Comprehension
 pokedex_copy = [pokemon for pokemon in pokedex]
 
@@ -136,6 +139,7 @@ royal_cards = []
 for card in cards:
     if isinstance(card, str):
         royal_cards.append(card)
+
 # Method 2 - Conditional List Comprehension
 royal_cards = [card for card in cards if isinstance(card, str)]
 
@@ -147,6 +151,7 @@ numbers = [1, 2, 3, 4, 5]
 squares = []
 for num in numbers:
     squares.append(num * num)
+
 # Method 2 - Expression inside List Comprehension
 squares = [(num * num) for num in numbers]
 
@@ -159,12 +164,17 @@ even_squares = []
 for num in numbers:
     if num % 2 == 0:
         squares.append(num * num)
+
 # Method 2 - Expression inside List Comprehension
 even_squares = [(num * num) for num in numbers if num % 2 == 0]
 ```
 
 ### Copying Lists
 ```python
+# If you have a single layer a list of non-container values, you don't need to worry about references)
+colours = ['red', 'green', 'blue']
+colours_copy = colours.copy()
+
 # Perform a shallow copy (it will copy each sub list as a reference/pointer)
 shallow_a = [['r', 'g', 'b'], ['c', 'm', 'y', 'k'], ['h', 's', 'b']]
 shallow_b = shallow_a.copy()
@@ -190,7 +200,19 @@ deep_b[0][1] = "Green" # Will update only deep_b
 
 ### Extending Lists
 ```python
-# extend
+numbers = [1, 2]
+string_nums = ["3", "4"]
+tup_nums = (5.0, 6.0)
+set_nums = {7, 8, 9}
+
+# Extend will add the string_num list to the end of the numbers list
+numbers.extend(string_nums) # numbers == [1, 2, '3', '4']
+# The += operator can be used also
+numbers += tup_nums # numbers == [1, 2, '3', '4', 5.0, 6.0]
+# List slicing the end of the list can be used as well
+numbers[len(numbers):] = set_nums # numbers == [1, 2, '3', '4', 5.0, 6.0, 8, 9, 7]
+
+
 ```
 
 ## Dictionaries
@@ -238,30 +260,28 @@ comp1531_teaching = {
 ### Dictionary Looping
 Looping through dictionaries we need to be aware of both the key and/or value.
 ```python
-comp1531_f11a_drawings = {
-    "ALPACA": ["Cat", "Monkey", "Shapes", "Pickaxe", "Line"],
-    "BEAGLE": ["Elephant", "Sun", "Dagger", "Sword", "Triangles"],
-    "CAMEL": ["Cat", "Python", "Sheep", "Sunflower", "Cloud"],
-    "DODO": ["Pencil", "Happy", "Face", "Pikachu", "Hello"],
-    "EAGLE": ["Prism", "Person", "Abstract", "Wizard", "Fish"]
+comp1531_f11a_class = {
+    "Groups": ["ALPACA", "BEAGLE", "CAMEL", "DODO", "EAGLE"],
+    "Team Names": ["Throne Trouble", "Celery Creature", "Pig Partner", "Sun Surprise", "Waste Wish"],
+    "Tutors": ["Sean", "Miguel"]
 }
 
-# Looping over each key -> ALPACA, BEAGLE, CAMEL, DODO, EAGLE
-for key in comp1531_f11a_drawings.keys(): # Removing .keys() is equivalent
+# Looping over each key -> "Groups", "Team Names", "Tutors"
+for key in comp1531_f11a_class.keys(): # Removing .keys() is equivalent
     print(key)
     # You can access the values with the key
-    for drawing in comp1531_f11a_drawings[key]:
-        print(drawing)
+    for value in comp1531_f11a_class[key]:
+        print(value)
 
-# Looping over each value -> ["Cat", "Monkey"...], ["Elephant", "Sun"...], ...
-for value in comp1531_f11a_drawings.values():
+# Looping over each value -> ["ALPACA", "BEAGLE", ...], ["Throne Trouble", "Celery Creature", ...], ...
+for value in comp1531_f11a_class.values():
     print(value)
     # Since each value of the dictionary is a list, you can loop over the individual list elements too
-    for drawing in value:
-        print(drawing)
+    for value in value:
+        print(value)
 
 # Looping over both key and values
-for key, value in comp1531_f11a_drawings.items():
+for key, value in comp1531_f11a_class.items():
     print(f"Key: {key}, Value: {value}")
 ```
 

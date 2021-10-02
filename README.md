@@ -30,24 +30,25 @@ Brought to you by COMP1531 tutors Sean Smith and Miguel Guthridge, and the [F11A
 ## Data Structures
 
 ### Lists
-Similar to arrays in C, except their size is dynamic and can have potentially different types
+Similar to arrays in C, except their size is dynamic and you can have potentially different types
 ```python
 wacky_types = ["goose", "duck", True, 5, None, 4.2]
 # Indexing and assigning
 wacky_types[2] = False
 # Extracting the element length of a list
-length = len(wacky_types) # 6
+lenght = len(wacky_types) # 6
 # Adding to the end of a list
-wacky_types.append(42)
-# clear
-# copy
+wacky_types.append("duck")
 # count
+duck_count = wacky_types.count("duck") # 2
 # extend
 # index
 # insert
 # pop
 # remove
 # reverse
+# clear
+wacky_types.clear() # wacky_types is now == []
 ```
 
 ### List Looping
@@ -284,6 +285,12 @@ even_squares = [(num * num) for num in numbers if num % 2 == 0]
 # Python functions e.g. join
 # any
 # types
+```
+
+### Copying
+```python
+# Performs a shallow copy (i.e. if you change wacky_types, it)
+wacky_copy = wacky_types.copy()
 ```
 
 ### Sorting & Lambda functions

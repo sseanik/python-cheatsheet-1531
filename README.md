@@ -175,12 +175,11 @@ shallow_b[0][1] = "Green" # Will update both shallow_b and shallow_a
 # shallow_a == [['Red', 'Green, 'b'], ['c', 'm', 'y', 'k'], ['h', 's', 'b']]
 # shallow_b == [['Red', 'Green, 'b'], ['c', 'm', 'y', 'k'], ['h', 's', 'b']]
 
-
 # Perform a deep copy
 import copy
 deep_a = [['r', 'g', 'b'], ['c', 'm', 'y', 'k'], ['h', 's', 'b']]
 # Perform a deep copy (it will copy each sub list as unique elements not references)
-deep_b = deep_a.copy()
+deep_b =  copy.deepcopy(deep_a)
 deep_a[0][0] = 'Red' # Will update only deep_a
 # deep_a == [['Red', 'g', 'b'], ['c', 'm', 'y', 'k'], ['h', 's', 'b']]
 # deep_b == [['r', 'g', 'b'], ['c', 'm', 'y', 'k'], ['h', 's', 'b']]

@@ -1,35 +1,38 @@
-# Python Cheatsheet
+Python Cheatsheet
 
 Brought to you by COMP1531 tutors Sean Smith and Miguel Guthridge, and the [F11A COMP1531 Class of 21T3](drawing.png).
 
-## Table of Contents
+Table of Contents
 
-* [Data Structures](#data-structures)
-    + [Lists](#lists)
-    + [List Looping](#list-looping)
-    + [List Slicing](#list-slicing)
-    + [Dictionaries](#dictionaries)
-    + [Dictionary Looping](#dictionary-looping)
-    + [Sets](#sets)
-    + [Tuples](#tuples)
-* [Pythonic Code](#pythonic-code)
-    * [Operators](#operators)
-    + [If Statements](#if-statements)
-    + [List/Dictionary Comprehension](#listdictionary-comprehension)
-    + [Useful One liner functions](#useful-one-liner-functions)
-    + [Sorting & Lambda functions](#sorting---lambda-functions)
-* [Testing](#testing)
-    + [Pytest](#pytest)
-    + [Exceptions](#exceptions)
-* [Importing & Packages](#importing---packages)
-    + [Importing](#importing)
-    + [Packages](#packages)
-    + [Virtual Environment](#virtual-environment)
+- [Lists](#lists)
+  - [List Functions](#list-functions)
+  - [List Looping](#list-looping)
+  - [List Slicing](#list-slicing)
+  - [List Comprehension](#list-comprehension)
+  - [Copying Lists](#copying-lists)
+  - [Extending Lists](#extending-lists)
+- [Dictionaries](#dictionaries)
+  - [Dictionary functions](#dictionary-functions)
+  - [Dictionary Looping](#dictionary-looping)
+  - [Dictionary Comprehension](#dictionary-comprehension)
+- [Sets](#sets)
+- [Tuples](#tuples)
+- [If Statements](#if-statements)
+  - [Ternary Operators](#ternary-operators)
+- [Pythonic Code](#pythonic-code)
+  - [Operators](#operators)
+  - [Useful One liner functions](#useful-one-liner-functions)
+  - [Sorting & Lambda functions](#sorting--lambda-functions)
+- [Testing](#testing)
+  - [Pytest](#pytest)
+  - [Exceptions](#exceptions)
+- [Importing & Packages](#importing--packages)
+  - [Importing](#importing)
+  - [Packages & Virtual Environment](#packages--virtual-environment)
 
+## Lists
 
-## Data Structures
-
-### Lists
+### List Functions
 Similar to arrays in C, except their size is dynamic and you can have potentially different types. A thing to note, most of these list functions return None and manipulate the list in place (e.g. wacky_list.reverse() returns None and it reverses the wacky_list directly).
 ```python
 wacky_list = ["goose", "duck", True, 5, None, 4.2]
@@ -62,7 +65,7 @@ index_element = wacky_list.pop(2) # retrieves and removes wacky_list[2] -> "swan
 # ["goose", "duck", False, 5, None, 4.2]]
 # Note: An IndexError is raised if the list is empty, or index is out of bounds
 
-# Reverse will mirror the list in place (it returns None)
+# Reverse will mirror the list in place
 wacky_list.reverse() # [4.2, None, 5, False, "duck", "goose"]
 
 # Remove the first matching element from a list
@@ -110,7 +113,88 @@ output[-3:]  # Will include last 3 elements -> [3, 4, 5]
 output[:99]  # Python figures out you don't have 99 elements -> [0, 1, 2, 3, 4, 5]
 ```
 
-### Dictionaries
+### List Comprehension
+The structure of list comprehension will usually be [EXPRESSION - FOR RANGE LOOP - CONDITIONAL]
+```python
+'''
+Copying a list
+'''
+pokedex = ["Bulbasaur", "Charmander", "Squirtle", "Pikachu"]
+# Method 1 - For range loop and append
+pokedex_copy = []
+for pokemon in pokedex:
+    pokedex_copy.append(pokemon)
+# Method 2 - Basic List Comprehension
+pokedex_copy = [pokemon for pokemon in pokedex]
+
+'''
+Filtering a list into a new list
+'''
+cards = [1, 2, 3, 4, 5, 6, 7, 8 , 9, 10, "Jack", "Queen", "King"]
+# Method 1 - For range loop with an if statement
+royal_cards = []
+for card in cards:
+    if isinstance(card, str):
+        royal_cards.append(card)
+# Method 2 - Conditional List Comprehension
+royal_cards = [card for card in cards if isinstance(card, str)]
+
+'''
+Manipulating list elements into a new list
+'''
+numbers = [1, 2, 3, 4, 5]
+# Method 1 - For range loop with an expression
+squares = []
+for num in numbers:
+    squares.append(num * num)
+# Method 2 - Expression inside List Comprehension
+squares = [(num * num) for num in numbers]
+
+'''
+Combining Expression and Conditionals
+'''
+numbers = [1, 2, 3, 4, 5]
+# Method 1 - For range loop with an expression
+even_squares = []
+for num in numbers:
+    if num % 2 == 0:
+        squares.append(num * num)
+# Method 2 - Expression inside List Comprehension
+even_squares = [(num * num) for num in numbers if num % 2 == 0]
+```
+
+### Copying Lists
+```python
+# Perform a shallow copy (it will copy each sub list as a reference/pointer)
+shallow_a = [['r', 'g', 'b'], ['c', 'm', 'y', 'k'], ['h', 's', 'b']]
+shallow_b = shallow_a.copy()
+shallow_a[0][0] = 'Red' # Will update both shallow_a and shallow_b
+# shallow_a == [['Red', 'g', 'b'], ['c', 'm', 'y', 'k'], ['h', 's', 'b']]
+# shallow_b == [['Red', 'g', 'b'], ['c', 'm', 'y', 'k'], ['h', 's', 'b']]
+shallow_b[0][1] = "Green" # Will update both shallow_b and shallow_a
+# shallow_a == [['Red', 'Green, 'b'], ['c', 'm', 'y', 'k'], ['h', 's', 'b']]
+# shallow_b == [['Red', 'Green, 'b'], ['c', 'm', 'y', 'k'], ['h', 's', 'b']]
+
+
+# Perform a deep copy
+import copy
+deep_a = [['r', 'g', 'b'], ['c', 'm', 'y', 'k'], ['h', 's', 'b']]
+# Perform a deep copy (it will copy each sub list as unique elements not references)
+deep_b = deep_a.copy()
+deep_a[0][0] = 'Red' # Will update only deep_a
+# deep_a == [['Red', 'g', 'b'], ['c', 'm', 'y', 'k'], ['h', 's', 'b']]
+# deep_b == [['r', 'g', 'b'], ['c', 'm', 'y', 'k'], ['h', 's', 'b']]
+deep_b[0][1] = "Green" # Will update only deep_b
+# deep_a == [['Red', 'g, 'b'], ['c', 'm', 'y', 'k'], ['h', 's', 'b']]
+# deep_b == [['r', 'Green, 'b'], ['c', 'm', 'y', 'k'], ['h', 's', 'b']]
+```
+
+### Extending Lists
+```python
+# extend
+```
+
+## Dictionaries
 Similar to structs from C, there are key value 'pairs' of (potentially) different data types
 ```python
 # Initialising a dictionary
@@ -118,15 +202,14 @@ tutors = dict()
 tutors_alternative = {} 
 
 # Populating a dictionary
-tutors["Hayden"] = "Pretty cool" # Using a string as a key (Key is "Hayden", value is "Pretty cool")
-favourite_tutor = "Sean"
-tutors[favourite_tutor] = "Variable speaks for itself" # Using a variable of a string as a key
+tutors["Yasmin"] = "W17A" # Using a string as a key (Key is "Hayden", value is "H13B")
+fav_tutor = "Sean"
+tutors[fav_tutor] = "F11A" # Using a variable of a string as a key
 
 # Defining an entire dictionary
 lab_assitants = {
-    "Miguel": "Python genius", # Notice the commas
-    "Jake": "Brilliant at AI",
-    "Sean": "He's a lab assistant as well?"
+    "Miguel": "F11A", # Notice the commas
+    "Sean": "W17A"
 }
 
 # You can also mix up data types in a dictionary
@@ -183,25 +266,22 @@ for key, value in comp1531_f11a_drawings.items():
     print(f"Key: {key}, Value: {value}")
 ```
 
-### Sets
+### Dictionary Comprehension
 ```python
 # TODO
 ```
 
-### Tuples
+## Sets
 ```python
 # TODO
 ```
 
-## Pythonic Code
-
-## Operators
+## Tuples
 ```python
 # TODO
-# 3 * 'goose'
 ```
 
-### If Statements
+## If Statements
 Remember code blocks in python denoted by the ':' colon symbol and using indentation
 ```python
 weather = "Sunny"
@@ -247,77 +327,20 @@ else:
 win = True if "Queen" in hand else False
 ```
 
-### List Comprehension
-The structure of list comprehension will usually be [EXPRESSION - FOR RANGE LOOP - CONDITIONAL]
-```python
-'''
-Copying a list
-'''
-pokedex = ["Bulbasaur", "Charmander", "Squirtle", "Pikachu"]
-# Method 1 - For range loop and append
-pokedex_copy = []
-for pokemon in pokedex:
-    pokedex_copy.append(pokemon)
-# Method 2 - Basic List Comprehension
-pokedex_copy = [pokemon for pokemon in pokedex]
+## Pythonic Code
 
-'''
-Filtering a list into a new list
-'''
-cards = [1, 2, 3, 4, 5, 6, 7, 8 , 9, 10, "Jack", "Queen", "King"]
-# Method 1 - For range loop with an if statement
-royal_cards = []
-for card in cards:
-    if isinstance(card, str):
-        royal_cards.append(card)
-# Method 2 - Conditional List Comprehension
-royal_cards = [card for card in cards if isinstance(card, str)]
-
-'''
-Manipulating list elements into a new list
-'''
-numbers = [1, 2, 3, 4, 5]
-# Method 1 - For range loop with an expression
-squares = []
-for num in numbers:
-    squares.append(num * num)
-# Method 2 - Expression inside List Comprehension
-squares = [(num * num) for num in numbers]
-
-'''
-Combining Expression and Conditionals
-'''
-numbers = [1, 2, 3, 4, 5]
-# Method 1 - For range loop with an expression
-even_squares = []
-for num in numbers:
-    if num % 2 == 0:
-        squares.append(num * num)
-# Method 2 - Expression inside List Comprehension
-even_squares = [(num * num) for num in numbers if num % 2 == 0]
-```
-
-### Dictionary Comprehension
+### Operators
 ```python
 # TODO
+# 3 * 'goose'
 ```
 
 ### Useful One liner functions
 ```python
 # Python functions e.g. join
 # any
+# all
 # types
-```
-
-### Copying
-```python
-# Performs a shallow copy (i.e. if you change wacky_types, it)
-wacky_copy = wacky_types.copy()
-```
-
-### Extending
-```python
-# extend
 ```
 
 ### Sorting & Lambda functions

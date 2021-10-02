@@ -15,12 +15,12 @@ Table of Contents
   - [Dictionaries](#dictionaries-1)
   - [Dictionary Looping](#dictionary-looping)
   - [Dictionary Comprehension](#dictionary-comprehension)
-  - [Dictionary functions](#dictionary-functions)
-- [Data Structures](#data-structures)
+  - [Dictionary Functions](#dictionary-functions)
+- [Other Data Structures](#other-data-structures)
   - [Sets](#sets)
   - [Tuples](#tuples)
-- [If Statements](#if-statements)
-  - [If Statements](#if-statements-1)
+- [Conditionals](#conditionals)
+  - [If Statements](#if-statements)
   - [Conditional Expressions/Ternary Operators](#conditional-expressionsternary-operators)
 - [Testing](#testing)
   - [Pytest](#pytest)
@@ -31,11 +31,12 @@ Table of Contents
   - [Importing](#importing)
   - [Packages & Virtual Environment](#packages--virtual-environment)
 - [Flask](#flask)
+  - [Skeleton](#skeleton)
 - [Pythonic Code](#pythonic-code)
   - [Operators](#operators)
   - [Useful One liner functions](#useful-one-liner-functions)
   - [Sorting & Lambda functions](#sorting--lambda-functions)
-- [Classes](#classes)
+  - [Classes](#classes)
   - [Files](#files)
   - [Pickle](#pickle)
   - [Reduce, map, filter](#reduce-map-filter)
@@ -278,7 +279,7 @@ for key, value in comp1531_f11a_class.items():
 # TODO
 ```
 
-### Dictionary functions
+### Dictionary Functions
 ```python
 # clear()
 # copy()
@@ -293,7 +294,7 @@ for key, value in comp1531_f11a_class.items():
 # values()
 ```
 
-## Data Structures
+## Other Data Structures
 
 ### Sets
 ```python
@@ -305,7 +306,7 @@ for key, value in comp1531_f11a_class.items():
 # TODO
 ```
 
-## If Statements
+## Conditionals
 
 ### If Statements
 Remember code blocks in python denoted by the ':' colon symbol and using indentation
@@ -402,6 +403,11 @@ win = True if "Queen" in hand else False
 
 ## Flask
 
+### Skeleton
+```python
+# TODO
+```
+
 ## Pythonic Code
 
 ### Operators
@@ -427,7 +433,7 @@ win = True if "Queen" in hand else False
 # sorting dictionaries based on key/value
 ```
 
-## Classes
+### Classes
 ```python
 # TODO
 ```

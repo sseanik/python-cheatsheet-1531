@@ -45,44 +45,42 @@ Similar to arrays in C, except their size is dynamic and you can have potentiall
 NOTE: Most of these list functions return *None* and modify the list in place (e.g. wacky_list.reverse() returns None and reverses the list directly).
 ```python
 wacky_list = ["goose", "duck", True, 5, None, 4.2]
-
 # Indexing and assigning
 wacky_list[2] = False # ["goose", "duck", False, 5, None, 4.2]
-
-# Extracting the element length of a list
+# len - Extracting the element length of a list
 length = len(wacky_list) # length = 6
 
-# Adding a new element to the end of a list
+# append - Adding a new element to the end of a list
 wacky_list.append("duck") # ["goose", "duck", False, 5, None, 4.2, "Duck"]
 
-# Count the occurrences of an element in a list
+# count -Count the occurrences of an element in a list
 duck_count = wacky_list.count("duck") # duck_count = 2
 
-# Retrieve the index of the first occurrences of a value
+# index - Retrieve the index of the first occurrences of a value
 duck_index = wacky_list.index("duck") # duck_index = 1
 # You can also add an optional start and end index range
 duck_index = wacky_list.index("duck", 2) # duck_index = 6
 duck_index = wacky_list.index("duck", 3, 6) # duck_index = 6
 # NOTE: A ValueError is raised if the value is not present in the list (or in the given range)
 
-# You can insert an element at a given index, which shifts existing elements to the right
+# insert - You can insert an element at a given index, which shifts existing elements to the right
 wacky_list.insert(2, "swan") # ["goose", "duck", "swan", False, 5, None, 4.2, "Duck"]
 
-# Pop will retrieve and remove a value at a given index
+# pop - Pop will retrieve and remove a value at a given index
 last_element = wacky_list.pop() # No argument will grab the last element -> "Duck"
 # ["goose", "swan", "duck", False, 5, None, 4.2]
 index_element = wacky_list.pop(2) # Retrieves and removes wacky_list[2] -> "swan"
 # ["goose", "duck", False, 5, None, 4.2]
 # NOTE: An IndexError is raised if the list is empty, or index is out of bounds
 
-# Reverse will mirror the list in place
+# reverse - Reverse will mirror the list in place
 wacky_list.reverse() # [4.2, None, 5, False, "duck", "goose"]
 
-# Remove the first matching element from a list
+# remove - Remove the first matching element from a list
 wacky_list.remove(5) # [4.2, None, False, "duck", "goose"]
 # NOTE: A ValueError is raised if the element is not present in the list
 
-# Clears the list
+# clear - Clears the list
 wacky_list.clear() # wacky_list is now == []
 ```
 
@@ -114,7 +112,7 @@ A powerful extension on 'indexing' a list
 ```python
 output = [0, 1, 2, 3, 4, 5]
 
-output[-1]   # Will retrive the last element -> 5
+output[-1]   # Will retrieve the last element -> 5
 output[::-1] # Will reverse the list -> [5, 4, 3, 2, 1, 0]
 output[2:5]  # Inclusive of 2nd index, but exclusive of the 5th index -> [2, 3, 4]
 output[2:]   # Will include index values from 2 until the end -> [2, 3, 4, 5]
@@ -187,11 +185,9 @@ colours_copy = colours.copy()
 shallow_a = [['r', 'g', 'b'], ['c', 'm', 'y', 'k']]
 shallow_b = shallow_a.copy()
 shallow_a[0][0] = 'Red' # Will update both shallow_a and shallow_b
-# shallow_a == [['Red', 'g', 'b'], ['c', 'm', 'y', 'k']]
 # shallow_b == [['Red', 'g', 'b'], ['c', 'm', 'y', 'k']]
 shallow_b[0][1] = "Green" # Will update both shallow_b and shallow_a
 # shallow_a == [['Red', 'Green, 'b'], ['c', 'm', 'y', 'k']]
-# shallow_b == [['Red', 'Green, 'b'], ['c', 'm', 'y', 'k']]
 
 # Perform a deep copy
 import copy
@@ -199,8 +195,6 @@ deep_a = [['r', 'g', 'b'], ['c', 'm', 'y', 'k']]
 # Perform a deep copy (it will copy each sub list as unique elements not references)
 deep_b =  copy.deepcopy(deep_a)
 deep_a[0][0] = 'Red' # Will update only deep_a
-# deep_a == [['Red', 'g', 'b'], ['c', 'm', 'y', 'k']]
-# deep_b == [['r', 'g', 'b'], ['c', 'm', 'y', 'k']]
 deep_b[0][1] = "Green" # Will update only deep_b
 # deep_a == [['Red', 'g, 'b'], ['c', 'm', 'y', 'k']]
 # deep_b == [['r', 'Green, 'b'], ['c', 'm', 'y', 'k']]
@@ -233,7 +227,7 @@ fav_tutor = "Sean"
 tutors[fav_tutor] = "F11A" # Using a variable of a string as a key
 
 # Defining an entire dictionary
-lab_assitants = {
+lab_assistants = {
     "Miguel": "F11A", # Notice the commas
     "Sean": "W17A"
 }
@@ -241,7 +235,7 @@ lab_assitants = {
 # You can also mix up data types in a dictionary
 comp1531_teaching = {
     "tutors": ["Sean", "Yasmin", "Nick"], # A string key and list value 
-    "lab_assistants": lab_assitants, # A string key and a value of a dictionary
+    "lab_assistants": lab_assistants, # A string key and a value of a dictionary
     2021: True, # An integer key, with a boolean value
     1.5: None # A float key, with a None value
 }

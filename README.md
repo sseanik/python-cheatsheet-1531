@@ -12,31 +12,34 @@ Table of Contents
   - [Copying Lists](#copying-lists)
   - [Extending Lists](#extending-lists)
 - [Dictionaries](#dictionaries)
+  - [Dictionaries](#dictionaries-1)
   - [Dictionary Looping](#dictionary-looping)
   - [Dictionary Comprehension](#dictionary-comprehension)
   - [Dictionary functions](#dictionary-functions)
-- [Sets](#sets)
-- [Tuples](#tuples)
+- [Data Structures](#data-structures)
+  - [Sets](#sets)
+  - [Tuples](#tuples)
 - [If Statements](#if-statements)
+  - [If Statements](#if-statements-1)
   - [Conditional Expressions/Ternary Operators](#conditional-expressionsternary-operators)
+- [Testing](#testing)
+  - [Pytest](#pytest)
+  - [Exceptions](#exceptions)
+  - [Coverage](#coverage)
+  - [Pylint](#pylint)
+- [Importing & Packages](#importing--packages)
+  - [Importing](#importing)
+  - [Packages & Virtual Environment](#packages--virtual-environment)
+- [Flask](#flask)
 - [Pythonic Code](#pythonic-code)
   - [Operators](#operators)
   - [Useful One liner functions](#useful-one-liner-functions)
   - [Sorting & Lambda functions](#sorting--lambda-functions)
-- [Testing](#testing)
-  - [Pytest](#pytest)
-  - [Exceptions](#exceptions)
-- [Importing & Packages](#importing--packages)
-  - [Importing](#importing)
-  - [Packages & Virtual Environment](#packages--virtual-environment)
-  - [Pylint](#pylint)
-  - [Coverage](#coverage)
 - [Classes](#classes)
-- [Files](#files)
-- [Flask](#flask)
-- [Pickle](#pickle)
-- [Reduce, map, filter](#reduce-map-filter)
-- [Decorators](#decorators)
+  - [Files](#files)
+  - [Pickle](#pickle)
+  - [Reduce, map, filter](#reduce-map-filter)
+  - [Decorators](#decorators)
 
 ## Lists
 
@@ -54,7 +57,7 @@ for i in range(len(shopping)):
 
 # Loop with both the index and element available
 for i, item in enumerate(shopping):
-    print(f"Item: {item}, Index: {i}")
+    print(f"Index: {i}, Item: {item}")
 
 # While loops
 i = 0
@@ -70,7 +73,7 @@ output = [0, 1, 2, 3, 4, 5]
 
 output[-1]   # Will retrieve the last element -> 5
 output[::-1] # Will reverse the list -> [5, 4, 3, 2, 1, 0]
-output[2:5]  # Inclusive of 2nd index, but exclusive of the 5th index -> [2, 3, 4]
+output[2:5]  # Inclusive of the 2nd index, but exclusive of the 5th index -> [2, 3, 4]
 output[2:]   # Will include index values from 2 until the end -> [2, 3, 4, 5]
 output[:4]   # Will include first 4 elements -> [0, 1, 2, 3]
 output[-3:]  # Will include last 3 elements -> [3, 4, 5]
@@ -93,7 +96,7 @@ for pokemon in pokedex:
 pokedex_copy = [pokemon for pokemon in pokedex]
 
 '''
-Filtering a list into a new list
+Filtering a list with an if statement into a new list
 '''
 cards = [1, 2, 3, 4, 5, 6, 7, 8 , 9, 10, "Jack", "Queen", "King"]
 # Method 1 - For range loop with an if statement
@@ -106,7 +109,7 @@ for card in cards:
 royal_cards = [card for card in cards if isinstance(card, str)]
 
 '''
-Manipulating list elements into a new list
+Taking an expression over list elements into a list
 '''
 numbers = [1, 2, 3, 4, 5]
 # Method 1 - For range loop with an expression
@@ -133,11 +136,14 @@ even_squares = [(num * num) for num in numbers if num % 2 == 0]
 
 ### List Functions
 Similar to arrays in C, except their size is dynamic and you can have potentially different types. 
+
 NOTE: Most of these list functions return *None* and modify the list in place (e.g. wacky_list.reverse() returns None and reverses the list directly).
 ```python
 wacky_list = ["goose", "duck", True, 5, None, 4.2]
+
 # Indexing and assigning
 wacky_list[2] = False # ["goose", "duck", False, 5, None, 4.2]
+
 # len - Extracting the element length of a list
 length = len(wacky_list) # length = 6
 
@@ -159,7 +165,6 @@ wacky_list.insert(2, "swan") # ["goose", "duck", "swan", False, 5, None, 4.2, "D
 
 # pop - Pop will retrieve and remove a value at a given index
 last_element = wacky_list.pop() # No argument will grab the last element -> "Duck"
-# ["goose", "swan", "duck", False, 5, None, 4.2]
 index_element = wacky_list.pop(2) # Retrieves and removes wacky_list[2] -> "swan"
 # ["goose", "duck", False, 5, None, 4.2]
 # NOTE: An IndexError is raised if the list is empty, or index is out of bounds
@@ -177,7 +182,7 @@ wacky_list.clear() # wacky_list is now == []
 
 ### Copying Lists
 ```python
-# If you have a single layer a list of non-container values, you don't need to worry about references)
+# If you have a single layer list of non-container values, you don't need to worry about references
 colours = ['red', 'green', 'blue']
 colours_copy = colours.copy()
 
@@ -215,6 +220,8 @@ numbers[len(numbers):] = set_nums # numbers == [1, 2, '3', '4', 5.0, 6.0, 8, 9, 
 ```
 
 ## Dictionaries
+
+### Dictionaries
 Similar to structs from C, there are key value 'pairs' of (potentially) different data types
 ```python
 # Initialising a dictionary
@@ -286,17 +293,21 @@ for key, value in comp1531_f11a_class.items():
 # values()
 ```
 
-## Sets
+## Data Structures
+
+### Sets
 ```python
 # TODO
 ```
 
-## Tuples
+### Tuples
 ```python
 # TODO
 ```
 
 ## If Statements
+
+### If Statements
 Remember code blocks in python denoted by the ':' colon symbol and using indentation
 ```python
 weather = "Sunny"
@@ -344,6 +355,53 @@ else:
 win = True if "Queen" in hand else False
 ```
 
+## Testing
+
+### Pytest
+```python
+# TODO
+# simple reusable
+# Markers
+# Scope
+# Params
+# Mark
+```
+
+### Exceptions
+```python
+# TODO
+# types of exceptions
+# try/except
+```
+
+### Coverage
+```python
+# TODO
+```
+
+### Pylint
+```python
+# TODO
+```
+
+## Importing & Packages
+
+### Importing
+```python
+# TODO
+# types of imports
+# if __name__ == "__main__"
+```
+
+### Packages & Virtual Environment
+```python
+# TODO
+# pip3
+# requirements.txt
+```
+
+## Flask
+
 ## Pythonic Code
 
 ### Operators
@@ -369,56 +427,27 @@ win = True if "Queen" in hand else False
 # sorting dictionaries based on key/value
 ```
 
-## Testing
-
-### Pytest
-```python
-# TODO
-# simple reusable
-# Markers
-# Scope
-# Params
-# Mark
-```
-
-### Exceptions
-```python
-# TODO
-# types of exceptions
-# try/except
-```
-
-## Importing & Packages
-
-### Importing
-```python
-# TODO
-# types of imports
-# if __name__ == "__main__"
-```
-
-### Packages & Virtual Environment
-```python
-# TODO
-# pip3
-# requirements.txt
-```
-
-### Pylint
-
-### Coverage
-
 ## Classes
 ```python
 # TODO
 ```
 
-## Files
+### Files
+```python
+# TODO
+```
 
-## Flask
+### Pickle
+```python
+# TODO
+```
 
-## Pickle
+### Reduce, map, filter
+```python
+# TODO
+```
 
-## Reduce, map, filter
-
-## Decorators
+### Decorators
+```python
+# TODO
+```

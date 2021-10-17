@@ -1,23 +1,37 @@
-from typing import Protocol
 from flask import Flask, request
 from json import dumps
-
-
-# Testing pytest
-import requests
+import names_ages
 
 APP = Flask(__name__)
 
-@APP.route('/auth/login/v2', methods=["POST"])
-def get_comments():
+
+@APP.route("/addPerson", methods=["POST"])
+def add_person():
     data = request.get_json()
-    email = data["email"]
-    password = data["password"]
+    name, dob = data["name"], data["dob"]
+    names_ages.add_name_age(name, dob)
+    return {}
 
-    token, auth_user_id = auth_login(email, password)
 
-    return dumps({"token": token, "auth_user_id": auth_user_id})
+@APP.route("/getPeople", methods=["GET"])
+def get_people():
+    min_age = request.args.get('min_age')
+    return dumps(names_ages.get_names_ages(min_age))
+
+
+@APP.route("/clearPeople", methods=["DELETE"])
+def clear_people():
+    names_ages.clear_names_ages()
+    return {}
+
+
+@APP.route("/editPerson", methods=["PUT"])
+def edit_person():
+    data = request.get_json()
+    name, dob = data["name"], data["dob"]
+    names_ages.edit_name_age(name, dob)
+    return {}
 
 
 if __name__ == "__main__":
-    APP.run(debug=True)
+    APP.run(debug=True, port=5000)

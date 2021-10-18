@@ -1,7 +1,3 @@
-Python Cheatsheet
-
-Brought to you by COMP1531 tutors Sean Smith and Miguel Guthridge, and the [F11A COMP1531 Class of 21T3](drawing.png).
-
 Table of Contents
 
 - [Lists](#lists)
@@ -9,16 +5,16 @@ Table of Contents
   - [List Slicing](#list-slicing)
   - [List Comprehension](#list-comprehension)
   - [List Functions](#list-functions)
-  - [Copying Lists](#copying-lists)
   - [Extending Lists](#extending-lists)
 - [Dictionaries](#dictionaries)
-  - [Dictionaries](#dictionaries-1)
+  - [Dictionary Initialisation](#dictionary-initialisation)
   - [Dictionary Looping](#dictionary-looping)
   - [Dictionary Comprehension](#dictionary-comprehension)
   - [Dictionary Functions](#dictionary-functions)
-- [Other Data Structures](#other-data-structures)
+- [Misc Data Structures](#misc-data-structures)
   - [Sets](#sets)
   - [Tuples](#tuples)
+  - [Copying](#copying)
 - [Conditionals](#conditionals)
   - [If Statements](#if-statements)
   - [Conditional Expressions/Ternary Operators](#conditional-expressionsternary-operators)
@@ -45,6 +41,9 @@ Table of Contents
 ## Lists
 
 ### List Looping
+
+What are the different ways we can loop through a list? Take note of situations where you want to edit the list directly in the loop.
+
 ```python
 shopping = ["bread", "milk", "apple", "banana", "weetbix"]
 
@@ -68,7 +67,9 @@ while i < len(shopping):
 ```
 
 ### List Slicing
-A powerful extension on 'indexing' a list
+
+A powerful extension on 'indexing' a list where we able to not just index a list and extract a value, but have a 'range' of indices to extract a sub-list or reversed (sub) list.
+
 ```python
 output = [0, 1, 2, 3, 4, 5]
 
@@ -82,7 +83,9 @@ output[:99]  # Python figures out you don't have 99 elements -> [0, 1, 2, 3, 4, 
 ```
 
 ### List Comprehension
-The structure of list comprehension will usually be [EXPRESSION - FOR RANGE LOOP - CONDITIONAL]
+
+A shorthand variation of looping and creating a list. The structure of list comprehension will usually be: [**Expression** - **For Range Loop** - **Conditional**] where the conditional is optional.
+
 ```python
 '''
 Copying a list
@@ -136,9 +139,9 @@ even_squares = [(num * num) for num in numbers if num % 2 == 0]
 ```
 
 ### List Functions
-Similar to arrays in C, except their size is dynamic and you can have potentially different types. 
 
-NOTE: Most of these list functions return *None* and modify the list in place (e.g. wacky_list.reverse() returns None and reverses the list directly).
+Similar to arrays in C, except their size is dynamic and you can have potentially different types. **Note**: Most of these list functions return _None_ and modify the list in place (e.g. wacky*list.reverse() returns \_None* and reverses the list directly).
+
 ```python
 wacky_list = ["goose", "duck", True, 5, None, 4.2]
 
@@ -181,40 +184,18 @@ wacky_list.remove(5) # [4.2, None, False, "duck", "goose"]
 wacky_list.clear() # wacky_list is now == []
 ```
 
-### Copying Lists
-```python
-# If you have a single layer list of non-container values, you don't need to worry about references
-colours = ['red', 'green', 'blue']
-colours_copy = colours.copy()
-
-# Perform a shallow copy (it will copy each sub list as a reference/pointer)
-shallow_a = [['r', 'g', 'b'], ['c', 'm', 'y', 'k']]
-shallow_b = shallow_a.copy()
-shallow_a[0][0] = 'Red' # Will update both shallow_a and shallow_b
-# shallow_b == [['Red', 'g', 'b'], ['c', 'm', 'y', 'k']]
-shallow_b[0][1] = "Green" # Will update both shallow_b and shallow_a
-# shallow_a == [['Red', 'Green, 'b'], ['c', 'm', 'y', 'k']]
-
-# Perform a deep copy
-import copy
-deep_a = [['r', 'g', 'b'], ['c', 'm', 'y', 'k']]
-# Perform a deep copy (it will copy each sub list as unique elements not references)
-deep_b =  copy.deepcopy(deep_a)
-deep_a[0][0] = 'Red' # Will update only deep_a
-deep_b[0][1] = "Green" # Will update only deep_b
-# deep_a == [['Red', 'g, 'b'], ['c', 'm', 'y', 'k']]
-# deep_b == [['r', 'Green, 'b'], ['c', 'm', 'y', 'k']]
-```
-
 ### Extending Lists
+
 ```python
 numbers = [1, 2]
 # Extend will add the string_num list to the end of the numbers list
 string_nums = ["3", "4"]
 numbers.extend(string_nums) # numbers == [1, 2, '3', '4']
+
 # The += operator can be used also
 tup_nums = (5.0, 6.0)
 numbers += tup_nums # numbers == [1, 2, '3', '4', 5.0, 6.0]
+
 # List slicing the end of the list can be used as well
 set_nums = {7, 8, 9}
 numbers[len(numbers):] = set_nums # numbers == [1, 2, '3', '4', 5.0, 6.0, 8, 9, 7]
@@ -222,12 +203,14 @@ numbers[len(numbers):] = set_nums # numbers == [1, 2, '3', '4', 5.0, 6.0, 8, 9, 
 
 ## Dictionaries
 
-### Dictionaries
+### Dictionary Initialisation
+
 Similar to structs from C, there are key value 'pairs' of (potentially) different data types
+
 ```python
 # Initialising a dictionary
 tutors = dict()
-tutors_alternative = {} 
+tutors_alternative = {}
 
 # Populating a dictionary
 tutors["Yasmin"] = "W17A" # Using a string as a key (Key is "Yasmin", value is "W17A")
@@ -239,7 +222,7 @@ lab_assistants = {"Miguel": "F11A", "Sean": "W17A"}
 
 # You can also mix up data types in a dictionary
 comp1531_teaching = {
-    "tutors": ["Sean", "Yasmin", "Nick"], # A string key and list value 
+    "tutors": ["Sean", "Yasmin", "Nick"], # A string key and list value
     "lab_assistants": lab_assistants, # A string key and a value of a dictionary
     2021: True, # An integer key, with a boolean value
     1.5: None # A float key, with a None value
@@ -247,7 +230,9 @@ comp1531_teaching = {
 ```
 
 ### Dictionary Looping
+
 Looping through dictionaries we need to be aware of both the key and/or value.
+
 ```python
 comp1531_f11a_class = {
     "Groups": ["ALPACA", "BEAGLE", "CAMEL", "DODO", "EAGLE"],
@@ -275,11 +260,49 @@ for key, value in comp1531_f11a_class.items():
 ```
 
 ### Dictionary Comprehension
+
 ```python
-# TODO
+'''
+Performing operations on a list to create a dictionary
+'''
+squares = dict()
+# Method 1
+numbers = [1, 2, 3, 4, 5, 6]
+for num in numbers:
+    squares[num] = num * num
+
+# Method 2
+squares = {num: num * num for num in numbers}
+
+'''
+Transforming a dictionary
+'''
+usd_prices = {'chair': 250, 'desk': 399, 'monitor': 549.99, 'pc': 2000.00}
+usd_to_aud = 1.35
+# Method 1
+aud_prices = {}
+for key, value in usd_prices:
+    aud_prices[key] = value * usd_prices
+
+# Method 2
+aud_prices = {key: value * usd_to_aud for key, value in usd_prices.items()}
+
+'''
+Conditionals in dictionary comprehension
+'''
+marks = {'Sean': 86, 'Austin': 90, 'Stella': 67, 'Lachlan': 82}
+# Method 1
+hd_marks = dict()
+for key in marks:
+    if marks[key] >= 85:
+        hd_marks[key] = marks[key]
+
+# Method 2
+hd_marks = {key: value for key, value in marks.items() if value >= 85}
 ```
 
 ### Dictionary Functions
+
 ```python
 # clear()
 # copy()
@@ -294,22 +317,54 @@ for key, value in comp1531_f11a_class.items():
 # values()
 ```
 
-## Other Data Structures
+## Misc Data Structures
 
 ### Sets
+
 ```python
 # TODO
 ```
 
 ### Tuples
+
 ```python
 # TODO
+```
+
+### Copying
+
+When copying
+
+```python
+# If you have a single layer list of non-container values, you don't need to worry about references
+colours = ['red', 'green', 'blue']
+colours_copy = colours.copy()
+
+# Perform a shallow copy (it will copy each sub list as a reference/pointer)
+shallow_a = [['r', 'g', 'b'], ['c', 'm', 'y', 'k']]
+shallow_b = shallow_a.copy()
+shallow_a[0][0] = 'Red' # Will update both shallow_a and shallow_b
+# shallow_b == [['Red', 'g', 'b'], ['c', 'm', 'y', 'k']]
+shallow_b[0][1] = "Green" # Will update both shallow_b and shallow_a
+# shallow_a == [['Red', 'Green, 'b'], ['c', 'm', 'y', 'k']]
+
+# Perform a deep copy
+import copy
+deep_a = [['r', 'g', 'b'], ['c', 'm', 'y', 'k']]
+# Perform a deep copy (it will copy each sub list as unique elements not references)
+deep_b =  copy.deepcopy(deep_a)
+deep_a[0][0] = 'Red' # Will update only deep_a
+deep_b[0][1] = "Green" # Will update only deep_b
+# deep_a == [['Red', 'g, 'b'], ['c', 'm', 'y', 'k']]
+# deep_b == [['r', 'Green, 'b'], ['c', 'm', 'y', 'k']]
 ```
 
 ## Conditionals
 
 ### If Statements
+
 Remember code blocks in python denoted by the ':' colon symbol and using indentation
+
 ```python
 weather = "Sunny"
 
@@ -333,7 +388,9 @@ if weather == "Sunny" or weather == "Windy" or weather == "Cloudy" or \
 ```
 
 ### Conditional Expressions/Ternary Operators
+
 Ternary Operators allow us to combine a singular if and else statement into one line.
+
 ```python
 lost_headphones = True
 # Returning Method 1 (Non-ternary)
@@ -359,6 +416,7 @@ win = True if "Queen" in hand else False
 ## Testing
 
 ### Pytest
+
 ```python
 # TODO
 # simple reusable
@@ -369,6 +427,7 @@ win = True if "Queen" in hand else False
 ```
 
 ### Exceptions
+
 ```python
 # TODO
 # types of exceptions
@@ -376,11 +435,13 @@ win = True if "Queen" in hand else False
 ```
 
 ### Coverage
+
 ```python
 # TODO
 ```
 
 ### Pylint
+
 ```python
 # TODO
 ```
@@ -388,6 +449,7 @@ win = True if "Queen" in hand else False
 ## Importing & Packages
 
 ### Importing
+
 ```python
 # TODO
 # types of imports
@@ -395,6 +457,7 @@ win = True if "Queen" in hand else False
 ```
 
 ### Packages & Virtual Environment
+
 ```python
 # TODO
 # pip3
@@ -404,6 +467,7 @@ win = True if "Queen" in hand else False
 ## Flask
 
 ### Skeleton
+
 ```python
 # TODO
 ```
@@ -411,6 +475,7 @@ win = True if "Queen" in hand else False
 ## Pythonic Code
 
 ### Operators
+
 ```python
 # TODO
 # 3 * 'goose'
@@ -418,6 +483,7 @@ win = True if "Queen" in hand else False
 ```
 
 ### Useful One liner functions
+
 ```python
 # Python functions e.g. join
 # any
@@ -426,6 +492,7 @@ win = True if "Queen" in hand else False
 ```
 
 ### Sorting & Lambda functions
+
 ```python
 # TODO
 # sorting
@@ -434,26 +501,31 @@ win = True if "Queen" in hand else False
 ```
 
 ### Classes
+
 ```python
 # TODO
 ```
 
 ### Files
+
 ```python
 # TODO
 ```
 
 ### Pickle
+
 ```python
 # TODO
 ```
 
 ### Reduce, map, filter
+
 ```python
 # TODO
 ```
 
 ### Decorators
+
 ```python
 # TODO
 ```

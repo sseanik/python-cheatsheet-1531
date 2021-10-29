@@ -17,7 +17,7 @@ Table of Contents
   - [Copying](#copying)
 - [Conditionals](#conditionals)
   - [If Statements](#if-statements)
-  - [Conditional Expressions/Ternary Operators](#conditional-expressionsternary-operators)
+  - [Conditional Expressions](#conditional-expressions)
 - [Testing](#testing)
   - [Pytest](#pytest)
   - [Exceptions](#exceptions)
@@ -68,7 +68,7 @@ while i < len(shopping):
 
 ### List Slicing
 
-A powerful extension on 'indexing' a list where we able to not just index a list and extract a value, but have a 'range' of indices to extract a sub-list or reversed (sub) list.
+A powerful extension on 'indexing' a list where we able to not just index a list and extract a value, but have a potential 'range' of indices to extract a sub-list or reversed (sub) list.
 
 ```python
 output = [0, 1, 2, 3, 4, 5]
@@ -140,7 +140,7 @@ even_squares = [(num * num) for num in numbers if num % 2 == 0]
 
 ### List Functions
 
-Similar to arrays in C, except their size is dynamic and you can have potentially different types. **Note**: Most of these list functions return _None_ and modify the list in place (e.g. wacky*list.reverse() returns \_None* and reverses the list directly).
+Similar to arrays in C, except their size is dynamic and you can have  different types. **Note**: Most of these list functions return _None_ and modify the list in place (e.g. wacky*list.reverse() returns *None* and reverses the list directly).
 
 ```python
 wacky_list = ["goose", "duck", True, 5, None, 4.2]
@@ -186,6 +186,8 @@ wacky_list.clear() # wacky_list is now == []
 
 ### Extending Lists
 
+What happens when we want to concatenate a list onto a list?
+
 ```python
 numbers = [1, 2]
 # Extend will add the string_num list to the end of the numbers list
@@ -205,7 +207,7 @@ numbers[len(numbers):] = set_nums # numbers == [1, 2, '3', '4', 5.0, 6.0, 8, 9, 
 
 ### Dictionary Initialisation
 
-Similar to structs from C, there are key value 'pairs' of (potentially) different data types
+Similar to structs from C, there are key value 'pairs' of potentially different data types
 
 ```python
 # Initialising a dictionary
@@ -231,7 +233,7 @@ comp1531_teaching = {
 
 ### Dictionary Looping
 
-Looping through dictionaries we need to be aware of both the key and/or value.
+When looping through dictionaries we need to be aware of both the key and/or value.
 
 ```python
 comp1531_f11a_class = {
@@ -260,6 +262,8 @@ for key, value in comp1531_f11a_class.items():
 ```
 
 ### Dictionary Comprehension
+
+Similar to list comprehension, but we need to make sure we define the **key** and **value**
 
 ```python
 '''
@@ -304,17 +308,20 @@ hd_marks = {key: value for key, value in marks.items() if value >= 85}
 ### Dictionary Functions
 
 ```python
-# clear()
+fruits = {"apple": 5, "orange": 4, "pear": 3, "lemon": 1}
+# keys()
+# values()
+# items()
+
 # copy()
 # fromkeys()
 # get()
-# items()
-# keys()
 # pop()
 # popitem()
 # setdefault()
 # update()
-# values()
+
+# clear()
 ```
 
 ## Misc Data Structures
@@ -333,7 +340,7 @@ hd_marks = {key: value for key, value in marks.items() if value >= 85}
 
 ### Copying
 
-When copying
+When copying nested data structures, we need to be wary that `.copy()` will handle nested data as pointers. The way to solve this is to use `deepcopy()` from the copy library.
 
 ```python
 # If you have a single layer list of non-container values, you don't need to worry about references
@@ -387,9 +394,9 @@ if weather == "Sunny" or weather == "Windy" or weather == "Cloudy" or \
     print("Weather is very weathery today")
 ```
 
-### Conditional Expressions/Ternary Operators
+### Conditional Expressions
 
-Ternary Operators allow us to combine a singular if and else statement into one line.
+Conditional Expressions (sometimes known as Ternary Operators) allow us to combine a singular if and else statement into one line.
 
 ```python
 lost_headphones = True

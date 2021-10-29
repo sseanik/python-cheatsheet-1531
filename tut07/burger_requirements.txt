@@ -1,0 +1,6 @@
+* Burger must be warm
+* Burger must be in a brown paper bag
+* Bun must be dry
+* Burger must have a lot of pickles
+* Burger must have a lot of mayo
+* Burger must have mayo added last

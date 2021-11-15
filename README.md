@@ -21,22 +21,28 @@
 - [Testing](#testing)
   - [Pytest](#pytest)
   - [Exceptions](#exceptions)
-  - [Coverage](#coverage)
   - [Pylint](#pylint)
+  - [Coverage](#coverage)
+  - [Property Based Testing](#property-based-testing)
 - [Importing & Packages](#importing--packages)
   - [Importing](#importing)
   - [Packages & Virtual Environment](#packages--virtual-environment)
 - [Flask](#flask)
+  - [CRUD](#crud)
   - [Skeleton](#skeleton)
+  - [HTTP Testing](#http-testing)
 - [Pythonic Code](#pythonic-code)
   - [Operators](#operators)
   - [Useful One liner functions](#useful-one-liner-functions)
   - [Sorting & Lambda functions](#sorting--lambda-functions)
-  - [Classes](#classes)
   - [Files](#files)
   - [Pickle](#pickle)
   - [Reduce, map, filter](#reduce-map-filter)
   - [Decorators](#decorators)
+  - [Docstrings](#docstrings)
+  - [Type Hinting](#type-hinting)
+  - [Classes](#classes)
+  - [Git](#git)
 
 ## Lists
 
@@ -572,13 +578,19 @@ win = True if "Queen" in hand else False
 # try/except
 ```
 
+### Pylint
+
+```python
+# TODO
+```
+
 ### Coverage
 
 ```python
 # TODO
 ```
 
-### Pylint
+### Property Based Testing
 
 ```python
 # TODO
@@ -604,7 +616,19 @@ win = True if "Queen" in hand else False
 
 ## Flask
 
+### CRUD
+
+```python
+# TODO
+```
+
 ### Skeleton
+
+```python
+# TODO
+```
+
+### HTTP Testing
 
 ```python
 # TODO
@@ -638,12 +662,6 @@ win = True if "Queen" in hand else False
 # sorting dictionaries based on key/value
 ```
 
-### Classes
-
-```python
-# TODO
-```
-
 ### Files
 
 ```python
@@ -663,6 +681,30 @@ win = True if "Queen" in hand else False
 ```
 
 ### Decorators
+
+```python
+# TODO
+```
+
+### Docstrings
+
+```python
+# TODO
+```
+
+### Type Hinting
+
+```python
+# TODO
+```
+
+### Classes
+
+```python
+# TODO
+```
+
+### Git
 
 ```python
 # TODO

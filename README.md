@@ -1,5 +1,3 @@
-Table of Contents
-
 - [Lists](#lists)
   - [List Looping](#list-looping)
   - [List Slicing](#list-slicing)
@@ -11,8 +9,10 @@ Table of Contents
   - [Dictionary Looping](#dictionary-looping)
   - [Dictionary Comprehension](#dictionary-comprehension)
   - [Dictionary Functions](#dictionary-functions)
+  - [Dictionary Creation](#dictionary-creation)
 - [Misc Data Structures](#misc-data-structures)
   - [Sets](#sets)
+  - [Set Operations](#set-operations)
   - [Tuples](#tuples)
   - [Copying](#copying)
 - [Conditionals](#conditionals)
@@ -140,7 +140,7 @@ even_squares = [(num * num) for num in numbers if num % 2 == 0]
 
 ### List Functions
 
-Similar to arrays in C, except their size is dynamic and you can have  different types. **Note**: Most of these list functions return _None_ and modify the list in place (e.g. wacky*list.reverse() returns *None* and reverses the list directly).
+Similar to arrays in C, except their size is dynamic and you can have  different types. **Note**: Most of these list functions return _None_ and modify the list in place (e.g. wacky_list.reverse() returns *None* and reverses the list directly).
 
 ```python
 wacky_list = ["goose", "duck", True, 5, None, 4.2]
@@ -307,6 +307,8 @@ hd_marks = {key: value for key, value in marks.items() if value >= 85}
 
 ### Dictionary Functions
 
+How do we extract specific data from a dictionary or manipulate it?
+
 ```python
 fruits = {"apple": 5, "orange": 4, "pear": 3, "lemon": 1}
 
@@ -338,12 +340,24 @@ fruits.setdefault("orange") # 5
 fruits.setdefault("apple", 4) # 4
 # After: {'orange': 5, 'pear': 3, 'lemon': 1, 'apple': 4}
 
-# Create a new dictionary based on a provided sequence (key, default value)
-name = dict.fromkeys({'s', 'e', 'a', 'n'}) # {'s': None, 'e': None, 'a': None, 'n': None}
-vowels = dict.fromkeys({'a', 'e', 'i', 'o', 'u'}, 'vowel') # {'a': 'vowel', 'u': 'vowel', 'o': 'vowel', 'e': 'vowel', 'i': 'vowel'}
-
 # Clear the dictionary
 fruits.clear() # fruits == {}
+```
+
+### Dictionary Creation
+
+What if we want to create a dictionary based on either minimal information (e.g. using just a list of keys) or with the corresponding keys and values.
+
+```python
+# Create a new dictionary based on a provided sequence (key, default value)
+name = dict.fromkeys({'s', 'e', 'a', 'n'}) # {'s': None, 'e': None, 'a': None, 'n': None}
+vowels = dict.fromkeys({'a', 'e', 'i', 'o', 'u'}, 'vowel') 
+# vowels == {'a': 'vowel', 'u': 'vowel', 'o': 'vowel', 'e': 'vowel', 'i': 'vowel'}
+
+# Create a dictionary based on corresponding lists of keys and values
+nums = ['one', 'two', 'three']
+digits = [1, 2, 3]
+key_values = dict(zip(nums, digits)) # {'one': 1, 'two': 2, 'three': 3}
 ```
 
 ## Misc Data Structures
@@ -351,13 +365,60 @@ fruits.clear() # fruits == {}
 ### Sets
 
 ```python
-# TODO
+# Creating an empty set
+new_set = set()
+
+# Creating a pre-populated set
+primes = {2, 3, 5, 7}
+
+# Converting a list into a set
+duplicates = ['a', 'a', 'b', 'c', 'c', 'c']
+letters = set(duplicates) # {'a', 'b', 'c'}
+
+# add
+# remove
+# pop
+# update
+# discard()
+# clear
+```
+
+### Set Operations
+
+```python
+# union
+# intersection()
+# intersection_update()
+# difference()
+# difference_update()
+# symmetric_difference()
+# symmetric_difference_update()
+# issuperset()
+# issubset()
+# isdisjoint()
 ```
 
 ### Tuples
 
+Note: Tuples are immutable. You cannot use item assignment or remove individual elements.
+
 ```python
-# TODO
+# Creating an empty tuple
+new_tuple = ()
+
+# Creating a pre-populated tuple
+name = ('s', 'e', 'a', 'n', 123)
+
+# Single pre-populated tuple
+single = ("sean",) # ("Sean") will equate to a string
+
+# Indexing/slicing a tuple (same as a list)
+name[0] # 's'
+name[-1] # 123
+
+# Methods
+name.count('a') # 1
+name.index(123) # 4
 ```
 
 ### Copying

@@ -375,6 +375,9 @@ primes = {2, 3, 5, 7}
 duplicates = ['a', 'a', 'b', 'c', 'c', 'c']
 letters = set(duplicates) # {'a', 'b', 'c'}
 
+# Create an immutable set
+immutable_set = frozenset(1, 2, 3, 4)
+
 # Adding an element to the set
 letters.add('d') # letters = {'a', 'b', 'c', 'd'}
 letters.add('a') # Will have no affect, a is already in the set
@@ -401,16 +404,46 @@ letters.clear()
 ### Set Operations
 
 ```python
-# union
-# intersection()
-# intersection_update()
-# difference()
-# difference_update()
-# symmetric_difference()
-# symmetric_difference_update()
-# issuperset()
-# issubset()
-# isdisjoint()
+a = {1, 2, 3}
+b = {2, 3, 4}
+c = {0, 1, 2, 3, 4, 5}
+
+# Create a new set with distinct elements from multiple sets
+a.union(b) # {1, 2, 3, 4}
+a | b # {1, 2, 3, 4}
+
+# Create a new set with elements common to multiple sets
+a.intersection(b) # {2, 3}
+a & b # {2, 3}
+
+# Modifies a set inplace keeping only the common elements
+c.intersection_update(a, b) # c == {2, 3}
+
+# Create a new set with the difference between two sets
+a.difference(b) # {1}
+b.difference(a) # {4}
+b - a # {4}
+
+# Modifies a set inplace removing elements from another set from it
+a.difference_update(b) # a == {1}
+a.update({1, 2, 3}) # a == {1, 2, 3}
+
+# Create a new set with elements from two sets that do not intersect
+a.symmetric_difference(b) # {1, 4}
+
+# Modifies a set inplace removing elements that intersect both sets
+a.symmetric_difference_update(b) # a == {1, 4}
+
+# If a is a subset of b
+a.issubset(b) # True
+
+# If b is a superset of a
+b.issuperset(a) # True
+
+# If two sets have no common elements
+a.isdisjoint(b) # False
+d = {9, 8, 7}
+d.isdisjoint(c) # True
 ```
 
 ### Tuples

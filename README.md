@@ -375,12 +375,27 @@ primes = {2, 3, 5, 7}
 duplicates = ['a', 'a', 'b', 'c', 'c', 'c']
 letters = set(duplicates) # {'a', 'b', 'c'}
 
-# add
-# remove
-# pop
-# update
-# discard()
-# clear
+# Adding an element to the set
+letters.add('d') # letters = {'a', 'b', 'c', 'd'}
+letters.add('a') # Will have no affect, a is already in the set
+
+# Removing an element from the set
+letters.remove('d') # letters = {'a', 'b', 'c'}
+letters.remove('e') # Will result in a KeyError
+
+# Removing an element from the set if it exists
+letters.discard('c') # letters = {'a', 'b'}
+letters.discard('f') # letters = {'a', 'b'}
+
+# Remove and return a random element from the set
+letters.pop()
+
+# Updates the set by adding other iterables
+letters.update({'c', 'd'}) # letters == {'a', 'b', 'c', 'd'}
+letters.update({'12'}) # letters == {'1', '2', 'a', 'b', 'c', 'd'}
+
+# Remove all elements from a set
+letters.clear()
 ```
 
 ### Set Operations

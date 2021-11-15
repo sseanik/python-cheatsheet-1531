@@ -154,7 +154,7 @@ length = len(wacky_list) # length = 6
 # append - Adding a new element to the end of a list
 wacky_list.append("duck") # ["goose", "duck", False, 5, None, 4.2, "Duck"]
 
-# count -Count the occurrences of an element in a list
+# count - Count the occurrences of an element in a list
 duck_count = wacky_list.count("duck") # duck_count = 2
 
 # index - Retrieve the index of the first occurrences of a value
@@ -309,19 +309,41 @@ hd_marks = {key: value for key, value in marks.items() if value >= 85}
 
 ```python
 fruits = {"apple": 5, "orange": 4, "pear": 3, "lemon": 1}
-# keys()
-# values()
-# items()
 
-# copy()
-# fromkeys()
-# get()
-# pop()
-# popitem()
-# setdefault()
-# update()
+# Gather a view object of the dictionary's keys, values or both
+fruits.keys() # dict_keys(['apple', 'orange', 'pear', 'lemon'])
+fruits.values() # dict_values([5, 4, 3, 1])
+fruits.items() # dict_items([('apple', 5), ('orange', 4), ('pear', 3), ('lemon', 1)])
 
-# clear()
+# Returns the value using a specified key
+fruits.get("apple") # 5
+fruits.get("watermelon") # None
+
+# Adds or updates an existing key value pair
+fruits.update({"watermelon": 1}) # Adds
+fruits.update({"apple": 6}) # Changes existing
+fruits.update(orange=5) # # Changes existing
+
+# Removes and returns an element
+# Before: {'apple': 6, 'orange': 5, 'pear': 3, 'lemon': 1, 'watermelon': 1}
+fruits.pop("apple") # 5
+# After: {'orange': 5, 'pear': 3, 'lemon': 1, 'watermelon': 1}
+
+# Removes and returns the last element of a dictionary
+fruits.popitem() # ('watermelon', 1)
+# After: {'orange': 5, 'pear': 3, 'lemon': 1}
+
+# Return a value from a dictionary given the key, otherwise insert a new key and/or value
+fruits.setdefault("orange") # 5
+fruits.setdefault("apple", 4) # 4
+# After: {'orange': 5, 'pear': 3, 'lemon': 1, 'apple': 4}
+
+# Create a new dictionary based on a provided sequence (key, default value)
+name = dict.fromkeys({'s', 'e', 'a', 'n'}) # {'s': None, 'e': None, 'a': None, 'n': None}
+vowels = dict.fromkeys({'a', 'e', 'i', 'o', 'u'}, 'vowel') # {'a': 'vowel', 'u': 'vowel', 'o': 'vowel', 'e': 'vowel', 'i': 'vowel'}
+
+# Clear the dictionary
+fruits.clear() # fruits == {}
 ```
 
 ## Misc Data Structures

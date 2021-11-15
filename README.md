@@ -11,7 +11,7 @@
   - [Dictionary Functions](#dictionary-functions)
   - [Dictionary Creation](#dictionary-creation)
 - [Misc Data Structures](#misc-data-structures)
-  - [Sets](#sets)
+  - [Set Functions](#set-functions)
   - [Set Operations](#set-operations)
   - [Tuples](#tuples)
   - [Copying](#copying)
@@ -152,42 +152,42 @@ Similar to arrays in C, except their size is dynamic and you can have  different
 wacky_list = ["goose", "duck", True, 5, None, 4.2]
 
 # Indexing and assigning
-wacky_list[2] = False # ["goose", "duck", False, 5, None, 4.2]
+wacky_list[2] = False # wacky_list == ["goose", "duck", False, 5, None, 4.2]
 
-# len - Extracting the element length of a list
-length = len(wacky_list) # length = 6
+# Extracting the element length of a list
+length = len(wacky_list) # length == 6
 
-# append - Adding a new element to the end of a list
-wacky_list.append("duck") # ["goose", "duck", False, 5, None, 4.2, "Duck"]
+# Adding a new element to the end of a list
+wacky_list.append("duck") # wacky_list == ["goose", "duck", False, 5, None, 4.2, "Duck"]
 
-# count - Count the occurrences of an element in a list
-duck_count = wacky_list.count("duck") # duck_count = 2
+# Count the occurrences of an element in a list
+duck_count = wacky_list.count("duck") # duck_count == 2
 
-# index - Retrieve the index of the first occurrences of a value
-duck_index = wacky_list.index("duck") # duck_index = 1
+# Retrieve the index of the first occurrences of a value
+duck_index = wacky_list.index("duck") # duck_index == 1
 # You can also add an optional start and end index range
-duck_index = wacky_list.index("duck", 2) # duck_index = 6
-duck_index = wacky_list.index("duck", 3, 6) # duck_index = 6
+duck_index = wacky_list.index("duck", 2) # duck_index == 6
+duck_index = wacky_list.index("duck", 3, 6) # duck_index == 6
 # NOTE: A ValueError is raised if the value is not present in the list (or in the given range)
 
-# insert - You can insert an element at a given index, which shifts existing elements to the right
-wacky_list.insert(2, "swan") # ["goose", "duck", "swan", False, 5, None, 4.2, "Duck"]
+# You can insert an element at a given index, which shifts existing elements to the right
+wacky_list.insert(2, "swan") # wacky_list == ["goose", "duck", "swan", False, 5, None, 4.2, "Duck"]
 
-# pop - Pop will retrieve and remove a value at a given index
+# Pop will retrieve and remove a value at a given index
 last_element = wacky_list.pop() # No argument will grab the last element -> "Duck"
 index_element = wacky_list.pop(2) # Retrieves and removes wacky_list[2] -> "swan"
 # ["goose", "duck", False, 5, None, 4.2]
 # NOTE: An IndexError is raised if the list is empty, or index is out of bounds
 
-# reverse - Reverse will mirror the list in place
-wacky_list.reverse() # [4.2, None, 5, False, "duck", "goose"]
+# Reverse will mirror the list in place
+wacky_list.reverse() # wacky_list == [4.2, None, 5, False, "duck", "goose"]
 
-# remove - Remove the first matching element from a list
-wacky_list.remove(5) # [4.2, None, False, "duck", "goose"]
+#Remove the first matching element from a list
+wacky_list.remove(5) # wacky_list == [4.2, None, False, "duck", "goose"]
 # NOTE: A ValueError is raised if the element is not present in the list
 
 # clear - Clears the list
-wacky_list.clear() # wacky_list is now == []
+wacky_list.clear() # wacky_list == []
 ```
 
 ### Extending Lists
@@ -244,7 +244,7 @@ When looping through dictionaries we need to be aware of both the key and/or val
 ```python
 comp1531_f11a_class = {
     "Groups": ["ALPACA", "BEAGLE", "CAMEL", "DODO", "EAGLE"],
-    "Team Names": ["Throne Trouble", "Celery Creature", "Pig Partner", "Sun Surprise", "Waste Wish"],
+    "Team Names": ["Abra", "Bulbasaur", "Charmander", "Dratini", "Eevee"],
     "Tutors": ["Sean", "Miguel"]
 }
 
@@ -328,9 +328,9 @@ fruits.get("apple") # 5
 fruits.get("watermelon") # None
 
 # Adds or updates an existing key value pair
-fruits.update({"watermelon": 1}) # Adds
-fruits.update({"apple": 6}) # Changes existing
-fruits.update(orange=5) # # Changes existing
+fruits.update({"watermelon": 1}) # fruits == {"apple": 5, "orange": 4, "pear": 3, "lemon": 1, "watermelon": 1}
+fruits.update({"apple": 6}) # fruits == {"apple": 6, "orange": 4, "pear": 3, "lemon": 1, "watermelon": 1}
+fruits.update(orange=5) # fruits == {"apple": 6, "orange": 5, "pear": 3, "lemon": 1, "watermelon": 1}
 
 # Removes and returns an element
 # Before: {'apple': 6, 'orange': 5, 'pear': 3, 'lemon': 1, 'watermelon': 1}
@@ -368,7 +368,7 @@ key_values = dict(zip(nums, digits)) # {'one': 1, 'two': 2, 'three': 3}
 
 ## Misc Data Structures
 
-### Sets
+### Set Functions
 
 ```python
 # Creating an empty set
@@ -385,16 +385,16 @@ letters = set(duplicates) # {'a', 'b', 'c'}
 immutable_set = frozenset(1, 2, 3, 4)
 
 # Adding an element to the set
-letters.add('d') # letters = {'a', 'b', 'c', 'd'}
+letters.add('d') # letters == {'a', 'b', 'c', 'd'}
 letters.add('a') # Will have no affect, a is already in the set
 
 # Removing an element from the set
-letters.remove('d') # letters = {'a', 'b', 'c'}
+letters.remove('d') # letters == {'a', 'b', 'c'}
 letters.remove('e') # Will result in a KeyError
 
 # Removing an element from the set if it exists
-letters.discard('c') # letters = {'a', 'b'}
-letters.discard('f') # letters = {'a', 'b'}
+letters.discard('c') # letters == {'a', 'b'}
+letters.discard('f') # letters == {'a', 'b'}
 
 # Remove and return a random element from the set
 letters.pop()

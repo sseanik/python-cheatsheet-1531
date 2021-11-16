@@ -1,3 +1,5 @@
+Python Cheatsheet
+
 - [Lists](#lists)
   - [List Looping](#list-looping)
   - [List Slicing](#list-slicing)
@@ -45,13 +47,12 @@
   - [Types](#types)
   - [Type Hinting](#type-hinting)
   - [Classes](#classes)
-- [Git](#git)
 
 ## Lists
 
 ### List Looping
 
-What are the different ways we can loop through a list? Take note of situations where you want to edit the list directly in the loop.
+What are the different ways we can loop through a list? Take note of situations where you want to mutate (edit) the list directly inside the loop.
 
 ```python
 shopping = ["bread", "milk", "apple", "banana", "weetbix"]
@@ -64,7 +65,7 @@ for item in shopping:
 for i in range(len(shopping)):
     print(shopping[i])
 
-# Loop with both the index and element available
+# Loop with both the index and list element available
 for i, item in enumerate(shopping):
     print(f"Index: {i}, Item: {item}")
 
@@ -77,7 +78,7 @@ while i < len(shopping):
 
 ### List Slicing
 
-A powerful extension on 'indexing' a list where we able to not just index a list and extract a value, but have a potential 'range' of indices to extract a sub-list or reversed (sub) list.
+An extension on 'indexing' a list where we able to not just index, but provide a potential 'range' of indices to extract a sub-list or potentially reversed (sub) list.
 
 ```python
 output = [0, 1, 2, 3, 4, 5]
@@ -93,7 +94,7 @@ output[:99]  # Python figures out you don't have 99 elements -> [0, 1, 2, 3, 4, 
 
 ### List Comprehension
 
-A shorthand variation of looping and creating a list. The structure of list comprehension will usually be: [**Expression** - **For Range Loop** - **Conditional**] where the conditional is optional.
+A shorthand variation of looping and creating a list. The structure of list comprehension will usually be: `[Expression - For Range Loop - Conditional] ` where the conditional is optional.
 
 ```python
 '''
@@ -122,7 +123,7 @@ for card in cards:
 royal_cards = [card for card in cards if isinstance(card, str)]
 
 '''
-Taking an expression over list elements into a list
+Evaluating an expression over list elements into a list
 '''
 numbers = [1, 2, 3, 4, 5]
 # Method 1 - For range loop with an expression
@@ -149,7 +150,9 @@ even_squares = [(num * num) for num in numbers if num % 2 == 0]
 
 ### List Functions
 
-Similar to arrays in C, except their size is dynamic and you can have  different types. **Note**: Most of these list functions return _None_ and modify the list in place (e.g. wacky_list.reverse() returns *None* and reverses the list directly).
+Similar to arrays in C, except their size is dynamic and you can have  different types (not recommended). 
+
+**Note**: Most of these list functions return _None_ and modify the list in place (e.g. wacky_list.reverse() returns *None* and reverses the list directly).
 
 ```python
 wacky_list = ["goose", "duck", True, 5, None, 4.2]
@@ -195,7 +198,7 @@ wacky_list.clear() # wacky_list == []
 
 ### Extending Lists
 
-What happens when we want to concatenate a list onto a list?
+What happens when we want to append multiple values or even a list onto an existing list?
 
 ```python
 numbers = [1, 2]
@@ -216,7 +219,7 @@ numbers[len(numbers):] = set_nums # numbers == [1, 2, '3', '4', 5.0, 6.0, 8, 9, 
 
 ### Dictionary Initialisation
 
-Similar to structs from C, there are key value 'pairs' of potentially different data types
+Similar to structs from C, Dictionaries are basically a collection key value 'pairs' of (potentially different) data types
 
 ```python
 # Initialising a dictionary
@@ -252,7 +255,7 @@ key_values = dict(zip(nums, digits)) # {'one': 1, 'two': 2, 'three': 3}
 
 ### Dictionary Looping
 
-When looping through dictionaries we need to be aware of both the key and/or value.
+When we loop through dictionaries we need to be aware of if we want to loop over the keys, values or both.
 
 ```python
 comp1531_f11a_class = {
@@ -282,7 +285,7 @@ for key, value in comp1531_f11a_class.items():
 
 ### Dictionary Comprehension
 
-Similar to list comprehension, but we need to make sure we define the **key** and **value**
+Similar to list comprehension, but we need to make sure we define the **key** and **value** with a `key: value` syntax in the expression.
 
 ```python
 '''
@@ -326,7 +329,7 @@ hd_marks = {key: value for key, value in marks.items() if value >= 85}
 
 ### Dictionary Functions
 
-How do we extract specific data from a dictionary or manipulate it?
+There are several dictionary functions help to extract specific data from a dictionary or manipulate it.
 
 ```python
 fruits = {"apple": 5, "orange": 4, "pear": 3, "lemon": 1}
@@ -359,6 +362,8 @@ fruits.setdefault("orange") # 5
 fruits.setdefault("apple", 4) # 4
 # After: {'orange': 5, 'pear': 3, 'lemon': 1, 'apple': 4}
 
+del fruits["orange"] # Removes the 'orange' key and its value
+
 # Clear the dictionary
 fruits.clear() # fruits == {}
 ```
@@ -366,6 +371,8 @@ fruits.clear() # fruits == {}
 ## Sets & Tuples
 
 ### Set Functions
+
+Sets are a collection of distinct elements that contain no duplicates.
 
 ```python
 # Creating an empty set
@@ -405,6 +412,8 @@ letters.clear()
 ```
 
 ### Set Operations
+
+There are several set 'operations' (functions) that allow the calculation or transformation involving multiple sets.
 
 ```python
 a = {1, 2, 3}
@@ -451,7 +460,7 @@ d.isdisjoint(c) # True
 
 ### Tuples
 
-Note: Tuples are immutable. You cannot use item assignment or remove individual elements.
+Compared to lists, Tuples are immutable. You cannot use item assignment or remove individual elements.
 
 ```python
 # Creating an empty tuple
@@ -476,7 +485,7 @@ name.index(123) # 4
 
 ### If Statements
 
-Remember code blocks in python denoted by the ':' colon symbol and using indentation
+Code blocks in python denoted by the ':' colon symbol and using indentation.
 
 ```python
 weather = "Sunny"
@@ -502,7 +511,7 @@ if weather == "Sunny" or weather == "Windy" or weather == "Cloudy" or \
 
 ### Conditional Expressions
 
-Conditional Expressions (sometimes known as Ternary Operators) allow us to combine a singular if and else statement into one line.
+Conditional Expressions (sometimes known as Ternary Operators) allow us to combine a singular if and else statements into one line.
 
 ```python
 lost_headphones = True
@@ -568,6 +577,8 @@ win = True if "Queen" in hand else False
 ## Flask
 
 ### CRUD Example
+
+Post - Creating something, Get - Reading something, Put - Updating something, Delete - Deleting something. This Flask example aims to demonstrate Create, Read, Update and Delete through different routes.
 
 ```python
 from flask import Flask, request
@@ -635,7 +646,7 @@ if __name__ == "__main__":
 
 ### Sorting
 
-Note: You cannot sort a collection with non-comparable data types.
+There are two main sorting paradigms in Python. Sorting in place and creating a new structure with sorted elements. Note: You cannot sort a collection with non-comparable data types.
 
 ```python
 nums = [4, 6, 5, 3, 99, 44]
@@ -653,6 +664,8 @@ sorted(names, key=len) # ['Red', 'Blue', 'Green', 'Yellow']
 
 ### Lambda Functions
 
+Lambda functions are powerful (usually one liner) functions that allow us to simplify our code, especially in sorting.
+
 ```python
 # Method 1 - Function
 def square(x):
@@ -665,6 +678,8 @@ square(4) # 16
 ```
 
 ### Sorting using Lambda functions
+
+The more complex the data structure we have, the more we have to give details on how the sorting comparator will give us what we want sorted.
 
 ```python
 '''
@@ -703,6 +718,8 @@ clothing.sort(key=lambda x: (x["name"], x["price"]))
 
 ### Filter
 
+Filter allows us to shorten a collection based on some sort of True/False rule.
+
 ```python
 nums = [1, 2, 3, 4, 5, 6, 7, 8]
 
@@ -717,6 +734,8 @@ even_nums = list(filter(lambda x: x % 2 == 0, nums)) # [2, 4, 6, 8]
 ```
 
 ### Map
+
+Map allows us to apply a function on each element of a collection.
 
 ```python
 nums = [1, 2, 3, 4, 5, 6, 7, 8]
@@ -767,12 +786,16 @@ numpy.sqrt(4)
 import numpy as np
 np.sqrt(4)
 
+from numpy import * # Very bad - Don't do this
+
 # Whenever you run python3 filename.py, the main function in filename.py will execute
 if __name__ == "__main__":
     pass
 ```
 
 ### Packages & Virtual Environments
+
+When you pip3 install, you may be install packages globally. One thing to take into account is we can use virtual environments to associate projects with specific packages, and we can extract a useful requirements.txt (useful for deployment).
 
 ```bash
 pip3 install numpy # Install a new package
@@ -806,6 +829,8 @@ name = "".join(letters) # name == "Sean Smith"
 ```
 
 ### Any & All
+
+You can use any and all when you have transformed a container of elements in Boolean values, and you can further check if 'any' or 'all' elements are True.
 
 ```python
 # Any allows us to check if 'any' element of a collection is true
@@ -855,6 +880,8 @@ deep_b[0][1] = "Green" # Will update only deep_b
 
 ### Files
 
+We can read, write or append text to files with two main methods. One with the tradition open function and one with a 'with' statement which automatically handles closing a file after its scope (indentation) has been completed.
+
 ```python
 # You can open a file this way, but remember to close it
 f = open("file.txt", 'r')
@@ -898,6 +925,8 @@ def square(a):
 
 ### Docstrings
 
+Docstrings are powerful commenting paradigms that allow any developer to understand modules and functions, what the arguments are, any exceptions that can be raised, what the return value actually is and an overall summary of what is happening.
+
 ```python
 def square(num):
     """Calculates and returns the square result of a number
@@ -919,6 +948,8 @@ def square(num):
 
 ### Types
 
+There are types in Python: str, chr, int, float, bool and more (see the Typing library), and we can further check a variable's typing.
+
 ```python
 goose = "honk"
 
@@ -929,7 +960,7 @@ type(goose) == str # True
 
 ### Type Hinting
 
-For type hinting, you will need to run mypy filename.py to check if there are any issues
+Type hinting allows us to add non-required, but useful types to arguments, constants and function return types. For type hinting, you will need to run mypy filename.py to check if there are any issues.
 
 ```python
 from typing import List, Dict, Optional, Union
@@ -954,6 +985,8 @@ if __name__ == "__main__":
 
 
 ### Classes
+
+Classes are code templates for creating objects. There will usually be a constructor __init__ method within the class, custom methods and builtin definable methods that allow for the class to access Python operations such as str(), +, *, etc.
 
 ```python
 # Class name is usually capitalised
@@ -980,10 +1013,4 @@ if __name__ == "__main__":
     charmander.rename("Charlie")
     charmander.level_up()
     print(charmander)
-```
-
-## Git
-
-```python
-# TODO
 ```

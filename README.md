@@ -31,9 +31,9 @@
   - [Skeleton](#skeleton)
   - [HTTP Testing](#http-testing)
 - [Pythonic Code](#pythonic-code)
-  - [Operators](#operators)
-  - [Useful One liner functions](#useful-one-liner-functions)
-  - [Sorting & Lambda functions](#sorting--lambda-functions)
+  - [Useful Python Shortcuts](#useful-python-shortcuts)
+  - [Sorting](#sorting)
+  - [Lambda Functions](#lambda-functions)
   - [Files](#files)
   - [Pickle](#pickle)
   - [Reduce, map, filter](#reduce-map-filter)
@@ -702,24 +702,68 @@ if __name__ == "__main__":
 
 ## Pythonic Code
 
-### Operators
+### Useful Python Shortcuts
 
 ```python
-# TODO
-# 3 * 'goose'
+# You can multiply a string
+game = "duck " * 2 + "goose" # game == 'duck duck goose'
 # Printing decimal places
+
+pi = 3.14159265
+print(f"{pi:.2f}") # 3.14
+print(f"{pi:.4f}") # 3.1416
+
+# We can use join, to combine strings or characters
+letters = ['S', 'e', 'a', 'n', ' ', 'S', 'm', 'i', 't', 'h']
+name = "".join(letters) # name == "Sean Smith"
+
+# Any allows us to check if 'any' element of a collection is true
+names = ["Sean", "Hayden", "Miguel"]
+# If any name starts with the letter 'S'
+if any(name.startswith('S') for name in names): # True
+    pass
+
+# All allows us to check if 'all' elements of a collection are true
+numbers = [1, 2.3, '3', "4.5"]
+# If all elements in numbers are ints or floats
+if all(isinstance(num, (int, float)) for num in numbers): # False
+    pass
+
+goose = "honk"
+# Checking types
+isinstance(goose, str) # True
+type(goose) == str # True
 ```
 
-### Useful One liner functions
+### Sorting
+
+Note: You cannot sort a collection with non-comparable data types.
 
 ```python
-# Python functions e.g. join
-# any
-# all
-# types
+nums = [4, 6, 5, 3, 99, 44]
+# Return a sorted list from an existing list
+sorted(nums) # [3, 4, 5, 6, 44, 99]
+# Sort in Place
+nums.sort() # nums == [3, 4, 5, 6, 44, 99]
+# Reverse Sorting
+sorted(nums, reverse=True) # [99, 44, 6, 5, 4, 3]
+
+names = ["Blue", "Red", "Green", "Yellow"]
+# Sort list based on a key (len for the len of each string)
+sorted(names, key=len) # ['Red', 'Blue', 'Green', 'Yellow']
+
+nums = {1: 'a', 3: 'b', 2: 'b', 9: 'd', 7: 'd'}
+# Sorting a dictionary based on its keys
+dict(sorted(nums.items())) # {1: 'a', 2: 'b', 3: 'b', 7: 'd', 9: 'd'}
+
+# Sorting a dictionary based on its values
+dict(sorted(nums.items(), key=lambda x: x[1])) # {1: 'a', 3: 'b', 2: 'b', 9: 'd', 7: 'd'}
+
+# Sorting a dictionary by values, then its keys
+dict(sorted(nums.items(), key=lambda x: (x[1], x[0])))
 ```
 
-### Sorting & Lambda functions
+### Lambda Functions
 
 ```python
 # TODO

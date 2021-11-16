@@ -22,9 +22,6 @@
   - [Pylint](#pylint)
   - [Coverage](#coverage)
   - [Property Based Testing](#property-based-testing)
-- [Importing & Packages](#importing--packages)
-  - [Importing](#importing)
-  - [Packages & Virtual Environments](#packages--virtual-environments)
 - [Flask](#flask)
   - [CRUD Example](#crud-example)
   - [HTTP Testing](#http-testing)
@@ -35,6 +32,9 @@
   - [Filter](#filter)
   - [Map](#map)
   - [Reduce](#reduce)
+- [Importing & Packages](#importing--packages)
+  - [Importing](#importing)
+  - [Packages & Virtual Environments](#packages--virtual-environments)
 - [Miscellaneous Python](#miscellaneous-python)
   - [String Manipulation](#string-manipulation)
   - [Any & All](#any--all)
@@ -565,45 +565,6 @@ win = True if "Queen" in hand else False
 # TODO
 ```
 
-## Importing & Packages
-
-### Importing
-
-When importing, you want to be careful or polluting the namespace (i.e. having imported functions with the same name). You also want to be careful of circular imports (cycles in dependencies across multiple files).
-
-```python
-from numpy import sqrt
-sqrt(4)
-
-from numpy import sqrt as square_root
-square_root(4) 
-
-import numpy
-numpy.sqrt(4)
-
-import numpy as np
-np.sqrt(4)
-
-# Whenever you run python3 filename.py, the main function in filename.py will execute
-if __name__ == "__main__":
-    pass
-```
-
-### Packages & Virtual Environments
-
-```bash
-pip3 install numpy # Install a new package
-pip3 uninstall numpy # Remove an installed package
-pip3 install --upgrade numpy # Upgrade package
-
-# Virtual Environment Commands
-virtualenv venv # 'venv' is the name of the virtual environment (you can change it)
-source venv/bin/activate # Activates the newly created virtual environment
-pip3 install -r requirements.txt # Takes a requirements file and installs the packages listed
-pip3 freeze > requirements.txt # Creates a file with a list of installed packages and their versions
-deactivate # Exits the 'venv' virtual environment, back to the global environment
-```
-
 ## Flask
 
 ### CRUD Example
@@ -785,6 +746,45 @@ reduce(multiply, nums) # Factorial of 4 == 24
 
 # Method 2 - Using a lambda function
 reduce(lambda x, y : x * y, nums)
+```
+
+## Importing & Packages
+
+### Importing
+
+When importing, you want to be careful or polluting the namespace (i.e. having imported functions with the same name). You also want to be careful of circular imports (cycles in dependencies across multiple files).
+
+```python
+from numpy import sqrt
+sqrt(4)
+
+from numpy import sqrt as square_root
+square_root(4) 
+
+import numpy
+numpy.sqrt(4)
+
+import numpy as np
+np.sqrt(4)
+
+# Whenever you run python3 filename.py, the main function in filename.py will execute
+if __name__ == "__main__":
+    pass
+```
+
+### Packages & Virtual Environments
+
+```bash
+pip3 install numpy # Install a new package
+pip3 uninstall numpy # Remove an installed package
+pip3 install --upgrade numpy # Upgrade package
+
+# Virtual Environment Commands
+virtualenv venv # 'venv' is the name of the virtual environment (you can change it)
+source venv/bin/activate # Activates the newly created virtual environment
+pip3 install -r requirements.txt # Takes a requirements file and installs the packages listed
+pip3 freeze > requirements.txt # Creates a file with a list of installed packages and their versions
+deactivate # Exits the 'venv' virtual environment, back to the global environment
 ```
 
 ## Miscellaneous Python

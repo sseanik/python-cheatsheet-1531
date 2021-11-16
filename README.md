@@ -34,9 +34,12 @@
   - [Useful Python Shortcuts](#useful-python-shortcuts)
   - [Sorting](#sorting)
   - [Lambda Functions](#lambda-functions)
+  - [Sorting using Lambda functions](#sorting-using-lambda-functions)
+  - [Filter](#filter)
+  - [Map](#map)
+  - [Reduce](#reduce)
   - [Files](#files)
   - [Pickle](#pickle)
-  - [Reduce, map, filter](#reduce-map-filter)
   - [Decorators](#decorators)
   - [Docstrings](#docstrings)
   - [Type Hinting](#type-hinting)
@@ -751,25 +754,103 @@ sorted(nums, reverse=True) # [99, 44, 6, 5, 4, 3]
 names = ["Blue", "Red", "Green", "Yellow"]
 # Sort list based on a key (len for the len of each string)
 sorted(names, key=len) # ['Red', 'Blue', 'Green', 'Yellow']
-
-nums = {1: 'a', 3: 'b', 2: 'b', 9: 'd', 7: 'd'}
-# Sorting a dictionary based on its keys
-dict(sorted(nums.items())) # {1: 'a', 2: 'b', 3: 'b', 7: 'd', 9: 'd'}
-
-# Sorting a dictionary based on its values
-dict(sorted(nums.items(), key=lambda x: x[1])) # {1: 'a', 3: 'b', 2: 'b', 9: 'd', 7: 'd'}
-
-# Sorting a dictionary by values, then its keys
-dict(sorted(nums.items(), key=lambda x: (x[1], x[0])))
 ```
 
 ### Lambda Functions
 
 ```python
-# TODO
-# sorting
-# reverse sorting
-# sorting dictionaries based on key/value
+# Method 1 - Function
+def square(x):
+    return x * x
+square(4) # 16
+
+# Method 2 - Lambda function
+square = lambda x: x * x
+square(4) # 16
+```
+
+### Sorting using Lambda functions
+
+```python
+'''
+Sorting a dictionary
+'''
+nums = {1: 'a', 3: 'b', 2: 'b', 9: 'd', 7: 'd'}
+# Sorting a dictionary based on its keys
+dict(sorted(nums.items())) # {1: 'a', 2: 'b', 3: 'b', 7: 'd', 9: 'd'}
+
+# Note: in nums.items(), for each tuple, the [0] index is the key, the [1] is the value
+nums.items() # [(1, 'a'), (3, 'b'), (2, 'b'), (9, 'd'), (7, 'd')]
+
+# Sorting a dictionary based on its values (item[1] is the value)
+dict(sorted(nums.items(), key=lambda item: item[1])) # {1: 'a', 3: 'b', 2: 'b', 9: 'd', 7: 'd'}
+
+# Sorting a dictionary by values (item[1] is the value), then its keys (item[0] is the key)
+dict(sorted(nums.items(), key=lambda item: (item[1], item[0])))
+
+'''
+Sorting a list of dictionaries
+'''
+clothing = [
+    {"name" : "Shoes" , "price" : 60},
+    {"name" : "Hat", "price" : 25},
+    {"name" : "Shoes", "price" : 50},
+    {"name" : "Shirt" , "price" : 75}
+]
+
+# Sorts based on price
+sorted(clothing, key=lambda x: x["price"]) 
+# In place sorts based on Alphabetical name
+clothing.sort(key=lambda x: x["name"]) 
+# In place sorts based on Alphabetical name then price
+clothing.sort(key=lambda x: (x["name"], x["price"])) 
+```
+
+### Filter
+
+```python
+nums = [1, 2, 3, 4, 5, 6, 7, 8]
+
+# Method 1 - Using a function
+def is_even(num):
+    return True if num % 2 == 0 else False
+
+even_nums = list(filter(is_even, nums)) # [2, 4, 6, 8]
+
+# Method 2 - Using a lambda function
+even_nums = list(filter(lambda x: x % 2 == 0, nums)) # [2, 4, 6, 8]
+```
+
+### Map
+
+```python
+nums = [1, 2, 3, 4, 5, 6, 7, 8]
+
+# Method 1 - Using a function
+def square(num):
+    return num * num
+
+list(map(square, nums)) # [1, 4, 9, 16, 25, 36, 49, 64]
+
+# Method 2 - Using a lambda function
+list(map(lambda x: x * x, nums)) # [1, 4, 9, 16, 25, 36, 49, 64]
+```
+
+### Reduce
+
+```python
+from functools import reduce
+
+nums = [1, 2, 3, 4]
+
+# Method 1 - Using a function
+def multiply(x, y):
+    return x * y
+
+reduce(multiply, nums) # Factorial of 4 == 24
+
+# Method 2 - Using a lambda function
+reduce(lambda x, y : x * y, nums)
 ```
 
 ### Files
@@ -779,12 +860,6 @@ dict(sorted(nums.items(), key=lambda x: (x[1], x[0])))
 ```
 
 ### Pickle
-
-```python
-# TODO
-```
-
-### Reduce, map, filter
 
 ```python
 # TODO

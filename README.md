@@ -920,7 +920,30 @@ from typing import List, Dict, Optional, Union
 ### Classes
 
 ```python
-# TODO
+# Class name is usually capitalised
+class Pokemon():
+    # A constructor, pay attention to the arguments needed
+    def __init__(self, pokemon, level):
+        self.pokemon = pokemon
+        self.name = pokemon
+        self.level = level
+
+    def rename(self, name):
+        self.name = name
+
+    def level_up(self):
+        self.level += 1
+
+    # String representation of the class
+    def __repr__(self):
+        return f"Pokemon: {self.pokemon} ({self.name}) [Level: {self.level}]"
+
+if __name__ == "__main__":
+    # When initialising a class, pay attention to the __init__ to know what arguments are needed
+    charmander = Pokemon('Charmander', 1)
+    charmander.rename("Charlie")
+    charmander.level_up()
+    print(charmander)
 ```
 
 ## Git

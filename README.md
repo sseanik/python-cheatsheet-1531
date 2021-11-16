@@ -911,9 +911,27 @@ type(goose) == str # True
 
 ### Type Hinting
 
+For type hinting, you will need to run mypy filename.py to check if there are any issues
+
 ```python
 from typing import List, Dict, Optional, Union
+from collections import Counter
 
+def multiply(a : Union[int, float], b : Union[int, float]) -> Union[int, float]:
+    return a * b
+
+def shout(message, capital: Optional[bool]=False) -> None:
+    print(message.upper()) if capital else print(message)
+
+def occurrences(letters: List[str]) -> Dict[str, int]:
+    return dict(Counter(letters))
+
+if __name__ == "__main__":
+    print(multiply(4, 5.3)) # 21.2
+    shout("How are you?") # How are you?
+    shout("How dare you!", True) # HOW DARE YOU!
+    print(occurrences(['a', 'b', 'a', 'c', 'd', 'e', 'e', 'e', 'd']))
+    # {'a': 2, 'b': 1, 'c': 1, 'd': 2, 'e': 3}
 ```
 
 

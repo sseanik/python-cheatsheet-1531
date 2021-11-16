@@ -856,7 +856,25 @@ deep_b[0][1] = "Green" # Will update only deep_b
 ### Files
 
 ```python
-# TODO
+# You can open a file this way, but remember to close it
+f = open("file.txt", 'r')
+f.readlines() # e.g. ["list of\n", "lines of\n", "the file\n"]
+f.close()
+
+# Using the with statement will automatically close the file
+with open("file.txt", 'r') as f:
+    # Read each line of the file in a loop
+    for line in f:
+        print(line.strip())
+
+# Write lines to a file
+with open("new.txt",'w') as f:
+    f.write("First line of file\n")
+    f.write("Second line\n")
+
+# Append lines to a file
+with open("new.txt",'a') as f:
+    f.writelines(["Third\n", "Fourth\n"])
 ```
 
 ### Decorators

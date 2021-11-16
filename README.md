@@ -9,12 +9,10 @@
   - [Dictionary Looping](#dictionary-looping)
   - [Dictionary Comprehension](#dictionary-comprehension)
   - [Dictionary Functions](#dictionary-functions)
-  - [Dictionary Creation](#dictionary-creation)
-- [Misc Data Structures](#misc-data-structures)
+- [Sets & Tuples](#sets--tuples)
   - [Set Functions](#set-functions)
   - [Set Operations](#set-operations)
   - [Tuples](#tuples)
-  - [Copying](#copying)
 - [Conditionals](#conditionals)
   - [If Statements](#if-statements)
   - [Conditional Expressions](#conditional-expressions)
@@ -26,25 +24,28 @@
   - [Property Based Testing](#property-based-testing)
 - [Importing & Packages](#importing--packages)
   - [Importing](#importing)
-  - [Packages & Virtual Environment](#packages--virtual-environment)
+  - [Packages & Virtual Environments](#packages--virtual-environments)
 - [Flask](#flask)
-  - [Skeleton](#skeleton)
+  - [CRUD Example](#crud-example)
   - [HTTP Testing](#http-testing)
-- [Pythonic Code](#pythonic-code)
-  - [Useful Python Shortcuts](#useful-python-shortcuts)
+- [Sorting & Lambda Functions](#sorting--lambda-functions)
   - [Sorting](#sorting)
   - [Lambda Functions](#lambda-functions)
   - [Sorting using Lambda functions](#sorting-using-lambda-functions)
   - [Filter](#filter)
   - [Map](#map)
   - [Reduce](#reduce)
+- [Miscellaneous Python](#miscellaneous-python)
+  - [String Manipulation](#string-manipulation)
+  - [Any & All](#any--all)
+  - [Shallow & Deep Copying](#shallow--deep-copying)
   - [Files](#files)
-  - [Pickle](#pickle)
   - [Decorators](#decorators)
   - [Docstrings](#docstrings)
+  - [Types](#types)
   - [Type Hinting](#type-hinting)
   - [Classes](#classes)
-  - [Git](#git)
+- [Git](#git)
 
 ## Lists
 
@@ -237,6 +238,16 @@ comp1531_teaching = {
     2021: True, # An integer key, with a boolean value
     1.5: None # A float key, with a None value
 }
+
+# Create a new dictionary based on a provided sequence (key, default value)
+name = dict.fromkeys({'s', 'e', 'a', 'n'}) # {'s': None, 'e': None, 'a': None, 'n': None}
+vowels = dict.fromkeys({'a', 'e', 'i', 'o', 'u'}, 'vowel') 
+# vowels == {'a': 'vowel', 'u': 'vowel', 'o': 'vowel', 'e': 'vowel', 'i': 'vowel'}
+
+# Create a dictionary based on corresponding lists of keys and values
+nums = ['one', 'two', 'three']
+digits = [1, 2, 3]
+key_values = dict(zip(nums, digits)) # {'one': 1, 'two': 2, 'three': 3}
 ```
 
 ### Dictionary Looping
@@ -352,23 +363,7 @@ fruits.setdefault("apple", 4) # 4
 fruits.clear() # fruits == {}
 ```
 
-### Dictionary Creation
-
-What if we want to create a dictionary based on either minimal information (e.g. using just a list of keys) or with the corresponding keys and values.
-
-```python
-# Create a new dictionary based on a provided sequence (key, default value)
-name = dict.fromkeys({'s', 'e', 'a', 'n'}) # {'s': None, 'e': None, 'a': None, 'n': None}
-vowels = dict.fromkeys({'a', 'e', 'i', 'o', 'u'}, 'vowel') 
-# vowels == {'a': 'vowel', 'u': 'vowel', 'o': 'vowel', 'e': 'vowel', 'i': 'vowel'}
-
-# Create a dictionary based on corresponding lists of keys and values
-nums = ['one', 'two', 'three']
-digits = [1, 2, 3]
-key_values = dict(zip(nums, digits)) # {'one': 1, 'two': 2, 'three': 3}
-```
-
-## Misc Data Structures
+## Sets & Tuples
 
 ### Set Functions
 
@@ -475,34 +470,6 @@ name[-1] # 123
 # Methods
 name.count('a') # 1
 name.index(123) # 4
-```
-
-### Copying
-
-When copying nested data structures, we need to be wary that `.copy()` will handle nested data as pointers. The way to solve this is to use `deepcopy()` from the copy library.
-
-```python
-# If you have a single layer list of non-container values, you don't need to worry about references
-colours = ['red', 'green', 'blue']
-colours_copy = colours.copy()
-
-# Perform a shallow copy (it will copy each sub list as a reference/pointer)
-shallow_a = [['r', 'g', 'b'], ['c', 'm', 'y', 'k']]
-shallow_b = shallow_a.copy()
-shallow_a[0][0] = 'Red' # Will update both shallow_a and shallow_b
-# shallow_b == [['Red', 'g', 'b'], ['c', 'm', 'y', 'k']]
-shallow_b[0][1] = "Green" # Will update both shallow_b and shallow_a
-# shallow_a == [['Red', 'Green, 'b'], ['c', 'm', 'y', 'k']]
-
-# Perform a deep copy
-import copy
-deep_a = [['r', 'g', 'b'], ['c', 'm', 'y', 'k']]
-# Perform a deep copy (it will copy each sub list as unique elements not references)
-deep_b =  copy.deepcopy(deep_a)
-deep_a[0][0] = 'Red' # Will update only deep_a
-deep_b[0][1] = "Green" # Will update only deep_b
-# deep_a == [['Red', 'g, 'b'], ['c', 'm', 'y', 'k']]
-# deep_b == [['r', 'Green, 'b'], ['c', 'm', 'y', 'k']]
 ```
 
 ## Conditionals
@@ -622,7 +589,7 @@ if __name__ == "__main__":
     pass
 ```
 
-### Packages & Virtual Environment
+### Packages & Virtual Environments
 
 ```bash
 pip3 install numpy # Install a new package
@@ -639,7 +606,7 @@ deactivate # Exits the 'venv' virtual environment, back to the global environmen
 
 ## Flask
 
-### Skeleton
+### CRUD Example
 
 ```python
 from flask import Flask, request
@@ -703,40 +670,7 @@ if __name__ == "__main__":
 # TODO
 ```
 
-## Pythonic Code
-
-### Useful Python Shortcuts
-
-```python
-# You can multiply a string
-game = "duck " * 2 + "goose" # game == 'duck duck goose'
-# Printing decimal places
-
-pi = 3.14159265
-print(f"{pi:.2f}") # 3.14
-print(f"{pi:.4f}") # 3.1416
-
-# We can use join, to combine strings or characters
-letters = ['S', 'e', 'a', 'n', ' ', 'S', 'm', 'i', 't', 'h']
-name = "".join(letters) # name == "Sean Smith"
-
-# Any allows us to check if 'any' element of a collection is true
-names = ["Sean", "Hayden", "Miguel"]
-# If any name starts with the letter 'S'
-if any(name.startswith('S') for name in names): # True
-    pass
-
-# All allows us to check if 'all' elements of a collection are true
-numbers = [1, 2.3, '3', "4.5"]
-# If all elements in numbers are ints or floats
-if all(isinstance(num, (int, float)) for num in numbers): # False
-    pass
-
-goose = "honk"
-# Checking types
-isinstance(goose, str) # True
-type(goose) == str # True
-```
+## Sorting & Lambda Functions
 
 ### Sorting
 
@@ -853,13 +787,73 @@ reduce(multiply, nums) # Factorial of 4 == 24
 reduce(lambda x, y : x * y, nums)
 ```
 
-### Files
+## Miscellaneous Python
+
+### String Manipulation
 
 ```python
-# TODO
+# You can multiply a string
+game = "duck " * 2 + "goose" # game == 'duck duck goose'
+# Printing decimal places
+
+pi = 3.14159265
+print(f"{pi:.2f}") # 3.14
+print(f"{pi:.4f}") # 3.1416
+
+# We can use join, to combine strings or characters
+letters = ['S', 'e', 'a', 'n', ' ', 'S', 'm', 'i', 't', 'h']
+name = "".join(letters) # name == "Sean Smith"
 ```
 
-### Pickle
+### Any & All
+
+```python
+# Any allows us to check if 'any' element of a collection is true
+names = ["Sean", "Hayden", "Miguel"]
+# If any name starts with the letter 'S'
+if any(name.startswith('S') for name in names): # True
+    pass
+
+any([True, True, False, True]) # True
+
+# All allows us to check if 'all' elements of a collection are true
+numbers = [1, 2.3, '3', "4.5"]
+# If all elements in numbers are ints or floats
+if all(isinstance(num, (int, float)) for num in numbers): # False
+    pass
+
+all([True, True, True, True]) # True
+```
+
+### Shallow & Deep Copying
+
+When copying nested data structures, we need to be wary that `.copy()` will handle nested data as pointers. The way to solve this is to use `deepcopy()` from the copy library.
+
+```python
+# If you have a single layer list of non-container values, you don't need to worry about references
+colours = ['red', 'green', 'blue']
+colours_copy = colours.copy()
+
+# Perform a shallow copy (it will copy each sub list as a reference/pointer)
+shallow_a = [['r', 'g', 'b'], ['c', 'm', 'y', 'k']]
+shallow_b = shallow_a.copy()
+shallow_a[0][0] = 'Red' # Will update both shallow_a and shallow_b
+# shallow_b == [['Red', 'g', 'b'], ['c', 'm', 'y', 'k']]
+shallow_b[0][1] = "Green" # Will update both shallow_b and shallow_a
+# shallow_a == [['Red', 'Green, 'b'], ['c', 'm', 'y', 'k']]
+
+# Perform a deep copy
+import copy
+deep_a = [['r', 'g', 'b'], ['c', 'm', 'y', 'k']]
+# Perform a deep copy (it will copy each sub list as unique elements not references)
+deep_b =  copy.deepcopy(deep_a)
+deep_a[0][0] = 'Red' # Will update only deep_a
+deep_b[0][1] = "Green" # Will update only deep_b
+# deep_a == [['Red', 'g, 'b'], ['c', 'm', 'y', 'k']]
+# deep_b == [['r', 'Green, 'b'], ['c', 'm', 'y', 'k']]
+```
+
+### Files
 
 ```python
 # TODO
@@ -868,7 +862,20 @@ reduce(lambda x, y : x * y, nums)
 ### Decorators
 
 ```python
-# TODO
+def print_result(func):
+    def wrapper(*args, **kwargs):
+        result = func(*args, **kwargs)
+        print(f"The result is {result}")
+        return result
+    return wrapper
+
+@print_result
+def multiply(a, b):
+    return a / b
+
+@print_result
+def square(a):
+    return a
 ```
 
 ### Docstrings
@@ -892,11 +899,23 @@ def square(num):
     return num * num
 ```
 
+### Types
+
+```python
+goose = "honk"
+
+# Checking types
+isinstance(goose, str) # True
+type(goose) == str # True
+```
+
 ### Type Hinting
 
 ```python
-# TODO
+from typing import List, Dict, Optional, Union
+
 ```
+
 
 ### Classes
 
@@ -904,7 +923,7 @@ def square(num):
 # TODO
 ```
 
-### Git
+## Git
 
 ```python
 # TODO

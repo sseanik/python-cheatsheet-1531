@@ -551,27 +551,94 @@ win = True if "Queen" in hand else False
 ### Exceptions
 
 ```python
-# TODO
-# types of exceptions
-# try/except
+'''
+Catching Exceptions
+'''
+try:
+    f = open("rocketship.txt")
+    number = int(input("Enter a number: "))
+    calculation = 4 / number
+except ValueError:
+    print("A non-numeric value was inputted")
+except ZeroDivisionError:
+    print("The inputted number cannot be Zero")
+else:
+    
+
+try:
+   f = open("rocketship.txt")
+   # Perform File Operations
+finally:
+   f.close()
+    
+'''
+Raising Exceptions
+'''
+if not isinstance(num, int):
+    raise TypeError("Number is not an integer")
 ```
 
 ### Pylint
 
 ```python
-# TODO
+pylint name_of_file.py
+
+# You can disable certain messages in code
+if year % 4 != 0: #pylint: disable=no-else-return
 ```
 
 ### Coverage
 
-```python
-# TODO
+```bash
+# Run Coverage.py for your pytests
+coverage run --source=. -m pytest
+
+# Run branch coverage for your pytests
+coverage run --branch --source=. -m pytest
+
+# View the coverage report
+coverage report
+
+# Generate HTML to see a breakdown (puts report in htmlcov/)
+coverage html
 ```
 
 ### Property Based Testing
 
 ```python
-# TODO
+'''
+merge_sort.py
+'''
+def merge_sort(array):
+    if len(array) < 2:
+        return array
+
+    result = []
+    middle = len(array) // 2
+
+    left = merge_sort(array[:middle])
+    right = merge_sort(array[middle:])
+
+    while (len(left) > 0) and (len(right) > 0):
+            if left[0] > right[0]:result.append(right.pop(0))   
+            else:result.append(left.pop(0))
+
+    result.extend(left+right)
+    return result
+
+'''
+merge_sort_test.py
+'''
+from hypothesis import given, strategies, Verbosity, settings
+
+@given(strategies.lists(strategies.integers()))
+@settings(verbosity=Verbosity.verbose)
+def test_length(nums):
+    assert len(merge_sort(nums)) == len(nums)
+
+@given(strategies.lists(strategies.integers()))
+def test_sorted(nums):
+    assert sorted(nums) == merge_sort(nums)
 ```
 
 ## Flask

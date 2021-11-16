@@ -28,7 +28,6 @@
   - [Importing](#importing)
   - [Packages & Virtual Environment](#packages--virtual-environment)
 - [Flask](#flask)
-  - [CRUD](#crud)
   - [Skeleton](#skeleton)
   - [HTTP Testing](#http-testing)
 - [Pythonic Code](#pythonic-code)
@@ -637,16 +636,62 @@ deactivate # Exits the 'venv' virtual environment, back to the global environmen
 
 ## Flask
 
-### CRUD
-
-```python
-# TODO
-```
-
 ### Skeleton
 
 ```python
-# TODO
+from flask import Flask, request
+from json import dumps
+
+APP = Flask(__name__)
+
+pokemon_dict = {}
+
+# POST Request will involve creating something. Data is passed in as JSON
+# e.g. {"pokemon": "Charmander", "name": "Charlie"}
+@APP.route('/catch', methods=["POST"])
+def catch_pokemon():
+    data = request.get_json()
+    pokemon, name = data["pokemon"], data["name"]
+    pokemon_dict.update({pokemon: name})
+    return dumps({})
+
+# GET Request can rely on a simple route with no arguments
+@APP.route('/pokedex', methods=["GET"])
+def pokedex():
+    return dumps(pokemon_dict)
+
+# You can also have a variable argument
+# e.g. /pokemon/Charmander
+@APP.route('/pokemon/<pokemon>', methods=["GET"])
+def pokemon(pokemon):
+    return dumps({"name": pokemon_dict.get(pokemon)})
+
+# You can also have a query argument
+# e.g. /name?pokemon=Charmander
+@APP.route('/name', methods=["GET"])
+def name():
+    pokemon = request.args.get('pokemon')
+    return dumps({"name": pokemon_dict.get(pokemon)})
+
+# Similar to POST, PUT allows you to edit existing data
+@APP.route('/edit', methods=["PUT"])
+def edit_pokemon_name():
+    data = request.get_json()
+    pokemon, name = data["pokemon"], data["name"]
+    pokemon_dict.update({pokemon: name})
+    return dumps({})
+
+# A DELETE request allows for the removal of data
+@APP.route('/release', methods=["DELETE"])
+def delete_pokemon():
+    data = request.get_json()
+    pokemon = data["pokemon"]
+    del pokemon_dict[pokemon]
+    return dumps({}) 
+
+if __name__ == "__main__":
+    # Debug allows for hot reloading when you save, the server restarts
+    APP.run(debug=True)
 ```
 
 ### HTTP Testing

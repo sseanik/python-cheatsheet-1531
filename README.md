@@ -539,13 +539,43 @@ win = True if "Queen" in hand else False
 
 ### Pytest
 
+Test files must have a prefix of `test_` or have a suffix of `_test`. In the test file, functions must have a prefix of `test_`
+
 ```python
-# TODO
-# simple reusable
-# Markers
-# Scope
-# Params
-# Mark
+import pytest
+from random import randint
+
+def acronym(phrase):
+    if not isinstance(phrase, str):
+        raise TypeError("Phrase must be a string")
+    return "".join(filter(str.isupper, phrase.strip().title()))
+
+@pytest.fixture
+def random_whitespace():
+    return " " * randint(1, 999)
+
+@pytest.mark.parametrize('phrase, abbreviation',[
+    ("Sun Protection Factor", "SPF"), ("You Only Live Once", "YOLO"),
+    ("National Aeronautics & Space Administration", "NASA")
+])
+def test_simple(phrase, abbreviation):
+    assert acronym(phrase) == abbreviation
+
+def test_whitespace(random_whitespace):
+    assert acronym(f"{random_whitespace}Hello") == "H"
+    assert acronym(f"World{random_whitespace}") == "W"
+    assert acronym(f"{random_whitespace}Hello World{random_whitespace}") == "HW"
+
+def test_non_capitals():
+    assert acronym("sean smith") == "SS"
+
+def test_empty(random_whitespace):
+    assert acronym("") == ""
+    assert acronym(random_whitespace) == ""
+
+def test_incorrect_type():
+    with pytest.raises(TypeError):
+        acronym(123)
 ```
 
 ### Exceptions
@@ -590,17 +620,10 @@ if year % 4 != 0: #pylint: disable=no-else-return
 ### Coverage
 
 ```bash
-# Run Coverage.py for your pytests
-coverage run --source=. -m pytest
-
-# Run branch coverage for your pytests
-coverage run --branch --source=. -m pytest
-
-# View the coverage report
-coverage report
-
-# Generate HTML to see a breakdown (puts report in htmlcov/)
-coverage html
+coverage run --source=. -m pytest # Run Coverage.py for your pytests
+coverage run --branch --source=. -m pytest # Run branch coverage for your pytests
+coverage report # View the coverage report
+coverage html # Generate HTML to see a breakdown (puts report in htmlcov/)
 ```
 
 ### Property Based Testing
@@ -706,7 +729,74 @@ if __name__ == "__main__":
 ### HTTP Testing
 
 ```python
-# TODO
+import requests
+import pytest
+
+URL = "http://127.0.0.1:5000"
+
+
+@pytest.fixture
+def catch_starters():
+    requests.delete(f"{URL}/clear")
+    requests.post(
+        f"{URL}/catch",
+        json={
+            "pokemon": "Bulbasaur",
+            "name": "Bulbasaur",
+        },
+    )
+    requests.post(
+        f"{URL}/catch",
+        json={
+            "pokemon": "Charmander",
+            "name": "Charmander",
+        },
+    )
+    requests.post(
+        f"{URL}/catch",
+        json={
+            "pokemon": "Squirtle",
+            "name": "Squirtle",
+        },
+    )
+
+
+def test_pokedex(catch_starters):
+    response = requests.get(f"{URL}/pokedex")
+    assert response.json() == {
+        "Bulbasaur": "Bulbasaur",
+        "Charmander": "Charmander",
+        "Squirtle": "Squirtle",
+    }
+
+
+def test_query_string(catch_starters):
+    response = requests.get(f"{URL}/pokemon/Bulbasaur")
+    assert response.json() == {"name": "Bulbasaur"}
+
+
+def test_get_variable(catch_starters):
+    response = requests.get(f"{URL}/name?pokemon=Squirtle")
+    assert response.json() == {"name": "Squirtle"}
+
+
+def test_rename(catch_starters):
+    requests.put(
+        f"{URL}/edit",
+        json={
+            "pokemon": "Charmander",
+            "name": "Charlie",
+        },
+    )
+    response = requests.get(f"{URL}/pokemon/Charmander")
+    assert response.json() == {"name": "Charlie"}
+
+
+def test_release(catch_starters):
+    requests.delete(f"{URL}/release", json={"pokemon": "Squirtle"})
+    response = requests.get(f"{URL}/pokedex")
+    assert response.json() == {"Bulbasaur": "Bulbasaur", "Charmander": "Charmander"}
+
 ```
 
 ## Sorting & Lambda Functions
@@ -1027,7 +1117,7 @@ type(goose) == str # True
 
 ### Type Hinting
 
-Type hinting allows us to add non-required, but useful types to arguments, constants and function return types. For type hinting, you will need to run mypy filename.py to check if there are any issues.
+Type hinting allows us to add non-required, but useful types to arguments, constants and function return types. For type hinting, you will need to run mypy *filename.py* to check if there are any issues.
 
 ```python
 from typing import List, Dict, Optional, Union

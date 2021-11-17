@@ -83,22 +83,23 @@ An extension on 'indexing' a list where we able to not just index, but provide a
 ```python
 output = [0, 1, 2, 3, 4, 5]
 
-output[-1]   # Will retrieve the last element -> 5
-output[::-1] # Will reverse the list -> [5, 4, 3, 2, 1, 0]
+output[-1]   # The last element -> 5
+output[::-1] # Reverse the list -> [5, 4, 3, 2, 1, 0]
 output[2:5]  # Inclusive of the 2nd index, but exclusive of the 5th index -> [2, 3, 4]
-output[2:]   # Will include index values from 2 until the end -> [2, 3, 4, 5]
-output[:4]   # Will include first 4 elements -> [0, 1, 2, 3]
-output[-3:]  # Will include last 3 elements -> [3, 4, 5]
+output[2:]   # Index values from 2 until the end -> [2, 3, 4, 5]
+output[:4]   # First 4 elements -> [0, 1, 2, 3]
+output[-3:]  # Last 3 elements -> [3, 4, 5]
 output[:99]  # Python figures out you don't have 99 elements -> [0, 1, 2, 3, 4, 5]
 ```
 
 ### List Comprehension
 
-A shorthand variation of looping and creating a list. The structure of list comprehension will usually be: `[Expression - For Range Loop - Conditional] ` where the conditional is optional.
+A shorthand variation of looping and creating a list. The structure of list comprehension will usually be: `[Expression - For Range Loop - Conditional]` where the conditional is optional.
 
 **Copying a list**
 ```python
 pokedex = ["Bulbasaur", "Charmander", "Squirtle", "Pikachu"]
+
 # Method 1 - For range loop and append
 pokedex_copy = []
 for pokemon in pokedex:
@@ -109,9 +110,10 @@ pokedex_copy = [pokemon for pokemon in pokedex]
 ```
 **Filtering a list with an if statement into a new list**
 ```python
-
 cards = [1, 2, 3, 4, 5, 6, 7, 8 , 9, 10, "Jack", "Queen", "King"]
-# Method 1 - For range loop with an if statement
+
+# Method 1 - For range loop with an if statement - 
+# Goal: ['Jack', 'Queen', 'King']
 royal_cards = []
 for card in cards:
     if isinstance(card, str):
@@ -123,7 +125,9 @@ royal_cards = [card for card in cards if isinstance(card, str)]
 **Evaluating an expression over list elements into a list**
 ```python
 numbers = [1, 2, 3, 4, 5]
+
 # Method 1 - For range loop with an expression
+# Goal: [1, 4, 9, 16, 25]
 squares = []
 for num in numbers:
     squares.append(num * num)
@@ -134,11 +138,13 @@ squares = [(num * num) for num in numbers]
 **Combining Expression and Conditionals**
 ```python
 numbers = [1, 2, 3, 4, 5]
+
 # Method 1 - For range loop with an expression
+# Goal: [4, 16]
 even_squares = []
 for num in numbers:
     if num % 2 == 0:
-        squares.append(num * num)
+        even_squares.append(num * num)
 
 # Method 2 - Expression inside List Comprehension
 even_squares = [(num * num) for num in numbers if num % 2 == 0]
@@ -152,49 +158,57 @@ Similar to arrays in C, except their size is dynamic and you can have  different
 
 **Gathering numeric attributes from a list (e.g. length, index)**
 ```python
-wacky_list = ["goose", "duck", True, 5, None, 4.2]
+birds = ["goose", "duck", "penguin", "hawk", "duck"]
 
-# Indexing and assigning
-wacky_list[2] = False # wacky_list == ["goose", "duck", False, 5, None, 4.2]
+# Indexing
+birds[3] # "hawk"
 
 # Extracting the element length of a list
-length = len(wacky_list) # length == 6
+len(birds) # 5
 
 # Count the occurrences of an element in a list
-duck_count = wacky_list.count("duck") # duck_count == 2
+birds.count("duck") # 2
 
 # Retrieve the index of the first occurrences of a value
-duck_index = wacky_list.index("duck") # duck_index == 1
+birds.index("duck") #  1
 # You can also add an optional start and end index range
-duck_index = wacky_list.index("duck", 2) # duck_index == 6
-duck_index = wacky_list.index("duck", 3, 6) # duck_index == 6
+birds.index("duck", 2) # 4
+birds.index("duck", 3, 5) # 4
 # NOTE: A ValueError is raised if the value is not present in the list (or in the given range)
 ```
 **Altering a list**
 ```python
+colours = ["red", "green", "blue"]
+
+# Indexing and assigning
+colours[1] = "orange" # colours == ["red", "orange", "blue"]
+
 # Adding a new element to the end of a list
-wacky_list.append("duck") # wacky_list == ["goose", "duck", False, 5, None, 4.2, "Duck"]
+colours.append("yellow") # colours == ["red", "orange", "blue", "yellow"]
 
 # You can insert an element at a given index, which shifts existing elements to the right
-wacky_list.insert(2, "swan") # wacky_list == ["goose", "duck", "swan", False, 5, None, 4.2, "Duck"]
+colours.insert(2, "brown") # colours == ['red', 'orange', 'brown', 'blue', 'yellow']
 
 # Reverse will mirror the list in place
-wacky_list.reverse() # wacky_list == [4.2, None, 5, False, "duck", "goose"]
+colours.reverse() # colours == ['yellow', 'blue', 'brown', 'orange', 'red']
 ```
 **Removing elements from a list**
 ```python
+nums = [1.1, 2.2, 3.3, 4.4, 1.1, 5.5]
+
 # Pop will retrieve and remove a value at a given index
-last_element = wacky_list.pop() # No argument will grab the last element -> "Duck"
-index_element = wacky_list.pop(2) # Retrieves and removes wacky_list[2] -> "swan"
-# ["goose", "duck", False, 5, None, 4.2]
+nums.pop() # Remove and return the last element -> 5.5 
+# nums == [1.1, 2.2, 3.3, 4.4, 1.1]
+nums.pop(2) # Remove and return nums[2] -> 3.3
+# nums == [1.1, 2.2, 4.4, 1.1]
 # NOTE: An IndexError is raised if the list is empty, or index is out of bounds
 
 #Remove the first matching element from a list
-wacky_list.remove(5) # wacky_list == [4.2, None, False, "duck", "goose"]
+nums.remove(1.1) # nums == [2.2, 4.4, 1.1]
 # NOTE: A ValueError is raised if the element is not present in the list
 
 # clear - Clears the list
-wacky_list.clear() # wacky_list == []
+nums.clear() # nums == []
 ```
 
 ### Extending Lists
@@ -203,13 +217,14 @@ What happens when we want to append multiple values or even a list onto an exist
 
 ```python
 numbers = [1, 2]
+
 # Extend will add the string_num list to the end of the numbers list
 string_nums = ["3", "4"]
 numbers.extend(string_nums) # numbers == [1, 2, '3', '4']
 
 # The += operator can be used also
-tup_nums = (5.0, 6.0)
-numbers += tup_nums # numbers == [1, 2, '3', '4', 5.0, 6.0]
+tuple_nums = (5.0, 6.0)
+numbers += tuple_nums # numbers == [1, 2, '3', '4', 5.0, 6.0]
 
 # List slicing the end of the list can be used as well
 set_nums = {7, 8, 9}
@@ -231,6 +246,7 @@ tutors_alternative = {}
 tutors["Yasmin"] = "W17A" # Using a string as a key (Key is "Yasmin", value is "W17A")
 fav_tutor = "Sean"
 tutors[fav_tutor] = "F11A" # Using a variable of a string as a key
+# tutors == {'Yasmin': 'W17A', 'Sean': 'F11A'}
 
 # Defining an entire dictionary
 lab_assistants = {"Miguel": "F11A", "Sean": "W17A"}
@@ -246,9 +262,10 @@ comp1531_teaching = {
 **Creating a new Dictionary based on other data structures**
 ```python
 # Create a new dictionary based on a provided sequence (key, default value)
-name = dict.fromkeys({'s', 'e', 'a', 'n'}) # {'s': None, 'e': None, 'a': None, 'n': None}
+name = dict.fromkeys({'s', 'e', 'a', 'n'}) 
+# name == {'n': None, 's': None, 'e': None, 'a': None}
 vowels = dict.fromkeys({'a', 'e', 'i', 'o', 'u'}, 'vowel') 
-# vowels == {'a': 'vowel', 'u': 'vowel', 'o': 'vowel', 'e': 'vowel', 'i': 'vowel'}
+# vowels == {'o': 'vowel', 'e': 'vowel', 'u': 'vowel', 'a': 'vowel', 'i': 'vowel'}
 
 # Create a dictionary based on corresponding lists of keys and values
 nums = ['one', 'two', 'three']
@@ -292,8 +309,10 @@ Similar to list comprehension, but we need to make sure we define the **key** an
 
 **Performing operations on a list to create a dictionary**
 ```python
-squares = dict()
+# Goal: {1: 1, 2: 4, 3: 9, 4: 16, 5: 25, 6: 36}
+
 # Method 1
+squares = dict()
 numbers = [1, 2, 3, 4, 5, 6]
 for num in numbers:
     squares[num] = num * num
@@ -303,19 +322,23 @@ squares = {num: num * num for num in numbers}
 ```
 **Transforming a dictionary**
 ```python
+# Goal: {'chair': 337.5, 'desk': 538.65, 'monitor': 742.49, 'pc': 2700.0}
 usd_prices = {'chair': 250, 'desk': 399, 'monitor': 549.99, 'pc': 2000.00}
+
 usd_to_aud = 1.35
 # Method 1
 aud_prices = {}
-for key, value in usd_prices:
-    aud_prices[key] = value * usd_prices
+for key, value in usd_prices.items():
+    aud_prices[key] = round(value * usd_to_aud, 2)
 
 # Method 2
-aud_prices = {key: value * usd_to_aud for key, value in usd_prices.items()}
+aud_prices = {key: round(value * usd_to_aud, 2) for key, value in usd_prices.items()}
 ```
 **Conditionals in dictionary comprehension**
 ```python
+# Goal: {'Sean': 86, 'Austin': 90}}
 marks = {'Sean': 86, 'Austin': 90, 'Stella': 67, 'Lachlan': 82}
+
 # Method 1
 hd_marks = dict()
 for key in marks:
@@ -345,31 +368,35 @@ fruits.get("watermelon") # None
 ```
 **Altering a Dictionary**
 ```python
+prices = {"watch": 60, "necklace": 40, "earrings": 30, "ring": 90}
+
 # Adds or updates an existing key value pair
-fruits.update({"watermelon": 1}) # fruits == {"apple": 5, "orange": 4, "pear": 3, "lemon": 1, "watermelon": 1}
-fruits.update({"apple": 6}) # fruits == {"apple": 6, "orange": 4, "pear": 3, "lemon": 1, "watermelon": 1}
-fruits.update(orange=5) # fruits == {"apple": 6, "orange": 5, "pear": 3, "lemon": 1, "watermelon": 1}
+prices.update({"sunglasses": 10}) # prices == {"watch": 60, "necklace": 40, "earrings": 30, "ring": 90, "sunglasses": 10}
+prices.update({"watch": 65}) # prices == {"watch": 65, "necklace": 40, "earrings": 30, "ring": 90, "sunglasses": 10}
+prices.update(ring=80) # prices == {"watch": 65, "necklace": 40, "earrings": 30, "ring": 80, "sunglasses": 10}
 
 # Return a value from a dictionary given the key, otherwise insert a new key and/or value
-fruits.setdefault("orange") # 5
-fruits.setdefault("apple", 4) # 4
-# After: {'orange': 5, 'pear': 3, 'lemon': 1, 'apple': 4}
+prices.setdefault("necklace") # 40
+prices.setdefault("hat", 10) # 10
+# prices == {"watch": 65, "necklace": 40, "earrings": 30, "ring": 80, "sunglasses": 10, "hat": 10}
 ```
 **Removing elements from a dictionary**
 ```python
+cart = {"bread": 3.5, "tomato sauce": 4.5, "beer": 7.95, "steak": 10.0}
+
 # Removes and returns an element
-# Before: {'apple': 6, 'orange': 5, 'pear': 3, 'lemon': 1, 'watermelon': 1}
-fruits.pop("apple") # 5
-# After: {'orange': 5, 'pear': 3, 'lemon': 1, 'watermelon': 1}
+cart.pop("beer") # 7.95
+# cart == {"bread": 3.5, "tomato sauce": 4.5, "steak": 10.0}
 
 # Removes and returns the last element of a dictionary
-fruits.popitem() # ('watermelon', 1)
-# After: {'orange': 5, 'pear': 3, 'lemon': 1}
+cart.popitem() # ('steak', 10.0)
+# cart == {"bread": 3.5, "tomato sauce": 4.5}
 
-del fruits["orange"] # Removes the 'orange' key and its value
+del cart["bread"] # Removes the 'orange' key and its value
+# cart == {"tomato sauce": 4.5}
 
 # Clear the dictionary
-fruits.clear() # fruits == {}
+cart.clear() # cart == {}
 ```
 
 ## Sets & Tuples
@@ -391,33 +418,33 @@ duplicates = ['a', 'a', 'b', 'c', 'c', 'c']
 letters = set(duplicates) # {'a', 'b', 'c'}
 
 # Create an immutable set
-immutable_set = frozenset(1, 2, 3, 4)
+immutable_set = frozenset([1, 2, 3, 4])
 ```
 **Altering a Set**
 ```python
+digits = {1, 2, 3, 4, 5, 6}
+
 # Adding an element to the set
-letters.add('d') # letters == {'a', 'b', 'c', 'd'}
-letters.add('a') # Will have no affect, a is already in the set
+digits.add(7) # digits == {1, 2, 3, 4, 5, 6, 7}
+digits.add(3) # Will have no affect, a is already in the set
 
 # Removing an element from the set
-letters.remove('d') # letters == {'a', 'b', 'c'}
-letters.remove('e') # Will result in a KeyError
+digits.remove(4) # digits == {1, 2, 3, 5, 6, 7}
+digits.remove(9) # Will result in a KeyError
 
 # Removing an element from the set if it exists
-letters.discard('c') # letters == {'a', 'b'}
-letters.discard('f') # letters == {'a', 'b'}
-
-# Remove and return a random element from the set
-letters.pop()
+digits.discard(3) # digits == {1, 2, 5, 6, 7}
+digits.discard(100) # digits == {1, 2, 5, 6, 7}
 
 # Updates the set by adding other iterables
-letters.update({'c', 'd'}) # letters == {'a', 'b', 'c', 'd'}
-letters.update({'12'}) # letters == {'1', '2', 'a', 'b', 'c', 'd'}
+digits.update({8, 9}) # digits == {1, 2, 5, 6, 7, 8, 9}
+digits.update({10}) # digits == {1, 2, 5, 6, 7, 8, 9, 10}
 
-a.update({1, 2, 3}) # a == {1, 2, 3}
+# Remove and return a random element from the set
+digits.pop()
 
 # Remove all elements from a set
-letters.clear()
+digits.clear() # len(digits) == 0
 ```
 
 ### Set Operations
@@ -448,22 +475,30 @@ a.symmetric_difference(b) # {1, 4}
 ```
 **Set Inplace Operations**
 ```python
+a = {1.1, 2.2, 3.3}
+b = {2.2, 3.3, 4.4}
+c = {0.0, 1.1, 2.2, 3.3, 4.4, 5.5}
+
 # Modifies a set inplace keeping only the common elements
-c.intersection_update(a, b) # c == {2, 3}
+c.intersection_update(a, b) # c == {2.2, 3.3}
 
 # Modifies a set inplace removing elements from another set from it
-a.difference_update(b) # a == {1}
+a.difference_update(b) # a == {1.1}
 
 # Modifies a set inplace removing elements that intersect both sets
-a.symmetric_difference_update(b) # a == {1, 4}
+a.symmetric_difference_update(b) # a == {1.1, 2.2, 3.3, 4.4}
 ```
 **Set Checks**
 ```python
-# If a is a subset of b
-a.issubset(b) # True
+a = {'a', 'b', 'c'}
+b = {'b', 'c', 'd'}
+c = {'A', 'a', 'b', 'c', 'd', 'e'}
 
-# If b is a superset of a
-b.issuperset(a) # True
+# If a is a subset of bc
+a.issubset(c) # True
+
+# If c is a superset of a
+c.issuperset(a) # True
 
 # If two sets have no common elements
 a.isdisjoint(b) # False
@@ -504,7 +539,7 @@ Code blocks in python denoted by the ':' colon symbol and using indentation.
 weather = "Sunny"
 
 if weather == "Sunny":
-    print("Wow it is a lovely day")
+    print("Wow it is a lovely day") # Prints
 elif weather == "Rainy":
     print("Better bring my umbrella today")
 else:
@@ -513,13 +548,13 @@ else:
 # Long If Statements with brackets (Recommended)
 if (weather == "Sunny" or weather == "Windy" or weather == "Cloudy" or # You can even put a comment here
     weather == "Rainy"):
-    print("Weather is very weathery today")
+    print("Weather is very weathery today") # Prints
 
 # Long If Statements with backslash
 # Note: Can potentially result in bad alignment and no trailing space or comment after '\' allowed
 if weather == "Sunny" or weather == "Windy" or weather == "Cloudy" or \
     weather == "Rainy":
-    print("Weather is very weathery today")
+    print("Weather is very weathery today") # Prints
 ```
 
 ### Conditional Expressions
@@ -529,6 +564,7 @@ Conditional Expressions (sometimes known as Ternary Operators) allow us to combi
 **Conditional Return**
 ```python
 lost_headphones = True
+
 # Returning Method 1 (Non-ternary)
 if lost_headphones:
     return "Where are they?"
@@ -541,6 +577,7 @@ return "Where are they?" if lost_headphones else "In your pocket"
 **Conditional Assign**
 ```python
 hand = [1, 7, "Jack", "King"]
+
 # Assigning Method 1 (Non-ternary)
 if "Queen" in hand:
     win = True
@@ -624,8 +661,7 @@ if not isinstance(num, int):
 ### Pylint
 
 ```python
-pylint name_of_file.py
-
+pylint name_of_file.py # Terminal command
 # You can disable certain messages in code
 if year % 4 != 0: #pylint: disable=no-else-return
 ```
@@ -810,10 +846,12 @@ There are two main sorting paradigms in Python. Sorting in place and creating a 
 
 ```python
 nums = [4, 6, 5, 3, 99, 44]
+
 # Return a sorted list from an existing list
 sorted(nums) # [3, 4, 5, 6, 44, 99]
 # Sort in Place
 nums.sort() # nums == [3, 4, 5, 6, 44, 99]
+
 # Reverse Sorting
 sorted(nums, reverse=True) # [99, 44, 6, 5, 4, 3]
 
@@ -991,22 +1029,30 @@ print(f"{pi:.4f}") # 3.1416
 # Repeat and concatenate strings
 game = "duck " * 2 + "goose" # game == 'duck duck goose'
 
+# Replace each matching occurrence in a string with a new substring
+game.replace("duck", "hippo") # 'hippo hippo goose'
+# You can give an optional max replacement count
+game.replace("duck", "hippo", 1) # 'hippo duck goose'
+
 # We can use join, to combine strings or characters
 letters = ['S', 'e', 'a', 'n', ' ', 'S', 'm', 'i', 't', 'h']
 name = "".join(letters) # name == "Sean Smith"
 
-# strip()
-# lstrip()
-# rstrip()
+# We can remove leading and trailing whitespace
+sentence = " How are you today    " 
+sentence.lstrip() # 'How are you today    '
+sentence.rstrip() # ' How are you today'
+sentence = sentence.strip() # sentence == 'How are you today'
 
-# split
-# splitlines
-# replace
+# Breaks up a string into a list based on a string separator
+sentence.split() # ['How', 'are', 'you', 'today']
+sentence.split("you") # ['How are ', ' today']
 ```
 **Counting Occurences & Indexing**
 ```python
-# Count the occurrences of a substring
 phrase = "hello world!"
+
+# Count the occurrences of a substring
 phrase.count('l') # 3
 phrase.count('hello') # 1
 
@@ -1014,38 +1060,45 @@ phrase.count('hello') # 1
 phrase.find('l') # 2
 phrase.rfind('l') # 9
 phrase.find('zebra') # -1
-phrase.index('2') # 2
+phrase.index('l') # 2
 phrase.rindex('l') # 9
 phrase.index('zebra') # ValueError
 ```
 **Adjusting string case**
 ```python
+sentence = "How are you Today?"
+
 # Transform string - These methods will output a new string (no mutation)
-phrase.upper() # "HELLO WORLD!"
-phrase.lower() # "hello world!"
+sentence.upper() # 'HOW ARE YOU TODAY?'
+sentence.lower() # 'how are you today?'
 # Capitalises the first letter and makes every other character lower case
-phrase.capitalize() # "Hello world!"
+sentence.capitalize() # 'How are you today?'
 # Capitalises the first letter of each word
-phrase.title() # "Hello World"
+sentence.title() # 'How Are You Today?'
 ```
 **String checks**
 ```python
+name = "Sean Smith"
+
 # If a string ends with a substring
-phrase.startswith("hello") # True
-phrase.endswith('world') # False - missing '!'
+name.startswith("Sean") # True
+name.endswith('Sean') # False
 
 # Check if a string follows certain conditions
-phrase.islower() # True - If the string is all lowercase characters
-phrase.isupper() # False - If the string has all uppercase characters
-phrase.istitle() # False - If the first character of each word is uppercase
-phrase.isalnum() # False (Note: '!') - If a string has only alphanumeric characters
-phrase.isalpha() # False (Note: '!') - If a string has only alphabetical characters
+name.islower() # False - If the string is all lowercase characters
+name.isupper() # False - If the string has all uppercase characters
+name.istitle() # True - If the first character of each word is uppercase
+name.isalnum() # False (the whitespace) - If a string has only alphanumeric characters
+name.isalpha() # False (the whitespace) - If a string has only alphabetical characters
 ```
 **Numerical string checks**
 ```python
-# isdecimal
-# isdigit
-# isnumeric
+number = "69420"
+
+# Checking if a string is a number
+number.isdecimal() # True - If all characters are decimal characters
+number.isdigit() # True - Decimal + subscript/superscript,
+number.isnumeric() # True - Decimals + Digits + fraction, roman numerals
 ```
 
 ### Any & All
@@ -1178,7 +1231,6 @@ There are types in Python: str, chr, int, float, bool and more (see the Typing l
 
 ```python
 goose = "honk"
-
 # Checking types
 isinstance(goose, str) # True
 type(goose) == str # True

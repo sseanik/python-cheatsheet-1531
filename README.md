@@ -96,10 +96,8 @@ output[:99]  # Python figures out you don't have 99 elements -> [0, 1, 2, 3, 4, 
 
 A shorthand variation of looping and creating a list. The structure of list comprehension will usually be: `[Expression - For Range Loop - Conditional] ` where the conditional is optional.
 
+**Copying a list**
 ```python
-'''
-Copying a list
-'''
 pokedex = ["Bulbasaur", "Charmander", "Squirtle", "Pikachu"]
 # Method 1 - For range loop and append
 pokedex_copy = []
@@ -108,10 +106,10 @@ for pokemon in pokedex:
 
 # Method 2 - Basic List Comprehension
 pokedex_copy = [pokemon for pokemon in pokedex]
+```
+**Filtering a list with an if statement into a new list**
+```python
 
-'''
-Filtering a list with an if statement into a new list
-'''
 cards = [1, 2, 3, 4, 5, 6, 7, 8 , 9, 10, "Jack", "Queen", "King"]
 # Method 1 - For range loop with an if statement
 royal_cards = []
@@ -121,10 +119,9 @@ for card in cards:
 
 # Method 2 - Conditional List Comprehension
 royal_cards = [card for card in cards if isinstance(card, str)]
-
-'''
-Evaluating an expression over list elements into a list
-'''
+```
+**Evaluating an expression over list elements into a list**
+```python
 numbers = [1, 2, 3, 4, 5]
 # Method 1 - For range loop with an expression
 squares = []
@@ -133,10 +130,9 @@ for num in numbers:
 
 # Method 2 - Expression inside List Comprehension
 squares = [(num * num) for num in numbers]
-
-'''
-Combining Expression and Conditionals
-'''
+```
+**Combining Expression and Conditionals**
+```python
 numbers = [1, 2, 3, 4, 5]
 # Method 1 - For range loop with an expression
 even_squares = []
@@ -154,6 +150,7 @@ Similar to arrays in C, except their size is dynamic and you can have  different
 
 **Note**: Most of these list functions return _None_ and modify the list in place (e.g. wacky_list.reverse() returns *None* and reverses the list directly).
 
+**Gathering numeric attributes from a list (e.g. length, index)**
 ```python
 wacky_list = ["goose", "duck", True, 5, None, 4.2]
 
@@ -162,9 +159,6 @@ wacky_list[2] = False # wacky_list == ["goose", "duck", False, 5, None, 4.2]
 
 # Extracting the element length of a list
 length = len(wacky_list) # length == 6
-
-# Adding a new element to the end of a list
-wacky_list.append("duck") # wacky_list == ["goose", "duck", False, 5, None, 4.2, "Duck"]
 
 # Count the occurrences of an element in a list
 duck_count = wacky_list.count("duck") # duck_count == 2
@@ -175,18 +169,25 @@ duck_index = wacky_list.index("duck") # duck_index == 1
 duck_index = wacky_list.index("duck", 2) # duck_index == 6
 duck_index = wacky_list.index("duck", 3, 6) # duck_index == 6
 # NOTE: A ValueError is raised if the value is not present in the list (or in the given range)
+```
+**Altering a list**
+```python
+# Adding a new element to the end of a list
+wacky_list.append("duck") # wacky_list == ["goose", "duck", False, 5, None, 4.2, "Duck"]
 
 # You can insert an element at a given index, which shifts existing elements to the right
 wacky_list.insert(2, "swan") # wacky_list == ["goose", "duck", "swan", False, 5, None, 4.2, "Duck"]
 
+# Reverse will mirror the list in place
+wacky_list.reverse() # wacky_list == [4.2, None, 5, False, "duck", "goose"]
+```
+**Removing elements from a list**
+```python
 # Pop will retrieve and remove a value at a given index
 last_element = wacky_list.pop() # No argument will grab the last element -> "Duck"
 index_element = wacky_list.pop(2) # Retrieves and removes wacky_list[2] -> "swan"
 # ["goose", "duck", False, 5, None, 4.2]
 # NOTE: An IndexError is raised if the list is empty, or index is out of bounds
-
-# Reverse will mirror the list in place
-wacky_list.reverse() # wacky_list == [4.2, None, 5, False, "duck", "goose"]
 
 #Remove the first matching element from a list
 wacky_list.remove(5) # wacky_list == [4.2, None, False, "duck", "goose"]
@@ -241,7 +242,9 @@ comp1531_teaching = {
     2021: True, # An integer key, with a boolean value
     1.5: None # A float key, with a None value
 }
-
+```
+**Creating a new Dictionary based on other data structures**
+```python
 # Create a new dictionary based on a provided sequence (key, default value)
 name = dict.fromkeys({'s', 'e', 'a', 'n'}) # {'s': None, 'e': None, 'a': None, 'n': None}
 vowels = dict.fromkeys({'a', 'e', 'i', 'o', 'u'}, 'vowel') 
@@ -287,10 +290,8 @@ for key, value in comp1531_f11a_class.items():
 
 Similar to list comprehension, but we need to make sure we define the **key** and **value** with a `key: value` syntax in the expression.
 
+**Performing operations on a list to create a dictionary**
 ```python
-'''
-Performing operations on a list to create a dictionary
-'''
 squares = dict()
 # Method 1
 numbers = [1, 2, 3, 4, 5, 6]
@@ -299,10 +300,9 @@ for num in numbers:
 
 # Method 2
 squares = {num: num * num for num in numbers}
-
-'''
-Transforming a dictionary
-'''
+```
+**Transforming a dictionary**
+```python
 usd_prices = {'chair': 250, 'desk': 399, 'monitor': 549.99, 'pc': 2000.00}
 usd_to_aud = 1.35
 # Method 1
@@ -312,10 +312,9 @@ for key, value in usd_prices:
 
 # Method 2
 aud_prices = {key: value * usd_to_aud for key, value in usd_prices.items()}
-
-'''
-Conditionals in dictionary comprehension
-'''
+```
+**Conditionals in dictionary comprehension**
+```python
 marks = {'Sean': 86, 'Austin': 90, 'Stella': 67, 'Lachlan': 82}
 # Method 1
 hd_marks = dict()
@@ -331,6 +330,7 @@ hd_marks = {key: value for key, value in marks.items() if value >= 85}
 
 There are several dictionary functions help to extract specific data from a dictionary or manipulate it.
 
+**Extracting elements from a dictionary**
 ```python
 fruits = {"apple": 5, "orange": 4, "pear": 3, "lemon": 1}
 
@@ -342,12 +342,21 @@ fruits.items() # dict_items([('apple', 5), ('orange', 4), ('pear', 3), ('lemon',
 # Returns the value using a specified key
 fruits.get("apple") # 5
 fruits.get("watermelon") # None
-
+```
+**Altering a Dictionary**
+```python
 # Adds or updates an existing key value pair
 fruits.update({"watermelon": 1}) # fruits == {"apple": 5, "orange": 4, "pear": 3, "lemon": 1, "watermelon": 1}
 fruits.update({"apple": 6}) # fruits == {"apple": 6, "orange": 4, "pear": 3, "lemon": 1, "watermelon": 1}
 fruits.update(orange=5) # fruits == {"apple": 6, "orange": 5, "pear": 3, "lemon": 1, "watermelon": 1}
 
+# Return a value from a dictionary given the key, otherwise insert a new key and/or value
+fruits.setdefault("orange") # 5
+fruits.setdefault("apple", 4) # 4
+# After: {'orange': 5, 'pear': 3, 'lemon': 1, 'apple': 4}
+```
+**Removing elements from a dictionary**
+```python
 # Removes and returns an element
 # Before: {'apple': 6, 'orange': 5, 'pear': 3, 'lemon': 1, 'watermelon': 1}
 fruits.pop("apple") # 5
@@ -356,11 +365,6 @@ fruits.pop("apple") # 5
 # Removes and returns the last element of a dictionary
 fruits.popitem() # ('watermelon', 1)
 # After: {'orange': 5, 'pear': 3, 'lemon': 1}
-
-# Return a value from a dictionary given the key, otherwise insert a new key and/or value
-fruits.setdefault("orange") # 5
-fruits.setdefault("apple", 4) # 4
-# After: {'orange': 5, 'pear': 3, 'lemon': 1, 'apple': 4}
 
 del fruits["orange"] # Removes the 'orange' key and its value
 
@@ -374,6 +378,7 @@ fruits.clear() # fruits == {}
 
 Sets are a collection of distinct elements that contain no duplicates.
 
+**Initialising a Set**
 ```python
 # Creating an empty set
 new_set = set()
@@ -387,7 +392,9 @@ letters = set(duplicates) # {'a', 'b', 'c'}
 
 # Create an immutable set
 immutable_set = frozenset(1, 2, 3, 4)
-
+```
+**Altering a Set**
+```python
 # Adding an element to the set
 letters.add('d') # letters == {'a', 'b', 'c', 'd'}
 letters.add('a') # Will have no affect, a is already in the set
@@ -407,6 +414,8 @@ letters.pop()
 letters.update({'c', 'd'}) # letters == {'a', 'b', 'c', 'd'}
 letters.update({'12'}) # letters == {'1', '2', 'a', 'b', 'c', 'd'}
 
+a.update({1, 2, 3}) # a == {1, 2, 3}
+
 # Remove all elements from a set
 letters.clear()
 ```
@@ -415,6 +424,7 @@ letters.clear()
 
 There are several set 'operations' (functions) that allow the calculation or transformation involving multiple sets.
 
+**Set Operations**
 ```python
 a = {1, 2, 3}
 b = {2, 3, 4}
@@ -428,24 +438,27 @@ a | b # {1, 2, 3, 4}
 a.intersection(b) # {2, 3}
 a & b # {2, 3}
 
-# Modifies a set inplace keeping only the common elements
-c.intersection_update(a, b) # c == {2, 3}
-
 # Create a new set with the difference between two sets
 a.difference(b) # {1}
 b.difference(a) # {4}
 b - a # {4}
 
-# Modifies a set inplace removing elements from another set from it
-a.difference_update(b) # a == {1}
-a.update({1, 2, 3}) # a == {1, 2, 3}
-
 # Create a new set with elements from two sets that do not intersect
 a.symmetric_difference(b) # {1, 4}
+```
+**Set Inplace Operations**
+```python
+# Modifies a set inplace keeping only the common elements
+c.intersection_update(a, b) # c == {2, 3}
+
+# Modifies a set inplace removing elements from another set from it
+a.difference_update(b) # a == {1}
 
 # Modifies a set inplace removing elements that intersect both sets
 a.symmetric_difference_update(b) # a == {1, 4}
-
+```
+**Set Checks**
+```python
 # If a is a subset of b
 a.issubset(b) # True
 
@@ -513,6 +526,7 @@ if weather == "Sunny" or weather == "Windy" or weather == "Cloudy" or \
 
 Conditional Expressions (sometimes known as Ternary Operators) allow us to combine a singular if and else statements into one line.
 
+**Conditional Return**
 ```python
 lost_headphones = True
 # Returning Method 1 (Non-ternary)
@@ -523,7 +537,9 @@ else:
 
 # Returning Method 2 (Ternary)
 return "Where are they?" if lost_headphones else "In your pocket"
-
+```
+**Conditional Assign**
+```python
 hand = [1, 7, "Jack", "King"]
 # Assigning Method 1 (Non-ternary)
 if "Queen" in hand:
@@ -580,10 +596,8 @@ def test_incorrect_type():
 
 ### Exceptions
 
+**Catching Exceptions**
 ```python
-'''
-Catching Exceptions
-'''
 try:
     f = open("rocketship.txt")
     number = int(input("Enter a number: "))
@@ -600,10 +614,9 @@ try:
    # Perform File Operations
 finally:
    f.close()
-    
-'''
-Raising Exceptions
-'''
+```
+**Raising Exceptions**
+```python
 if not isinstance(num, int):
     raise TypeError("Number is not an integer")
 ```
@@ -628,10 +641,8 @@ coverage html # Generate HTML to see a breakdown (puts report in htmlcov/)
 
 ### Property Based Testing
 
+*merge_sort.py*
 ```python
-'''
-merge_sort.py
-'''
 def merge_sort(array):
     if len(array) < 2:
         return array
@@ -648,10 +659,9 @@ def merge_sort(array):
 
     result.extend(left+right)
     return result
-
-'''
-merge_sort_test.py
-'''
+```
+*merge_sort_test.py*
+```python
 from hypothesis import given, strategies, Verbosity, settings
 
 @given(strategies.lists(strategies.integers()))
@@ -734,7 +744,6 @@ import pytest
 
 URL = "http://127.0.0.1:5000"
 
-
 @pytest.fixture
 def catch_starters():
     requests.delete(f"{URL}/clear")
@@ -760,7 +769,6 @@ def catch_starters():
         },
     )
 
-
 def test_pokedex(catch_starters):
     response = requests.get(f"{URL}/pokedex")
     assert response.json() == {
@@ -769,16 +777,13 @@ def test_pokedex(catch_starters):
         "Squirtle": "Squirtle",
     }
 
-
 def test_query_string(catch_starters):
     response = requests.get(f"{URL}/pokemon/Bulbasaur")
     assert response.json() == {"name": "Bulbasaur"}
 
-
 def test_get_variable(catch_starters):
     response = requests.get(f"{URL}/name?pokemon=Squirtle")
     assert response.json() == {"name": "Squirtle"}
-
 
 def test_rename(catch_starters):
     requests.put(
@@ -791,12 +796,10 @@ def test_rename(catch_starters):
     response = requests.get(f"{URL}/pokemon/Charmander")
     assert response.json() == {"name": "Charlie"}
 
-
 def test_release(catch_starters):
     requests.delete(f"{URL}/release", json={"pokemon": "Squirtle"})
     response = requests.get(f"{URL}/pokedex")
     assert response.json() == {"Bulbasaur": "Bulbasaur", "Charmander": "Charmander"}
-
 ```
 
 ## Sorting & Lambda Functions
@@ -813,8 +816,7 @@ sorted(nums) # [3, 4, 5, 6, 44, 99]
 nums.sort() # nums == [3, 4, 5, 6, 44, 99]
 # Reverse Sorting
 sorted(nums, reverse=True) # [99, 44, 6, 5, 4, 3]
-```
-```python
+
 names = ["Blue", "Red", "Green", "Yellow"]
 # Sort list based on a key (len for the len of each string)
 sorted(names, key=len) # ['Red', 'Blue', 'Green', 'Yellow']
@@ -839,10 +841,8 @@ square(4) # 16
 
 The more complex the data structure we have, the more we have to give details on how the sorting comparator will give us what we want sorted.
 
+**Sorting a dictionary**
 ```python
-'''
-Sorting a dictionary
-'''
 nums = {1: 'a', 3: 'b', 2: 'b', 9: 'd', 7: 'd'}
 # Sorting a dictionary based on its keys
 dict(sorted(nums.items())) # {1: 'a', 2: 'b', 3: 'b', 7: 'd', 9: 'd'}
@@ -856,10 +856,8 @@ dict(sorted(nums.items(), key=lambda item: item[1])) # {1: 'a', 3: 'b', 2: 'b', 
 # Sorting a dictionary by values (item[1] is the value), then its keys (item[0] is the key)
 dict(sorted(nums.items(), key=lambda item: (item[1], item[0])))
 ```
+**Sorting a list of dictionaries**
 ```python
-'''
-Sorting a list of dictionaries
-'''
 clothing = [
     {"name" : "Shoes" , "price" : 60},
     {"name" : "Hat", "price" : 25},
@@ -932,25 +930,23 @@ reduce(lambda x, y : x * y, nums)
 
 When importing, you want to be careful or polluting the namespace (i.e. having imported functions with the same name). You also want to be careful of circular imports (cycles in dependencies across multiple files).
 
+**Different ways of Importing**
 ```python
 from numpy import sqrt
 sqrt(4)
-```
-```python
+
 from numpy import sqrt as square_root
 square_root(4) 
-```
-```python
+
 import numpy
 numpy.sqrt(4)
-```
-```python
+
 import numpy as np
 np.sqrt(4)
-```
-```python
+
 from numpy import * # Very bad - Don't do this
 ```
+**'Main' Function**
 ```python
 # Whenever you run python3 filename.py, the main function in filename.py will execute
 if __name__ == "__main__":
@@ -961,12 +957,15 @@ if __name__ == "__main__":
 
 When you pip3 install, you may be install packages globally. One thing to take into account is we can use virtual environments to associate projects with specific packages, and we can extract a useful requirements.txt (useful for deployment).
 
+**Pip Commands**
 ```bash
 pip3 install numpy # Install a new package
 pip3 uninstall numpy # Remove an installed package
 pip3 install --upgrade numpy # Upgrade package
+```
 
-# Virtual Environment Commands
+**VirtualEnvironment Commands**
+```bash
 virtualenv venv # 'venv' is the name of the virtual environment (you can change it)
 source venv/bin/activate # Activates the newly created virtual environment
 pip3 install -r requirements.txt # Takes a requirements file and installs the packages listed
@@ -978,10 +977,7 @@ deactivate # Exits the 'venv' virtual environment, back to the global environmen
 
 ### String Manipulation
 
-```python
-# Repeat and concatenate strings
-game = "duck " * 2 + "goose" # game == 'duck duck goose'
-```
+**Float/Decimal Place Strings**
 ```python
 # Printing decimal places
 pi = 3.14159265
@@ -990,11 +986,25 @@ print(f"{pi:.4f}") # 3.1416
 
 # zfill
 ```
+**Constructing and Manipulating Strings**
 ```python
+# Repeat and concatenate strings
+game = "duck " * 2 + "goose" # game == 'duck duck goose'
+
 # We can use join, to combine strings or characters
 letters = ['S', 'e', 'a', 'n', ' ', 'S', 'm', 'i', 't', 'h']
 name = "".join(letters) # name == "Sean Smith"
 
+# strip()
+# lstrip()
+# rstrip()
+
+# split
+# splitlines
+# replace
+```
+**Counting Occurences & Indexing**
+```python
 # Count the occurrences of a substring
 phrase = "hello world!"
 phrase.count('l') # 3
@@ -1007,11 +1017,9 @@ phrase.find('zebra') # -1
 phrase.index('2') # 2
 phrase.rindex('l') # 9
 phrase.index('zebra') # ValueError
-
-# If a string ends with a substring
-phrase.startswith("hello") # True
-phrase.endswith('world') # False - missing '!'
-
+```
+**Adjusting string case**
+```python
 # Transform string - These methods will output a new string (no mutation)
 phrase.upper() # "HELLO WORLD!"
 phrase.lower() # "hello world!"
@@ -1019,6 +1027,12 @@ phrase.lower() # "hello world!"
 phrase.capitalize() # "Hello world!"
 # Capitalises the first letter of each word
 phrase.title() # "Hello World"
+```
+**String checks**
+```python
+# If a string ends with a substring
+phrase.startswith("hello") # True
+phrase.endswith('world') # False - missing '!'
 
 # Check if a string follows certain conditions
 phrase.islower() # True - If the string is all lowercase characters
@@ -1026,15 +1040,9 @@ phrase.isupper() # False - If the string has all uppercase characters
 phrase.istitle() # False - If the first character of each word is uppercase
 phrase.isalnum() # False (Note: '!') - If a string has only alphanumeric characters
 phrase.isalpha() # False (Note: '!') - If a string has only alphabetical characters
-
-# strip()
-# lstrip()
-# rstrip()
-
-# split
-# splitlines
-# replace
-
+```
+**Numerical string checks**
+```python
 # isdecimal
 # isdigit
 # isnumeric
@@ -1044,6 +1052,7 @@ phrase.isalpha() # False (Note: '!') - If a string has only alphabetical charact
 
 You can use any and all when you have transformed a container of elements in Boolean values, and you can further check if 'any' or 'all' elements are True.
 
+**Any**
 ```python
 # Any allows us to check if 'any' element of a collection is true
 names = ["Sean", "Hayden", "Miguel"]
@@ -1052,7 +1061,9 @@ if any(name.startswith('S') for name in names): # True
     pass
 
 any([True, True, False, True]) # True
-
+```
+**All**
+```python
 # All allows us to check if 'all' elements of a collection are true
 numbers = [1, 2.3, '3', "4.5"]
 # If all elements in numbers are ints or floats
@@ -1066,6 +1077,7 @@ all([True, True, True, True]) # True
 
 When copying nested data structures, we need to be wary that `.copy()` will handle nested data as pointers. The way to solve this is to use `deepcopy()` from the copy library.
 
+**Shallow Copying**
 ```python
 # If you have a single layer list of non-container values, you don't need to worry about references
 colours = ['red', 'green', 'blue']
@@ -1078,7 +1090,9 @@ shallow_a[0][0] = 'Red' # Will update both shallow_a and shallow_b
 # shallow_b == [['Red', 'g', 'b'], ['c', 'm', 'y', 'k']]
 shallow_b[0][1] = "Green" # Will update both shallow_b and shallow_a
 # shallow_a == [['Red', 'Green, 'b'], ['c', 'm', 'y', 'k']]
-
+```
+**Deep Copying**
+```python
 # Perform a deep copy
 import copy
 deep_a = [['r', 'g', 'b'], ['c', 'm', 'y', 'k']]

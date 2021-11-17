@@ -1022,8 +1022,9 @@ pi = 3.14159265
 print(f"{pi:.2f}") # 3.14
 print(f"{pi:.4f}") # 3.1416
 
-# zfill
-```
+# String with padded zeroes to the left under the max length given
+str(pi).zfill(20) # '00000000003.14159265'
+``` 
 **Constructing and Manipulating Strings**
 ```python
 # Repeat and concatenate strings

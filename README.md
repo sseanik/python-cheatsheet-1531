@@ -813,7 +813,8 @@ sorted(nums) # [3, 4, 5, 6, 44, 99]
 nums.sort() # nums == [3, 4, 5, 6, 44, 99]
 # Reverse Sorting
 sorted(nums, reverse=True) # [99, 44, 6, 5, 4, 3]
-
+```
+```python
 names = ["Blue", "Red", "Green", "Yellow"]
 # Sort list based on a key (len for the len of each string)
 sorted(names, key=len) # ['Red', 'Blue', 'Green', 'Yellow']
@@ -854,7 +855,8 @@ dict(sorted(nums.items(), key=lambda item: item[1])) # {1: 'a', 3: 'b', 2: 'b', 
 
 # Sorting a dictionary by values (item[1] is the value), then its keys (item[0] is the key)
 dict(sorted(nums.items(), key=lambda item: (item[1], item[0])))
-
+```
+```python
 '''
 Sorting a list of dictionaries
 '''
@@ -933,18 +935,23 @@ When importing, you want to be careful or polluting the namespace (i.e. having i
 ```python
 from numpy import sqrt
 sqrt(4)
-
+```
+```python
 from numpy import sqrt as square_root
 square_root(4) 
-
+```
+```python
 import numpy
 numpy.sqrt(4)
-
+```
+```python
 import numpy as np
 np.sqrt(4)
-
+```
+```python
 from numpy import * # Very bad - Don't do this
-
+```
+```python
 # Whenever you run python3 filename.py, the main function in filename.py will execute
 if __name__ == "__main__":
     pass
@@ -972,17 +979,65 @@ deactivate # Exits the 'venv' virtual environment, back to the global environmen
 ### String Manipulation
 
 ```python
-# You can multiply a string
+# Repeat and concatenate strings
 game = "duck " * 2 + "goose" # game == 'duck duck goose'
+```
+```python
 # Printing decimal places
-
 pi = 3.14159265
 print(f"{pi:.2f}") # 3.14
 print(f"{pi:.4f}") # 3.1416
 
+# zfill
+```
+```python
 # We can use join, to combine strings or characters
 letters = ['S', 'e', 'a', 'n', ' ', 'S', 'm', 'i', 't', 'h']
 name = "".join(letters) # name == "Sean Smith"
+
+# Count the occurrences of a substring
+phrase = "hello world!"
+phrase.count('l') # 3
+phrase.count('hello') # 1
+
+# Find the index of the first occurrence of a substring
+phrase.find('l') # 2
+phrase.rfind('l') # 9
+phrase.find('zebra') # -1
+phrase.index('2') # 2
+phrase.rindex('l') # 9
+phrase.index('zebra') # ValueError
+
+# If a string ends with a substring
+phrase.startswith("hello") # True
+phrase.endswith('world') # False - missing '!'
+
+# Transform string - These methods will output a new string (no mutation)
+phrase.upper() # "HELLO WORLD!"
+phrase.lower() # "hello world!"
+# Capitalises the first letter and makes every other character lower case
+phrase.capitalize() # "Hello world!"
+# Capitalises the first letter of each word
+phrase.title() # "Hello World"
+
+# Check if a string follows certain conditions
+phrase.islower() # True - If the string is all lowercase characters
+phrase.isupper() # False - If the string has all uppercase characters
+phrase.istitle() # False - If the first character of each word is uppercase
+phrase.isalnum() # False (Note: '!') - If a string has only alphanumeric characters
+phrase.isalpha() # False (Note: '!') - If a string has only alphabetical characters
+
+# strip()
+# lstrip()
+# rstrip()
+
+# split
+# splitlines
+# replace
+
+# isdecimal
+# isdigit
+# isnumeric
 ```
 
 ### Any & All

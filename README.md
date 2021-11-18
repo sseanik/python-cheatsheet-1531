@@ -1,8 +1,8 @@
 # Python Cheatsheet
 
-Note: This cheatsheet has more of a focus on learning Python content (read this top to bottom as it goes step by step). It also has a slight focus on the Python content COMP1531 with a few extended content such as set operations (which will probably not appear in the final exam).
+Note: This cheatsheet has more of a focus on learning Python content (read this top to bottom as it goes step by step). It also has a slight focus on the Python content learnt in COMP1531 with a few extended topics such as set operations (which will probably not appear in the final exam).
 
-## Table of Content
+## Table of Contents
 
 - [Lists](#lists)
   - [List Looping](#list-looping)

@@ -5,7 +5,6 @@ Python Cheatsheet
   - [List Slicing](#list-slicing)
   - [List Comprehension](#list-comprehension)
   - [List Functions](#list-functions)
-  - [Extending Lists](#extending-lists)
 - [Dictionaries](#dictionaries)
   - [Dictionary Initialisation](#dictionary-initialisation)
   - [Dictionary Looping](#dictionary-looping)
@@ -84,7 +83,7 @@ An extension on 'indexing' a list where we able to not just index, but provide a
 output = [0, 1, 2, 3, 4, 5]
 
 output[-1]   # The last element -> 5
-output[::-1] # Reverse the list -> [5, 4, 3, 2, 1, 0]
+output[::-1] # Reverse copy of the list -> [5, 4, 3, 2, 1, 0]
 output[2:5]  # Inclusive of the 2nd index, but exclusive of the 5th index -> [2, 3, 4]
 output[2:]   # Index values from 2 until the end -> [2, 3, 4, 5]
 output[:4]   # First 4 elements -> [0, 1, 2, 3]
@@ -105,15 +104,15 @@ pokedex_copy = []
 for pokemon in pokedex:
     pokedex_copy.append(pokemon)
 
-# Method 2 - Basic List Comprehension
+# Method 2 - Basic Loop List Comprehension
 pokedex_copy = [pokemon for pokemon in pokedex]
 ```
 **Filtering a list with an if statement into a new list**
 ```python
+# Goal: ['Jack', 'Queen', 'King']
 cards = [1, 2, 3, 4, 5, 6, 7, 8 , 9, 10, "Jack", "Queen", "King"]
 
-# Method 1 - For range loop with an if statement - 
-# Goal: ['Jack', 'Queen', 'King']
+# Method 1 - For range loop with an if statement 
 royal_cards = []
 for card in cards:
     if isinstance(card, str):
@@ -124,10 +123,10 @@ royal_cards = [card for card in cards if isinstance(card, str)]
 ```
 **Evaluating an expression over list elements into a list**
 ```python
+# Goal: [1, 4, 9, 16, 25]
 numbers = [1, 2, 3, 4, 5]
 
 # Method 1 - For range loop with an expression
-# Goal: [1, 4, 9, 16, 25]
 squares = []
 for num in numbers:
     squares.append(num * num)
@@ -137,22 +136,22 @@ squares = [(num * num) for num in numbers]
 ```
 **Combining Expression and Conditionals**
 ```python
+# Goal: [4, 16]
 numbers = [1, 2, 3, 4, 5]
 
-# Method 1 - For range loop with an expression
-# Goal: [4, 16]
+# Method 1 - For range loop with an expression and if statement
 even_squares = []
 for num in numbers:
     if num % 2 == 0:
         even_squares.append(num * num)
 
-# Method 2 - Expression inside List Comprehension
+# Method 2 - Expression inside List Comprehension with conditional
 even_squares = [(num * num) for num in numbers if num % 2 == 0]
 ```
 
 ### List Functions
 
-Similar to arrays in C, except their size is dynamic and you can have  different types (not recommended). 
+Similar to arrays in C, except their size is dynamic and you can have  different types (not recommended, use tuples instead). 
 
 **Note**: Most of these list functions return _None_ and modify the list in place (e.g. wacky_list.reverse() returns *None* and reverses the list directly).
 
@@ -197,23 +196,21 @@ colours.reverse() # colours == ['yellow', 'blue', 'brown', 'orange', 'red']
 nums = [1.1, 2.2, 3.3, 4.4, 1.1, 5.5]
 
 # Pop will retrieve and remove a value at a given index
-nums.pop() # Remove and return the last element -> 5.5 
+nums.pop() # The last element -> 5.5 
 # nums == [1.1, 2.2, 3.3, 4.4, 1.1]
-nums.pop(2) # Remove and return nums[2] -> 3.3
+nums.pop(2) # Formally nums[2] -> 3.3
 # nums == [1.1, 2.2, 4.4, 1.1]
 # NOTE: An IndexError is raised if the list is empty, or index is out of bounds
 
-#Remove the first matching element from a list
+# Remove the first matching element from the list
 nums.remove(1.1) # nums == [2.2, 4.4, 1.1]
 # NOTE: A ValueError is raised if the element is not present in the list
 
-# clear - Clears the list
+# Emptying the list
 nums.clear() # nums == []
 ```
 
-### Extending Lists
-
-What happens when we want to append multiple values or even a list onto an existing list?
+**Extending Lists**
 
 ```python
 numbers = [1, 2]
@@ -235,7 +232,7 @@ numbers[len(numbers):] = set_nums # numbers == [1, 2, '3', '4', 5.0, 6.0, 8, 9, 
 
 ### Dictionary Initialisation
 
-Similar to structs from C, Dictionaries are basically a collection key value 'pairs' of (potentially different) data types
+Similar to structs from C, Dictionaries are basically a collection key value 'pairs' of (potentially different) data types.
 
 ```python
 # Initialising a dictionary
@@ -351,7 +348,7 @@ hd_marks = {key: value for key, value in marks.items() if value >= 85}
 
 ### Dictionary Functions
 
-There are several dictionary functions help to extract specific data from a dictionary or manipulate it.
+There are several dictionary functions that help to extract specific data from a dictionary or even manipulate it.
 
 **Extracting elements from a dictionary**
 ```python
@@ -403,7 +400,7 @@ cart.clear() # cart == {}
 
 ### Set Functions
 
-Sets are a collection of distinct elements that contain no duplicates.
+Sets are a collection of distinct elements that contain no duplicates. When you tried to add a value that already exists, it will have no effect.
 
 **Initialising a Set**
 ```python
@@ -436,7 +433,7 @@ digits.remove(9) # Will result in a KeyError
 digits.discard(3) # digits == {1, 2, 5, 6, 7}
 digits.discard(100) # digits == {1, 2, 5, 6, 7}
 
-# Updates the set by adding other iterables
+# Adding other iterables to the set
 digits.update({8, 9}) # digits == {1, 2, 5, 6, 7, 8, 9}
 digits.update({10}) # digits == {1, 2, 5, 6, 7, 8, 9, 10}
 
@@ -494,7 +491,7 @@ a = {'a', 'b', 'c'}
 b = {'b', 'c', 'd'}
 c = {'A', 'a', 'b', 'c', 'd', 'e'}
 
-# If a is a subset of bc
+# If a is a subset of c
 a.issubset(c) # True
 
 # If c is a superset of a
@@ -592,21 +589,25 @@ win = True if "Queen" in hand else False
 
 ### Pytest
 
-Test files must have a prefix of `test_` or have a suffix of `_test`. In the test file, functions must have a prefix of `test_`
+Test files must have a prefix of `test_` or have a suffix of `_test`. In the test file, functions must have a prefix of `test_`. In this course we use the pytest library to help us define further testing behaviour.
 
 ```python
 import pytest
 from random import randint
 
 def acronym(phrase):
+    '''Given a phrase, convert and extract its acronym abbreviation'''
     if not isinstance(phrase, str):
         raise TypeError("Phrase must be a string")
     return "".join(filter(str.isupper, phrase.strip().title()))
 
+# Fixtures are functions that run before each test and are generally used to 
+# feed some data to the tests
 @pytest.fixture
 def random_whitespace():
     return " " * randint(1, 999)
 
+# The parametrize decorator allows for feeding in different arguments into a test function
 @pytest.mark.parametrize('phrase, abbreviation',[
     ("Sun Protection Factor", "SPF"), ("You Only Live Once", "YOLO"),
     ("National Aeronautics & Space Administration", "NASA")
@@ -627,38 +628,48 @@ def test_empty(random_whitespace):
     assert acronym(random_whitespace) == ""
 
 def test_incorrect_type():
+    # We can also catch specific or non-specific (Exception) exceptions
     with pytest.raises(TypeError):
         acronym(123)
 ```
 
 ### Exceptions
 
+When an exception occurs, it will stop the current process, and if not handled, will crash the program. We can handle exceptions using a `try` statement. 
+
 **Catching Exceptions**
 ```python
+# Try block lets you test a block of code for errors
 try:
     f = open("rocketship.txt")
     number = int(input("Enter a number: "))
     calculation = 4 / number
+# The except block lets you handle the error.
 except ValueError:
     print("A non-numeric value was inputted")
+# You can catch specific exceptions
 except ZeroDivisionError:
     print("The inputted number cannot be Zero")
-else:
     
-
 try:
    f = open("rocketship.txt")
-   # Perform File Operations
+   pass
+except:
+    pass
+# Finally block execute codes, regardless of the result of the try, except
 finally:
    f.close()
 ```
 **Raising Exceptions**
 ```python
+# We can manually raise exceptions too
 if not isinstance(num, int):
     raise TypeError("Number is not an integer")
 ```
 
 ### Pylint
+
+Pylint is a static code analysis tool for Python which attempts to point out potential errors, helps enforce a good code standard, looks for potential code smells and offers refactoring suggestions.
 
 ```python
 pylint name_of_file.py # Terminal command
@@ -668,6 +679,8 @@ if year % 4 != 0: #pylint: disable=no-else-return
 
 ### Coverage
 
+Coverage is a python tool for measuring code coverage of programs, generally paired with pytest. It analyses which parts code have been executed and which have not.
+
 ```bash
 coverage run --source=. -m pytest # Run Coverage.py for your pytests
 coverage run --branch --source=. -m pytest # Run branch coverage for your pytests
@@ -676,6 +689,8 @@ coverage html # Generate HTML to see a breakdown (puts report in htmlcov/)
 ```
 
 ### Property Based Testing
+
+Property based testing (using the Hypothesis library) involves generating different data matching a specification and checking that something should be true for every case, not just ones you can think of.
 
 *merge_sort.py*
 ```python
@@ -700,11 +715,13 @@ def merge_sort(array):
 ```python
 from hypothesis import given, strategies, Verbosity, settings
 
+# Verbosity helps you see how Hypothesis runs your tests
 @given(strategies.lists(strategies.integers()))
 @settings(verbosity=Verbosity.verbose)
 def test_length(nums):
     assert len(merge_sort(nums)) == len(nums)
 
+# Provide different lists of different integers
 @given(strategies.lists(strategies.integers()))
 def test_sorted(nums):
     assert sorted(nums) == merge_sort(nums)
@@ -733,7 +750,7 @@ def catch_pokemon():
     pokemon_dict.update({pokemon: name})
     return dumps({})
 
-# GET Request can rely on a simple route with no arguments
+# GET Request reads data and can rely on a simple route with no arguments
 @APP.route('/pokedex', methods=["GET"])
 def pokedex():
     return dumps(pokemon_dict)
@@ -751,7 +768,7 @@ def name():
     pokemon = request.args.get('pokemon')
     return dumps({"name": pokemon_dict.get(pokemon)})
 
-# Similar to POST, PUT allows you to edit existing data
+# PUT allows you to edit existing data
 @APP.route('/edit', methods=["PUT"])
 def edit_pokemon_name():
     data = request.get_json()
@@ -773,6 +790,8 @@ if __name__ == "__main__":
 ```
 
 ### HTTP Testing
+
+We can use the request library to send requests to an API server, and retrieve the information.
 
 ```python
 import requests
@@ -862,7 +881,7 @@ sorted(names, key=len) # ['Red', 'Blue', 'Green', 'Yellow']
 
 ### Lambda Functions
 
-Lambda functions are powerful (usually one liner) functions that allow us to simplify our code, especially in sorting.
+Lambda functions are powerful (usually one liner) functions that allow us to simplify our code, with any number of arguments, but written as one singular expression.
 
 ```python
 # Method 1 - Function
@@ -913,7 +932,7 @@ clothing.sort(key=lambda x: (x["name"], x["price"]))
 
 ### Filter
 
-Filter allows us to shorten a collection based on some sort of True/False rule.
+Filter allows us to extract elements from a collection based on a function determining each element to be `True`.
 
 ```python
 nums = [1, 2, 3, 4, 5, 6, 7, 8]
@@ -947,6 +966,8 @@ list(map(lambda x: x * x, nums)) # [1, 4, 9, 16, 25, 36, 49, 64]
 
 ### Reduce
 
+Reduce applies a function to all elements of a collection, and 'reduce' it to a single value.
+
 ```python
 from functools import reduce
 
@@ -966,20 +987,20 @@ reduce(lambda x, y : x * y, nums)
 
 ### Importing
 
-When importing, you want to be careful or polluting the namespace (i.e. having imported functions with the same name). You also want to be careful of circular imports (cycles in dependencies across multiple files).
+When importing, you want to be careful or 'polluting' the namespace (i.e. having imported functions with the same name). You also want to be careful of circular imports (cycles in dependencies across multiple files).
 
 **Different ways of Importing**
 ```python
 from numpy import sqrt
 sqrt(4)
 
-from numpy import sqrt as square_root
+from numpy import sqrt as square_root # You can rename functions
 square_root(4) 
 
 import numpy
 numpy.sqrt(4)
 
-import numpy as np
+import numpy as np # You can also rename modules
 np.sqrt(4)
 
 from numpy import * # Very bad - Don't do this
@@ -993,7 +1014,7 @@ if __name__ == "__main__":
 
 ### Packages & Virtual Environments
 
-When you pip3 install, you may be install packages globally. One thing to take into account is we can use virtual environments to associate projects with specific packages, and we can extract a useful requirements.txt (useful for deployment).
+When you pip3 install, you may be install packages globally. One thing to take into account is we can use virtual environments to associate projects with specific packages, and we can further extract a requirements.txt of specific installed packages and their versions.
 
 **Pip Commands**
 ```bash
@@ -1015,12 +1036,15 @@ deactivate # Exits the 'venv' virtual environment, back to the global environmen
 
 ### String Manipulation
 
+There are number of methods where we can manipulate strings or checking strings based on some check such as if the string is a number.
+
 **Float/Decimal Place Strings**
 ```python
 # Printing decimal places
 pi = 3.14159265
 print(f"{pi:.2f}") # 3.14
 print(f"{pi:.4f}") # 3.1416
+print(f"{round(pi, 3)}") # 3.142
 
 # String with padded zeroes to the left under the max length given
 str(pi).zfill(20) # '00000000003.14159265'
@@ -1160,7 +1184,7 @@ deep_b[0][1] = "Green" # Will update only deep_b
 
 ### Files
 
-We can read, write or append text to files with two main methods. One with the tradition open function and one with a 'with' statement which automatically handles closing a file after its scope (indentation) has been completed.
+We can read, write or append text to files with two main methods. One with the traditional open function and one with a 'with' statement which automatically handles closing a file after its scope (indentation) has been completed.
 
 ```python
 # You can open a file this way, but remember to close it
@@ -1185,6 +1209,8 @@ with open("new.txt",'a') as f:
 ```
 
 ### Decorators
+
+Decorator take in a function and then add some further functionality to it, and then returns it. When building a custom decorator, we need to be wary of functions have a different number or type of arguments, thus we use `*args` and `**kwargs`. `*args` are a variable number of non-keyword arguments and `**kwargs` are a variable number of keyword arguments.
 
 ```python
 def print_result(func):
@@ -1253,19 +1279,12 @@ def shout(message, capital: Optional[bool]=False) -> None:
 
 def occurrences(letters: List[str]) -> Dict[str, int]:
     return dict(Counter(letters))
-
-if __name__ == "__main__":
-    print(multiply(4, 5.3)) # 21.2
-    shout("How are you?") # How are you?
-    shout("How dare you!", True) # HOW DARE YOU!
-    print(occurrences(['a', 'b', 'a', 'c', 'd', 'e', 'e', 'e', 'd']))
-    # {'a': 2, 'b': 1, 'c': 1, 'd': 2, 'e': 3}
 ```
 
 
 ### Classes
 
-Classes are code templates for creating objects. There will usually be a constructor __init__ method within the class, custom methods and builtin definable methods that allow for the class to access Python operations such as str(), +, *, etc.
+Classes are code templates for creating objects. There will usually be a constructor `__init__` method within the class, custom methods and builtin definable methods that allow for the class to access Python operations such as `str()`, `+`, `*`, etc.
 
 ```python
 # Class name is usually capitalised
@@ -1276,8 +1295,18 @@ class Pokemon():
         self.name = pokemon
         self.level = level
 
+    # Method 1 - Non-pythonic setter
     def rename(self, name):
         self.name = name
+
+    # Method 2 - Pythonic Getter and setter
+    @property
+    def name(self):
+        return self.__name
+
+    @name.setter
+    def name(self, name):
+        self.__name = name
 
     def level_up(self):
         self.level += 1
@@ -1289,7 +1318,9 @@ class Pokemon():
 if __name__ == "__main__":
     # When initialising a class, pay attention to the __init__ to know what arguments are needed
     charmander = Pokemon('Charmander', 1)
-    charmander.rename("Charlie")
     charmander.level_up()
+    charmander.name = "Charlie"
+    print(charmander)
+    charmander.rename("Christopher")
     print(charmander)
 ```
